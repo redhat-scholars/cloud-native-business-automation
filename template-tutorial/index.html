@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Welcome to Template Tutorial :: Template Tutorial</title>
+    <title>Introduction :: Cloud Native Business Automation</title>
     <link rel="canonical" href="https://redhat-scholars.github.io/course-template/template-tutorial/index.html">
     <link rel="next" href="01-setup.html">
     <meta name="generator" content="Antora 2.3.4">
@@ -17,7 +17,7 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="https://developers.redhat.com" target="_blank"><img
           src="../_/img/header_logo.png" height="40px" alt="Red Hat Developer Program"></a>
-      <a class="navbar-item" href="https://redhat-scholars.github.io/course-template">Template Tutorial</a>
+      <a class="navbar-item" href="https://redhat-scholars.github.io/course-template">Cloud Native Business Automation</a>
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
         <span></span>
@@ -66,7 +66,7 @@
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
   <nav class="nav-menu">
-    <h3 class="title"><a href="index.html">Template Tutorial</a></h3>
+    <h3 class="title"><a href="index.html">Cloud Native Business Automation</a></h3>
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
@@ -94,6 +94,9 @@
   </li>
 </ul>
   </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="09-build-process-service.html">3. Build a Process Service</a>
+  </li>
 </ul>
   </li>
 </ul>
@@ -101,12 +104,12 @@
 </div>
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
-    <span class="title">Template Tutorial</span>
+    <span class="title">Cloud Native Business Automation</span>
     <span class="version">master</span>
   </div>
   <ul class="components">
     <li class="component is-current">
-      <span class="title">Template Tutorial</span>
+      <span class="title">Cloud Native Business Automation</span>
       <ul class="versions">
         <li class="version is-current is-latest">
           <a href="index.html">master</a>
@@ -124,20 +127,67 @@
   <a href="index.html" class="home-link is-current"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
-    <li><a href="index.html">Template Tutorial</a></li>
-    <li><a href="index.html">Welcome to Template Tutorial</a></li>
+    <li><a href="index.html">Cloud Native Business Automation</a></li>
+    <li><a href="index.html">Introduction</a></li>
   </ul>
 </nav>
   <div class="edit-this-page"><a href="https://github.com/dmarrazzo/cloud-native-business-automation/edit/master/documentation/modules/ROOT/pages/index.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">Welcome to Template Tutorial</h1>
-<div class="sect1 text-center strong">
-<h2>Publish Services to Kubernetes</h2>
+<h1 class="page">Introduction</h1>
+<div class="sect1">
+<h2>Background</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>A Kubernetes tutorial to show how you can deploy a Java service to a Kubernetes cluster as it was a child game.</p>
+<p>The <a href="https://kie.org/">KIE Community</a> is a home for leading Open Source projects that play a role in delivering solutions around Process Automation, Decision Management and Artificial Intelligence (KIE stands for Knowledge Is Everything).</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/logo.png" alt="Kogito" width="400">
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://kogito.kie.org/">Kogito</a> is a recent initiative under the KIE umbrella to leverage the battle-tested project <strong>Drools, jBPM, and OptaPlanner</strong> into a <strong>Cloud Native Environment</strong>.</p>
+</div>
+<div class="paragraph">
+<p>It is designed from ground up to run at scale on cloud infrastructure. If you think about business automation think about the cloud as this is where your business logic lives these days. By taking advantage of the latest technologies (<a href="https://quarkus.io/">Quarkus</a>, <a href="https://knative.dev/">KNative</a>, etc.), you get amazingly fast boot times and instant scaling on orchestration platforms like <a href="https://www.redhat.com/en/technologies/cloud-computing/openshift">OpenShift</a>.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.redhat.com/en/technologies/jboss-middleware/process-automation-manager">Red Hat Process Automation Manager</a> and <a href="https://www.redhat.com/en/technologies/jboss-middleware/decision-manager">Red Hat Decision Manager</a> are the products built on top of KIE projects and offers the enterprise grade support.</p>
+</div>
+<div class="paragraph">
+<p>In <a href="https://www.redhat.com/en/about/press-releases/red-hat-rewrites-business-automation-playbook-end-end-kubernetes-native-decision-management-capabilities">version 7.11</a>, Red Hat introduced a first subset of <strong>Kogito capabilities</strong> to enable the decision services: <strong>DMN, Rules, Event Driven Decisions</strong>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2>Practising Kogito</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This is <strong>a series of guided exercises</strong> that will allow you to experiment the authoring of decisions and business rules using Kogito. You will work with decision authoring with <em>Kogito tooling</em>, along with the packaging and consumption of the decisions in the <em>Kogito engine</em> that is supported in Red Hat Process Automation 7.11.x.</p>
+</div>
+<div class="paragraph">
+<p>Here is an overview of the guided exercises:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Local development environment set-up</strong>: get your development environment ready to go with VSCode and GraalVM.</p>
+</li>
+<li>
+<p><strong>Local environment set-up for Kafka</strong>: use docker to quickly start a Kafka environment in your local environment. The Kafka broker will be used in the event-driven lab.</p>
+</li>
+<li>
+<p><strong>Getting start with Kogito applications</strong>: create a decision application using the Kogito Maven archetype, try out the business modeling tools in VSCode, experience hot reload of business assets during development and test your application using JVM and native compilation.</p>
+</li>
+<li>
+<p><strong>Event-driven decision applications</strong>: create a project from scratch and understand all that is needed to have your decisions reacting to events and publishing the results back through events and using the CloudEvents specification.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s get started by preparing your development environment.</p>
 </div>
 </div>
 </div>
