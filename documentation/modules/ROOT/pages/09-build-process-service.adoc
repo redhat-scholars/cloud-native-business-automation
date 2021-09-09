@@ -1,0 +1,143 @@
+= Build a Process Service
+
+This lab introduces you to how you can get started with process projects that are based on Kogito and Quarkus, how to deploy and validate it.
+
+-   Create a new quarkus-based process microservice
+-   Leverage Kogito tooling in VSCode to design a simple process
+-   Run the process in the development environment
+
+[#project-process]
+== Creating a new process project based on Kogito and Quarkus
+
+In order to create a new process project based on Quarkus, we can use a Maven archetype to generate the Quarkus based project with the required dependencies for our decision application.
+
+WARNING: At the time of writing Kogito Process is still not released in the product, so we are going to explore the latest **community** version 
+
+Navigate to a folder of your preference, and run the following command. Maven will create a new project with the name `process-lab01`. 
+
+[.console-input]
+[source,shell]
+----
+mvn archetype:generate \
+    -DartifactId=process-lab01 \
+    -DgroupId=org.acme -Dversion=1.0-SNAPSHOT \
+    -DarchetypeGroupId=org.kie.kogito \
+    -DarchetypeArtifactId=kogito-quarkus-archetype \
+    -DarchetypeVersion=1.10.0.Final
+----
+
+[#design-process]
+== Design the Order Approval process 
+
+1. Create `order-approval.bpmn` in `src/main/resources`:
+
+2. Design the process:
+
+   - **Add** a _Start Event_
+   - Next to the _Start Event_ **Click** the box icon to add a task
+     ![]({%  image_path/build-process-newtask.gif %}){:width="300px"}
+   - **Name** the task `Approve`
+   - While the task is selected, **open** the _Properties_ pane, **update** _Task Name_ with `Approve`
+     ![]({%  image_path/build-process-task-prop.png %}){:width="500px"}
+   - Below the Task from the gear icon **select** the user shape
+     ![]({%  image_path/build-process-user-task.gif %}){:width="300px"}
+   - Complete the process design **adding** the _End Event_
+     ![]({%  image_path/build-process-approval-process.png %}){:width="400px"}
+
+[#run-process]
+== Run the process
+
+Kogito generates a set of REST endpoints to interact with the process model at runtime.
+You can explore all the endpoints opening the [Swagger UI](http://localhost:8080/q/swagger-ui/).
+
+In this section, we propose the _REST Client_ tool for the following reasons:
+
+1. Often you need the outcome of a service to trigger the following service, a really convenient feature of the _REST Client_ is the variable initialization from the response and this avoid you the burden of coping and pasting those values
+2. The `http` file can be stored along with your project and can be easily reused later.
+3. It's really fast to repeat the test scenario, because you will have all the REST calls in the correct order.
+4. The same file can be reused with the service running in a different environment just changing the `HOST` variable. 
+
+The following steps guide you to start a local Kogito runtime and probe the process model through the basic operations: start a new process instance, read the task list, complete the task and consequently complete the process instance.
+
+1. **Start** the application in dev mode:
++
+[.console-input]
+[source,shell]
+----
+$ mvn quarkus:dev
+----
+
+2. **Create** the file `order-approval.http` in `src/test/http/` folder
+
+3. **Add** the new process REST request:
++
+[.console-input]
+[source,javascript]
+----
+@HOST=localhost:8080
+
+###
+# @name order_approval
+POST http://{{HOST}}/order_approval
+Accept: application/json
+Content-Type: application/json
+
+{}
+
+@piid={{order_approval.response.body.id}}
+----
+
+4. Start a new process instance **clicking** _Send Request_ link above `POST`, the response body should resemble the following:
++
+[.console-output]
+[source,json]
+----
+{
+"id": "333ed660-eda6-444b-8d75-6b411c18486d"
+}
+----
++
+TIP: _Rest Client_ parses the response and assign the _process instance id_ to the `piid` variable
+
+5. **Get** the _task list_ and pick the first task id
++
+[.console-input]
+[source,javascript]
+----
+###
+# @name order_approval_tasks
+GET http://{{HOST}}/order_approval/{{piid}}/tasks
+Accept: application/json
+Content-Type: application/json
+
+@taskid={{order_approval_tasks.response.body.0.id}}
+@task_name={{order_approval_tasks.response.body.0.name}}
+----
+
+6. **Claim** the task
++
+[.console-input]
+[source,javascript]
+----
+###
+# @name task_claim
+POST http://{{HOST}}/order_approval/{{piid}}/{{task_name}}/{{taskid}}?phase=claim
+Accept: application/json
+Content-Type: application/json
+
+{}
+----
+
+7. **Complete** the task
++
+[.console-input]
+[source,javascript]
+----
+###
+# @name task_complete
+POST http://{{HOST}}/order_approval/{{piid}}/{{task_name}}/{{taskid}}?phase=complete
+Accept: application/json
+Content-Type: application/json
+
+{}
+----

@@ -1,11 +1,38 @@
-= Welcome to Template Tutorial
+= Introduction
 :page-layout: home
 :!sectids:
 
-[.text-center.strong]
-== Publish Services to Kubernetes
+== Background
 
-A Kubernetes tutorial to show how you can deploy a Java service to a Kubernetes cluster as it was a child game.
+The https://kie.org/[KIE Community] is a home for leading Open Source projects that play a role in delivering solutions around Process Automation, Decision Management and Artificial Intelligence (KIE stands for Knowledge Is Everything).
+
+image::logo.png[Kogito,400,align="center"]
+
+https://kogito.kie.org/[Kogito] is a recent initiative under the KIE umbrella to leverage the battle-tested project **Drools, jBPM, and OptaPlanner** into a **Cloud Native Environment**.
+
+It is designed from ground up to run at scale on cloud infrastructure. If you think about business automation think about the cloud as this is where your business logic lives these days. By taking advantage of the latest technologies (https://quarkus.io/[Quarkus], https://knative.dev/[KNative], etc.), you get amazingly fast boot times and instant scaling on orchestration platforms like https://www.redhat.com/en/technologies/cloud-computing/openshift[OpenShift].
+
+:rhpam: https://www.redhat.com/en/technologies/jboss-middleware/process-automation-manager[Red Hat Process Automation Manager]
+:rhdm: https://www.redhat.com/en/technologies/jboss-middleware/decision-manager[Red Hat Decision Manager]
+
+{rhpam} and {rhdm} are the products built on top of KIE projects and offers the enterprise grade support.
+
+:v711: https://www.redhat.com/en/about/press-releases/red-hat-rewrites-business-automation-playbook-end-end-kubernetes-native-decision-management-capabilities[version 7.11]
+
+In {v711}, Red Hat introduced a first subset of **Kogito capabilities** to enable the decision services: **DMN, Rules, Event Driven Decisions**.
+
+== Practising Kogito
+
+This is **a series of guided exercises** that will allow you to experiment the authoring of decisions and business rules using Kogito. You will work with decision authoring with _Kogito tooling_, along with the packaging and consumption of the decisions in the _Kogito engine_ that is supported in Red Hat Process Automation 7.11.x.
+
+Here is an overview of the guided exercises:
+
+- **Local development environment set-up**: get your development environment ready to go with VSCode and GraalVM.
+- **Local environment set-up for Kafka**: use docker to quickly start a Kafka environment in your local environment. The Kafka broker will be used in the event-driven lab. 
+- **Getting start with Kogito applications**: create a decision application using the Kogito Maven archetype, try out the business modeling tools in VSCode, experience hot reload of business assets during development and test your application using JVM and native compilation.
+- **Event-driven decision applications**: create a project from scratch and understand all that is needed to have your decisions reacting to events and publishing the results back through events and using the CloudEvents specification.
+
+Let's get started by preparing your development environment.
 
 [.tiles.browse]
 == Browse modules
@@ -18,3 +45,8 @@ A Kubernetes tutorial to show how you can deploy a Java service to a Kubernetes 
 .xref:02-deploy.adoc[Deploying]
 * xref:02-deploy.adoc#package[Package the Application]
 * xref:02-deploy.adoc#deploy[Deploy the Application]
+
+[.tile]
+.xref:09-build-process-service.adoc
+
+
