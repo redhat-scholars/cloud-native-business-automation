@@ -1,6 +1,7 @@
-* xref:01-setup.adoc[1. Setup]
-** xref:01-setup.adoc#prerequisite[Prerequisites]
-** xref:01-setup.adoc#minikube[Setup Minikube]
+* xref:01-prepare-dev.adoc[Prepare your Development Environment]
+** xref:01-prepare-dev.adoc#base-folder[Creating the base folder for the labs]
+** xref:01-prepare-dev.adoc#install-code[Installing Visual Studio Code IDE]
+** xref:01-prepare-dev.adoc#mandrel[Install Mandrel VM]
 
 * xref:02-deploy.adoc[2. Deploy Service]
 ** xref:02-deploy.adoc#package[Build Service]
