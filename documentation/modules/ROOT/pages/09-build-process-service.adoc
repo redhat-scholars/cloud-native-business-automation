@@ -33,22 +33,26 @@ mvn archetype:generate \
 
 2. Design the process:
 
-   - **Add** a _Start Event_
-   - Next to the _Start Event_ **Click** the box icon to add a task
-     ![]({%  image_path/build-process-newtask.gif %}){:width="300px"}
-   - **Name** the task `Approve`
-   - While the task is selected, **open** the _Properties_ pane, **update** _Task Name_ with `Approve`
-     ![]({%  image_path/build-process-task-prop.png %}){:width="500px"}
-   - Below the Task from the gear icon **select** the user shape
-     ![]({%  image_path/build-process-user-task.gif %}){:width="300px"}
-   - Complete the process design **adding** the _End Event_
-     ![]({%  image_path/build-process-approval-process.png %}){:width="400px"}
+- **Add** a _Start Event_
+- Next to the _Start Event_ **Click** the box icon to add a task
++
+image::build-process-newtask.gif[newtask,400,align="center"]
+- **Name** the task `Approve`
+- While the task is selected, **open** the _Properties_ pane, **update** _Task Name_ with `Approve`
++
+image::build-process-task-prop.png[taskprop,600,align="center"]
+- Below the Task from the gear icon **select** the user shape
++
+image::build-process-user-task.gif[user-task,400,align="center"]
+- Complete the process design **adding** the _End Event_
++
+image::build-process-approval-process.png[approval-process.png,500,align="center"]
 
 [#run-process]
 == Run the process
 
 Kogito generates a set of REST endpoints to interact with the process model at runtime.
-You can explore all the endpoints opening the [Swagger UI](http://localhost:8080/q/swagger-ui/).
+You can explore all the endpoints opening the http://localhost:8080/q/swagger-ui/[Swagger UI].
 
 In this section, we propose the _REST Client_ tool for the following reasons:
 
