@@ -1,4 +1,4 @@
-* xref:01-prepare-dev.adoc[Prepare your Development Environment]
+* xref:01-prepare-dev.adoc[1. Prepare your Development Environment]
 ** xref:01-prepare-dev.adoc#base-folder[Creating the base folder for the labs]
 ** xref:01-prepare-dev.adoc#install-code[Installing Visual Studio Code IDE]
 ** xref:01-prepare-dev.adoc#mandrel[Install Mandrel VM]
@@ -7,4 +7,6 @@
 ** xref:02-deploy.adoc#package[Build Service]
 ** xref:02-deploy.adoc#deploy[Deploy Dervice]
 
-* xref:09-build-process-service.adoc[3. Build a Process Service]
+* xref:04-build-decision-service-logic.adoc[3. Build Decision Service Logic]
+
+* xref:09-build-process-service.adoc[4. Build a Process Service]
