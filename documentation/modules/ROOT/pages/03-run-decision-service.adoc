@@ -1,0 +1,93 @@
+= Run the Decision Service in Cloud
+
+[#deploy]
+== Deploy the decision in OpenShift
+
+[arabic]
+. *Login* in your OCP cluster and *create* a new project
++
+[.console-input]
+[source,shell]
+....
+oc new-project decision-lab01
+....
+. *Build* the _Quarkus Uberjar_
++
+[.console-input]
+[source,shell]
+....
+mvn clean package -Dquarkus.package.type=uber-jar -DskipTests
+....
+. *Create* a new image from binaries:
++
+[.console-input]
+[source,shell]
+....
+oc new-build registry.access.redhat.com/openjdk/openjdk-11-rhel7:latest --binary --name=discount -l app=discount
+oc start-build discount --from-file target/*-runner.jar --follow
+....
++
+Optionally, check that the _ImageStreams_ are correctly created:
++
+[.console-output]
+[source,shell]
+....
+$ oc get is
+NAME               IMAGE REPOSITORY                                                                                                        TAGS     UPDATED
+discount           default-route-openshift-image-registry.apps.cluster-972c.972c.sandbox1438.opentlc.com/decision-lab01/discount           latest   13 seconds ago
+openjdk-11-rhel7   default-route-openshift-image-registry.apps.cluster-972c.972c.sandbox1438.opentlc.com/decision-lab01/openjdk-11-rhel7   latest   About a minute ago
+....
+. *Create* the application:
++
+[.console-input]
+[source,shell]
+....
+oc new-app --name discount discount
+....
+. *Expose* the application (create a route)
++
+[.console-input]
+[source,shell]
+....
+oc expose svc/discount
+....
+
+[#probe]
+== Probe the decision
+
+[arabic]
+. *Retrieve* the service URL:
++
+[.console-input]
+[source,shell]
+....
+oc get route discount -o jsonpath='{.spec.host}'
+....
+. *Open* the file `dmn-test.http` and *update* the `URL` variable with
+the result of the previous command.
+. *Trigger* the REST call through *Send Request* link (right above the
+`POST` line)
+. *Check* that the service reply
+
+TIP: *Alternatively,* through the `curl` command:
+
+[.console-input]
+[source,shell]
+....
+export URL=<your url>
+curl --request POST \
+  --url $URL \
+  --header 'accept: application/json' \
+  --header 'content-type: application/json' \
+  --header 'user-agent: vscode-restclient' \
+  --data '{"Cart": [{"category": "electronics","price": 80},{"category": "food","price": 20}]}'
+....
+
+[#clean]
+== Clean up your environment
+
+Optionally, if you want to remove everything:
+
+[.console-input]
+[source,shell]
+oc delete all -l app=discount

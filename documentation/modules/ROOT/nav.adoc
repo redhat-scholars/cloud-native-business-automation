@@ -10,11 +10,15 @@
 ** xref:02-build-decision-service.adoc#updating[Updating the Decision]
 ** xref:02-build-decision-service.adoc#packaging[Packaging and running the application]
 
-* xref:04-build-decision-service-logic.adoc[3. Build Decision Service Logic]
+* xref:03-run-decision-service.adoc[3. Run the Decision Service in Cloud]
+** xref:03-run-decision-service.adoc#deploy[Deploy the decision in OpenShift]
+** xref:03-run-decision-service.adoc#probe[Probe the decision]
+** xref:03-run-decision-service.adoc#clean[Clean up your environment]
+
+* xref:04-build-decision-service-logic.adoc[4. Build Decision Service Logic]
 ** xref:04-build-decision-service-logic.adoc#challenge[Challenge description]
 ** xref:04-build-decision-service-logic.adoc#hints[Hints]
 ** xref:04-build-decision-service-logic.adoc#run-locally[Run locally the Decision Service]
 ** xref:04-build-decision-service-logic.adoc#test[Create a Test Scenario]
 
-
-* xref:09-build-process-service.adoc[4. Build a Process Service]
+* xref:09-build-process-service.adoc[5. Build a Process Service]
