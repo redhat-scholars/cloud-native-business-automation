@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Build a Kogito-based Decision Services :: Cloud Native Business Automation</title>
+    <link rel="canonical" href="https://redhat-scholars.github.io/course-template/template-tutorial/02-build-decision-service.html">
+    <link rel="prev" href="01-prepare-dev.html">
+    <link rel="next" href="04-build-decision-service-logic.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../_/css/site.css">
+<link rel="icon" href="../_/img/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://developers.redhat.com" target="_blank"><img
+          src="../_/img/header_logo.png" height="40px" alt="Red Hat Developer Program"></a>
+      <a class="navbar-item" href="https://redhat-scholars.github.io/course-template">Cloud Native Business Automation</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Books</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">CheatSheets</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">CheatSheet A</a>
+            <a class="navbar-item" href="#">CheatSheet B</a>
+            <a class="navbar-item" href="#">CheatSheet C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Upcoming Events</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Event A</a>
+            <a class="navbar-item" href="#">Event B</a>
+            <a class="navbar-item" href="#">Event C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">More Tutorials</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Tutorial A</a>
+            <a class="navbar-item" href="#">Tutorial B</a>
+            <a class="navbar-item" href="#">Tutorial C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="template-tutorial" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">Cloud Native Business Automation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="01-prepare-dev.html">1. Prepare your Development Environment</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01-prepare-dev.html#base-folder">Creating the base folder for the labs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01-prepare-dev.html#install-code">Installing Visual Studio Code IDE</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01-prepare-dev.html#mandrel">Install Mandrel VM</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="02-build-decision-service.html">2. Build Decision Service</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#new-project">Creating a new decision project based on Kogito and Quarkus</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#examine">Examine the project and decision</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#running">Running the project</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#updating">Updating the Decision</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#packaging">Packaging and running the application</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="04-build-decision-service-logic.html">3. Build Decision Service Logic</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="04-build-decision-service-logic.html#challenge">Challenge description</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="04-build-decision-service-logic.html#hints">Hints</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="04-build-decision-service-logic.html#run-locally">Run locally the Decision Service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="04-build-decision-service-logic.html#test">Create a Test Scenario</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="09-build-process-service.html">4. Build a Process Service</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Cloud Native Business Automation</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Cloud Native Business Automation</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Cloud Native Business Automation</a></li>
+    <li><a href="02-build-decision-service.html">2. Build Decision Service</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/redhat-scholars/cloud-native-business-automation/edit/master/documentation/modules/ROOT/pages/02-build-decision-service.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Build a Kogito-based Decision Services</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This lab introduces you to how you can get started with decision
+projects that are based on Kogito and Quarkus, how to deploy and
+validate it’s decisions.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Create a new quarkus-based decision microservice</p>
+</li>
+<li>
+<p>Try the Kogito tooling in VScode</p>
+</li>
+<li>
+<p>Run the application</p>
+</li>
+<li>
+<p>Package and run the compiled kogito application locally</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="new-project"><a class="anchor" href="#new-project"></a>Creating a new decision project based on Kogito and Quarkus</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In order to create a new decision project based on Quarkus, we can use a
+Maven archetype to generate the Quarkus based project with the required
+dependencies for our decision application.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Navigate to a folder of your preference, and run the following
+command. Maven will create a new project with the name <code>decision-lab01</code>.</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ mvn archetype:generate \
+-DarchetypeGroupId=org.kie.kogito \
+-DarchetypeArtifactId=kogito-quarkus-dm-archetype \
+-DgroupId=org.acme -DartifactId=decision-lab01 \
+-DarchetypeVersion=1.5.0.redhat-00004 \
+-Dversion=1.0-SNAPSHOT</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="examine"><a class="anchor" href="#examine"></a>Examine the project and decision</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Let’s open the project so we can look at its structure and files. In
+your terminal, you can open the project using the VScode command <code>code</code>:</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ code decision-lab01/</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You should be able to navigate through the project structure.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="_images/vscode-project-decision-lab01.png" alt="Project structure in VSCode" width="600"></span></p>
+</div>
+<div class="paragraph">
+<p>Notice that:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>There is a DMN sample, <code>Traffic Violation.dmn</code>. This decision
+determines if a Driver should be suspended based on the violation and
+fine applied.</p>
+</li>
+<li>
+<p>There is a jUnit test <code>TrafficViolationTest.java</code>. This jUnit tests
+the REST endpoint that is generated automatically by Kogito. Further on
+the lab, we will work with the Test Scenario, a graphical tool that
+allows users to unit test the decision model.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="running"><a class="anchor" href="#running"></a>Running the project</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>It’s time to try out this project. To make things easier, you can use
+the Integrated Terminal feature in VSCode.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open the integrated terminal in VSCode by by pressing <code><em>cmd+shift+p</em></code> or <code><em>ctrl+shift+p</em></code></p>
+</li>
+<li>
+<p>Then, search for <strong>Integrated Terminal</strong> and select it. See below:</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="_images/integrated-terminal-vscode.png" alt="600"></span></p>
+</div>
+<div class="paragraph">
+<p>In the recently opened integrated terminal, you can start the
+application.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Start the application in dev mode:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ mvn quarkus:dev</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="2">
+<li>
+<p>Open your browser and access <a href="http://localhost:8080/q/swagger-ui/" class="bare">http://localhost:8080/q/swagger-ui/</a></p>
+</li>
+<li>
+<p>You should see three REST endpoints that were automatically generated
+by Kogito.</p>
+</li>
+<li>
+<p>Select the <strong>POST</strong> request for <strong>Traffic Violation</strong> and click on the
+``<strong>Try it out</strong>'' button.</p>
+</li>
+<li>
+<p>You can use the following JSON as the Request Input to validate the
+decision about if the driver should be suspended or not:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+    "Driver": {
+      "Age": 25,
+      "Points": 13
+    },
+    "Violation": {
+      "Type": "speed",
+      "Actual Speed": 115,
+      "Speed Limit": 100
+    }
+}</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The output should show not only the final decision <em><code>Should the driver
+be suspended?''</em> but also the decision made for the <em></code>Fine''</em> decision
+node.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="_images/first-response-decision-service.png" alt="800"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="updating"><a class="anchor" href="#updating"></a>Updating the Decision</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When using the Kogito extension with Quarkus, you can also take
+advantadge of the hot reload features during the development of your
+decision. Let’s give it a try.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Still with the server running go back to the decision project in
+VSCode.</p>
+</li>
+<li>
+<p>Open the <code>Traffic Violation.dmn</code> decision file, and select the
+<em>``Should the driver be suspended?''</em> node. Click on the edit button.</p>
+<div class="paragraph">
+<p><span class="image"><img src="_images/edit-traffic-violation-dmn.png" alt="600"></span></p>
+</div>
+</li>
+<li>
+<p>Now, let’s make the threshold 16 instead of 20. On the result literal
+expression, change:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>From: <code>If Total Points &gt;= 20 then "Yes" else "No"</code></p>
+</li>
+<li>
+<p>​ To: <code>If Total Points &gt;= 16 then "Yes" else "No"</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Save the DMN file.</p>
+</li>
+<li>
+<p>Go back to your browser, and click on ``Execute'' to execute the exact
+same request.</p>
+</li>
+<li>
+<p>Check the response and confirm that differently than the first
+decision, the decision is that the driver should be suspended.</p>
+<div class="paragraph">
+<p><span class="image"><img src="_images/second-response-traffic-violation.png" alt="800"></span></p>
+</div>
+</li>
+</ol>
+</div>
+<hr>
+<div class="paragraph">
+<p>Awesome! We’ve implemented our first DMN decision service in Kogito,
+used the hot/live reload capabilities of Quarkus, and we’ve seen how
+these changes are immediately reflected in our Swagger UI. Finally,
+we’ve fired a RESTful request to our DMN decision microservice and saw
+cloud-native decisioning with DMN in action.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="packaging"><a class="anchor" href="#packaging"></a>Packaging and running the application</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We will now package the application in an executable JAR file. If you’ve
+not yet stopped your application running in Quarkus dev-mode, please do
+that now. In the terminal in which the application is running, press
+<code>CTRL-C</code> to stop the application.</p>
+</div>
+<div class="sect2">
+<h3 id="_packaging_the_decision_service"><a class="anchor" href="#_packaging_the_decision_service"></a>Packaging the decision service</h3>
+<div class="paragraph">
+<p>In a terminal, execute the following Maven command to package the
+application:</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ mvn clean package</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It produces 2 jar files:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>decision-lab01-1.0-SNAPSHOT.jar</code> - containing just the classes and
+resources of the projects, it’s the regular artifact produced by the
+Maven build.</p>
+</li>
+<li>
+<p><code>decision-lab01-1.0-SNAPSHOT-runner.jar</code> - being an executable jar. Be
+aware that it’s not an über-jar as the dependencies are copied into the
+<code>target/lib</code> directory.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>You can see the files of you execute the following command in your
+terminal:</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">ls -l target/lib/*.jar</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_running_the_executable_jar"><a class="anchor" href="#_running_the_executable_jar"></a>Running the executable JAR</h3>
+<div class="paragraph">
+<p>You can run the packaged application by executing the following command
+in a terminal:</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ java -jar target/decision-lab01-1.0-SNAPSHOT-runner.jar</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To test the application, you can use the Swagger UI we used previously
+by opening your browser, accessing <a href="http://localhost:8080/q/swagger-ui/" class="bare">http://localhost:8080/q/swagger-ui/</a>.
+You can use the <strong>POST</strong> request for <strong>Traffic Violation</strong> and click on the
+<code><em>Try it out</em></code> button. You can use the same JSON as the Request
+Input to validate the server response:</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+    "Driver": {
+      "Age": 25,
+      "Points": 13
+    },
+    "Violation": {
+      "Type": "speed",
+      "Actual Speed": 115,
+      "Speed Limit": 100
+    }
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+When we’re not running in <code>mvn quarkus:dev</code> mode, the Swagger UI
+is not available. However, it can be enabled by adding the following
+configuration to your <code>src/main/resources/application.properties</code> file:
+<code>quarkus.swagger-ui.always-include=true</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The <code>Class-Path</code> entry of the <code>MANIFEST.MF</code> file in the <em>runner JAR</em>
+explicitly lists the jars from the <code>lib</code> directory. So if you want to
+deploy your application somewhere, you need to copy the <em>runner JAR</em> as
+well as the <em>lib</em> directory. If you want to create an <em>Uber-JAR</em> with
+everything included, you can use <code>mvn package -DuberJar</code>.</p>
+</div>
+<div class="paragraph">
+<p>Finally let’s stop the application. Go back to the terminal in which the
+Kogito application is running and stop the application once again by
+pressing <code>CTRL-C</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_native_decision_services_optional"><a class="anchor" href="#_native_decision_services_optional"></a>Native decision services (Optional)</h3>
+<div class="paragraph">
+<p>We’ve packaged up the Kogito app as an executable JAR and learned a bit
+more about the mechanics of packaging. In the next step, we’ll continue
+our journey and build a <em>native image</em>.</p>
+</div>
+<div class="paragraph">
+<p>Let’s now produce a native executable for our application. It improves
+the startup time of the application, and produces a minimal disk
+footprint. The executable would have everything to run the application
+including the ``JVM'' (shrunk to be just enough to run the application),
+and the application.</p>
+</div>
+<div class="paragraph">
+<p>We will be using GraalVM, which includes a native compiler for producing
+native images for a number of languages, including Java.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_building_a_native_image"><a class="anchor" href="#_building_a_native_image"></a>Building a native image</h3>
+<div class="paragraph">
+<p>Within the <code>pom.xml</code> file of our application is the declaration for the
+Quarkus Maven plugin which contains a profile for <code>native-image</code>:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="_images/quarkus-native-plugin.png" alt="800"></span></p>
+</div>
+<div class="paragraph">
+<p>We use a profile because, you will see very soon, packaging the native
+image takes a few seconds (or rather: minutes). However, this
+compilation time is only incurred <em>once</em>, as opposed to <em>every</em> time the
+application starts, which is the case with other approaches for building
+and executing JARs.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In your terminal, if the application is still running, stop it with
+<code>Ctrl-C</code>.</p>
+</li>
+<li>
+<p>Next, create a native executable by executing the followig Maven
+command:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">mvn clean package -Pnative -DskipTests=true</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="_images/native-compilation-result.png" alt="800"></span></p>
+</div>
+<div class="paragraph">
+<p>Native images are compiled for the architecture on which the image is
+compiled. When you run a native image compilation on a Linux machine,
+the target OS of the native executable is Linux. When you build a native
+image on macOS, the target operating system is macOS. Hence, an
+executable built on macOS will not run on a Linux platform. If you need
+to build native Linux binaries when on other OS’s like Windows or macOS,
+you can use <code>-Dquarkus.native.container-runtime=[podman | docker]</code>.
+You’ll need either Docker or [Podman](<a href="https://podman.io" class="bare">https://podman.io</a>) installed
+depending on which container runtime you want to use!</p>
+</div>
+<div class="paragraph">
+<p>The native compilation will take a couple of minutes to finish. Wait for
+it!</p>
+</div>
+<div class="paragraph">
+<p>In addition to the regular files, the build also produces
+<code>target/decision-lab01-1.0-SNAPSHOT-runner</code>. This is a native binary for
+your operating system. If you’re on a Linux or macOS system, you can
+determine the file-type with the <code>file</code> command:</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">file target/decision-lab01-1.0-SNAPSHOT-runner</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="_images/native-file-os.png" alt="800"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_running_a_native_image"><a class="anchor" href="#_running_a_native_image"></a>Running a native image</h3>
+<div class="paragraph">
+<p>Since you’re building the native image for your own system, you can
+simply run it by executing the file. For example:</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">target/decision-lab01-1.0-SNAPSHOT-runner</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Notice the amazingly fast startup time:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="_images/native-execution.png" alt="800"></span></p>
+</div>
+<div class="paragraph">
+<p>That’s 19 milliseconds (nineteen!!!) to start a business application,
+exposing a REST API and ready to serve requests!</p>
+</div>
+<div class="paragraph">
+<p>On Linux and macOS, you can report the memory usage of your application
+with the <code>ps</code> utility. Notice the extremely low memory usage as
+reported:</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ ps -o pid,rss,command -p $(pgrep -f runner)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You should see something like:</p>
+</div>
+<div class="listingblock console-output">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">PID RSS COMMAND
+
+37449 25444 target/decision-lab01-1.0-SNAPSHOT-runner</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This shows that our process is taking around 25 MB of memory
+(<a href="https://en.wikipedia.org/wiki/Resident_set_size">Resident Set Size</a>, or
+RSS). Pretty compact!</p>
+</div>
+<div class="paragraph">
+<p>The RSS and memory usage of any app, including Quarkus, will vary
+depending your specific environment, and will rise as the application
+experiences load.</p>
+</div>
+<div class="paragraph">
+<p>Make sure the app is still working as expected by firing a new request
+to our decision service using the Swagger UI like we did in the previous
+steps.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_next_steps"><a class="anchor" href="#_next_steps"></a>Next Steps</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Congratulations!!! You’ve now built a Kogito-based decision application
+as an executable JAR and a native binary. Well done.</p>
+</div>
+<div class="paragraph">
+<p>In this lab, we’ve learned how to create a new decision service and how
+to take advantadge of the hot reload feature for Decision Model &amp;
+Notation (DMN). A foundational aspect of Kogito is that is uses open
+standards in the business automation space, like DMN to implement
+business decisions automation. Kogito brings these technologies into the
+cloud-native world, allowing developers and businesses to implement and
+deploy business logic in a hybrid-cloud environment.</p>
+</div>
+<div class="paragraph">
+<p>You’ve finished the getting started exercise. Next, we will work into
+creating an event-driven decision application.</p>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="01-prepare-dev.html">1. Prepare your Development Environment</a></span>
+  <span class="next"><a href="04-build-decision-service-logic.html">3. Build Decision Service Logic</a></span>
+</nav>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <a class="rhd-logo" href="https://developers.redhat.com" target="_blank"></div>
+</footer>
+<script src="../_/js/vendor/clipboard.js"></script>
+<script src="../_/js/site.js"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
