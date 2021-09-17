@@ -1,0 +1,365 @@
+= Build a Kogito-based Decision Services
+
+This lab introduces you to how you can get started with decision
+projects that are based on Kogito and Quarkus, how to deploy and
+validate it’s decisions.
+
+* Create a new quarkus-based decision microservice
+* Try the Kogito tooling in VScode
+* Run the application
+* Package and run the compiled kogito application locally
+
+[#new-project]
+== Creating a new decision project based on Kogito and Quarkus
+
+In order to create a new decision project based on Quarkus, we can use a
+Maven archetype to generate the Quarkus based project with the required
+dependencies for our decision application.
+
+[arabic]
+. Navigate to a folder of your preference, and run the following
+command. Maven will create a new project with the name `decision-lab01`.
++
+[.console-input]
+[source,shell]
+----
+$ mvn archetype:generate \
+-DarchetypeGroupId=org.kie.kogito \
+-DarchetypeArtifactId=kogito-quarkus-dm-archetype \
+-DgroupId=org.acme -DartifactId=decision-lab01 \
+-DarchetypeVersion=1.5.0.redhat-00004 \
+-Dversion=1.0-SNAPSHOT
+----
+
+[#examine]
+== Examine the project and decision
+
+Let’s open the project so we can look at its structure and files. In
+your terminal, you can open the project using the VScode command `code`:
+
+[.console-input]
+[source,shell]
+....
+$ code decision-lab01/
+....
+
+You should be able to navigate through the project structure.
+
+image:vscode-project-decision-lab01.png[Project structure in VSCode,600,align=center]
+
+Notice that:
+
+* There is a DMN sample, `Traffic Violation.dmn`. This decision
+determines if a Driver should be suspended based on the violation and
+fine applied.
+* There is a jUnit test `TrafficViolationTest.java`. This jUnit tests
+the REST endpoint that is generated automatically by Kogito. Further on
+the lab, we will work with the Test Scenario, a graphical tool that
+allows users to unit test the decision model.
+
+[#running]
+== Running the project
+
+It’s time to try out this project. To make things easier, you can use
+the Integrated Terminal feature in VSCode.
+
+. Open the integrated terminal in VSCode by by pressing `__cmd+shift+p__` or `__ctrl+shift+p__`
+. Then, search for *Integrated Terminal* and select it. See below:
+
+image:integrated-terminal-vscode.png[600,align=center]
+
+In the recently opened integrated terminal, you can start the
+application.
+
+[arabic]
+. Start the application in dev mode:
++
+[.console-input]
+[source,shell]
+....
+$ mvn quarkus:dev
+....
+
+[arabic, start=2]
+. Open your browser and access http://localhost:8080/q/swagger-ui/
+. You should see three REST endpoints that were automatically generated
+by Kogito.
+. Select the *POST* request for *Traffic Violation* and click on the
+``**Try it out**'' button.
+. You can use the following JSON as the Request Input to validate the
+decision about if the driver should be suspended or not:
++
+[.console-input]
+[source,json]
+....
+{
+    "Driver": {
+      "Age": 25,
+      "Points": 13
+    },
+    "Violation": {
+      "Type": "speed",
+      "Actual Speed": 115,
+      "Speed Limit": 100
+    }
+}
+....
+
+The output should show not only the final decision _``Should the driver
+be suspended?''_ but also the decision made for the _``Fine''_ decision
+node.
+
+image:first-response-decision-service.png[800]
+
+[#updating]
+== Updating the Decision
+
+When using the Kogito extension with Quarkus, you can also take
+advantadge of the hot reload features during the development of your
+decision. Let’s give it a try.
+
+[arabic]
+. Still with the server running go back to the decision project in
+VSCode.
+. Open the `Traffic Violation.dmn` decision file, and select the
+_``Should the driver be suspended?''_ node. Click on the edit button.
++
+image:edit-traffic-violation-dmn.png[600]
+. Now, let’s make the threshold 16 instead of 20. On the result literal
+expression, change:
+* From: `If Total Points >= 20 then "Yes" else "No"`
+* ​ To: `If Total Points >= 16 then "Yes" else "No"`
+. Save the DMN file.
+. Go back to your browser, and click on ``Execute'' to execute the exact
+same request.
+. Check the response and confirm that differently than the first
+decision, the decision is that the driver should be suspended.
++
+image:second-response-traffic-violation.png[800]
+
+'''''
+
+Awesome! We’ve implemented our first DMN decision service in Kogito,
+used the hot/live reload capabilities of Quarkus, and we’ve seen how
+these changes are immediately reflected in our Swagger UI. Finally,
+we’ve fired a RESTful request to our DMN decision microservice and saw
+cloud-native decisioning with DMN in action.
+
+[#packaging]
+== Packaging and running the application
+
+We will now package the application in an executable JAR file. If you’ve
+not yet stopped your application running in Quarkus dev-mode, please do
+that now. In the terminal in which the application is running, press
+`CTRL-C` to stop the application.
+
+=== Packaging the decision service
+
+In a terminal, execute the following Maven command to package the
+application:
+
+[.console-input]
+[source,shell]
+....
+$ mvn clean package
+....
+
+It produces 2 jar files:
+
+* `decision-lab01-1.0-SNAPSHOT.jar` - containing just the classes and
+resources of the projects, it’s the regular artifact produced by the
+Maven build.
+* `decision-lab01-1.0-SNAPSHOT-runner.jar` - being an executable jar. Be
+aware that it’s not an über-jar as the dependencies are copied into the
+`target/lib` directory.
+
+You can see the files of you execute the following command in your
+terminal:
+
+[.console-input]
+[source,shell]
+....
+ls -l target/lib/*.jar
+....
+
+=== Running the executable JAR
+
+You can run the packaged application by executing the following command
+in a terminal:
+
+[.console-input]
+[source,shell]
+....
+$ java -jar target/decision-lab01-1.0-SNAPSHOT-runner.jar
+....
+
+To test the application, you can use the Swagger UI we used previously
+by opening your browser, accessing http://localhost:8080/q/swagger-ui/.
+You can use the *POST* request for *Traffic Violation* and click on the
+`__Try it out__` button. You can use the same JSON as the Request
+Input to validate the server response:
+
+[.console-input]
+[source,json]
+....
+{
+    "Driver": {
+      "Age": 25,
+      "Points": 13
+    },
+    "Violation": {
+      "Type": "speed",
+      "Actual Speed": 115,
+      "Speed Limit": 100
+    }
+}
+....
+
+TIP: When we’re not running in `mvn quarkus:dev` mode, the Swagger UI
+is not available. However, it can be enabled by adding the following
+configuration to your `src/main/resources/application.properties` file:
+`quarkus.swagger-ui.always-include=true`
+
+The `Class-Path` entry of the `MANIFEST.MF` file in the _runner JAR_
+explicitly lists the jars from the `lib` directory. So if you want to
+deploy your application somewhere, you need to copy the _runner JAR_ as
+well as the _lib_ directory. If you want to create an _Uber-JAR_ with
+everything included, you can use `mvn package -DuberJar`.
+
+Finally let’s stop the application. Go back to the terminal in which the
+Kogito application is running and stop the application once again by
+pressing `CTRL-C`.
+
+=== Native decision services (Optional)
+
+We’ve packaged up the Kogito app as an executable JAR and learned a bit
+more about the mechanics of packaging. In the next step, we’ll continue
+our journey and build a _native image_.
+
+Let’s now produce a native executable for our application. It improves
+the startup time of the application, and produces a minimal disk
+footprint. The executable would have everything to run the application
+including the ``JVM'' (shrunk to be just enough to run the application),
+and the application.
+
+We will be using GraalVM, which includes a native compiler for producing
+native images for a number of languages, including Java.
+
+=== Building a native image
+
+Within the `pom.xml` file of our application is the declaration for the
+Quarkus Maven plugin which contains a profile for `native-image`:
+
+image:quarkus-native-plugin.png[800]
+
+We use a profile because, you will see very soon, packaging the native
+image takes a few seconds (or rather: minutes). However, this
+compilation time is only incurred _once_, as opposed to _every_ time the
+application starts, which is the case with other approaches for building
+and executing JARs.
+
+[arabic]
+. In your terminal, if the application is still running, stop it with
+`Ctrl-C`.
+. Next, create a native executable by executing the followig Maven
+command:
++
+[.console-input]
+[source,shell]
+....
+mvn clean package -Pnative -DskipTests=true
+....
+
+image:native-compilation-result.png[800]
+
+Native images are compiled for the architecture on which the image is
+compiled. When you run a native image compilation on a Linux machine,
+the target OS of the native executable is Linux. When you build a native
+image on macOS, the target operating system is macOS. Hence, an
+executable built on macOS will not run on a Linux platform. If you need
+to build native Linux binaries when on other OS’s like Windows or macOS,
+you can use `-Dquarkus.native.container-runtime=[podman | docker]`.
+You’ll need either Docker or [Podman](https://podman.io) installed
+depending on which container runtime you want to use!
+
+The native compilation will take a couple of minutes to finish. Wait for
+it!
+
+In addition to the regular files, the build also produces
+`target/decision-lab01-1.0-SNAPSHOT-runner`. This is a native binary for
+your operating system. If you’re on a Linux or macOS system, you can
+determine the file-type with the `file` command:
+
+[.console-input]
+[source,shell]
+....
+file target/decision-lab01-1.0-SNAPSHOT-runner
+....
+
+image:native-file-os.png[800]
+
+=== Running a native image
+
+Since you’re building the native image for your own system, you can
+simply run it by executing the file. For example:
+
+[.console-input]
+[source,shell]
+....
+target/decision-lab01-1.0-SNAPSHOT-runner
+....
+
+Notice the amazingly fast startup time:
+
+image:native-execution.png[800]
+
+That’s 19 milliseconds (nineteen!!!) to start a business application,
+exposing a REST API and ready to serve requests!
+
+On Linux and macOS, you can report the memory usage of your application
+with the `ps` utility. Notice the extremely low memory usage as
+reported:
+
+[.console-input]
+[source,shell]
+....
+$ ps -o pid,rss,command -p $(pgrep -f runner)
+....
+
+You should see something like:
+
+[.console-output]
+[source,shell]
+----
+PID RSS COMMAND 
+
+37449 25444 target/decision-lab01-1.0-SNAPSHOT-runner 
+----
+
+This shows that our process is taking around 25 MB of memory
+(https://en.wikipedia.org/wiki/Resident_set_size[Resident Set Size], or
+RSS). Pretty compact!
+
+The RSS and memory usage of any app, including Quarkus, will vary
+depending your specific environment, and will rise as the application
+experiences load.
+
+Make sure the app is still working as expected by firing a new request
+to our decision service using the Swagger UI like we did in the previous
+steps.
+
+== Next Steps
+
+Congratulations!!! You’ve now built a Kogito-based decision application
+as an executable JAR and a native binary. Well done.
+
+In this lab, we’ve learned how to create a new decision service and how
+to take advantadge of the hot reload feature for Decision Model &
+Notation (DMN). A foundational aspect of Kogito is that is uses open
+standards in the business automation space, like DMN to implement
+business decisions automation. Kogito brings these technologies into the
+cloud-native world, allowing developers and businesses to implement and
+deploy business logic in a hybrid-cloud environment.
+
+You’ve finished the getting started exercise. Next, we will work into
+creating an event-driven decision application.
