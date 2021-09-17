@@ -1,15 +1,17 @@
 Check the build courseware https://redhat-scholars.github.io/build-course[documentation]  on how folder structure, how to use macros and other gotchas
 
+== WORK IN PROGRESS
+
 For a live preview:
 
 1. Install gulp:
-
-   ```
-   yarn add gulp
-   ```
++
+```
+yarn add gulp
+```
 
 2. Launch gulp:
-	
-   ```
-   npx gulp
-   ```
++
+```	
+npx gulp
+```
