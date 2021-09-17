@@ -13,6 +13,7 @@ https://youtu.be/77vwWG17KO4[DMN Tutorial - Video]
 
 WARNING: This hands on is not going to give you a step by step guidance on how to craft the DMN, it's structured as a *puzzle* that you have to solve with some hints.
 
+[#challenge]
 == Challenge description
 
 > A *Cart* contains multiple items, an item is defined by a _category_ and a _price_. The outcome of the decision is the *Final Price* of the cart. A first discount is evaluated on every item in the cart depending on the category: for the _food_ category, the discount is 5% if the price is more than 19 otherwise 2%; for all other categories the discount is 10% if the price is more than 15. Finally, if the overall amount of the cart (after the item discount) is more than 70 then apply an extra discount of 10%. 
@@ -21,6 +22,7 @@ Start creating the file: `discount.dmn` inside the project created in the previo
 
 TIP: The folder for DMN and BPMN artefacts is: `src/main/resources/`.
 
+[#hints]
 == Hints
 
 === Create the Data Types
@@ -78,6 +80,7 @@ list = [1,2,3]
 sum(list) -> 6
 ```
 
+[#run-locally]
 == Run locally the Decision Service
 
 1. *Start* quarkus in dev mode:
@@ -116,6 +119,7 @@ In the result page you should spot: `"Final Price": 81.9`
 +
 TIP: If you haven't installed the _Rest Client_ plug-in, you can probe the DMN service through the _Swagger UI_: `http://localhost:8080/q/swagger-ui/`
 
+[#test]
 == Create a Test Scenario
 
 1. *Add* to the `pom.xml` file the following dependency:

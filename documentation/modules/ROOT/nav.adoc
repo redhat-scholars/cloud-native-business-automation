@@ -8,5 +8,10 @@
 ** xref:02-deploy.adoc#deploy[Deploy Dervice]
 
 * xref:04-build-decision-service-logic.adoc[3. Build Decision Service Logic]
+** xref:04-build-decision-service-logic.adoc#challenge[Challenge description]
+** xref:04-build-decision-service-logic.adoc#hints[Hints]
+** xref:04-build-decision-service-logic.adoc#run-locally[Run locally the Decision Service]
+** xref:04-build-decision-service-logic.adoc#test[Create a Test Scenario]
+
 
 * xref:09-build-process-service.adoc[4. Build a Process Service]
