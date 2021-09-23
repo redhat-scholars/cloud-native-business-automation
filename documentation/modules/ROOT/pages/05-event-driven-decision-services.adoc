@@ -15,7 +15,7 @@ services.
 Kafka is an open-source even streaming platform, and currently, one of
 the most popular tools. In event-driven architectures, the Kafka
 `topics` are used as the communication layer in between the services.
-Each service can now be considered a `consumer`or a `producer`, in other
+Each service can now be considered a `consumer` or a `producer`, in other
 words, each service can publish or consume events to/from the `topics`.
 
 Red Hat supports the integration between RHPAM and AMQ Streams (Kafka).
@@ -46,11 +46,15 @@ are not needed when TLS communication is not enabled.
 [arabic]
 . In your local machine, access the enablement’s base folder:
 +
+[.console-input]
+[source,shell]
 ....
 $ cd ~/enablement
 ....
 . Clone the repository containing the docker files we need:
 +
+[.console-input]
+[source,shell]
 ....
 $ git clone https://github.com/hguerrero/amq-examples
 ....
@@ -60,11 +64,15 @@ everything you need to have your Strimzi up and running: Zookeeper,
 Kafka server v2.5.0, Apicurio Registry and a Kafka Bridge.
 . Access the `amq-examples/strimzi-all-in-one/` folder:
 +
+[.console-input]
+[source,shell]
 ....
 $ cd amq-examples/strimzi-all-in-one/
 ....
 . Start the Kafka environment:
 +
+[.console-input]
+[source,shell]
 ....
 docker compose up 
 ....
@@ -90,6 +98,8 @@ Kogito decision application.
 command. Maven will create a new project with the name
 `event-driven-decision-lab`.
 +
+[.console-input]
+[source,shell]
 ....
 $ mvn archetype:generate \
 -DarchetypeGroupId=org.kie.kogito \
@@ -102,6 +112,8 @@ $ mvn archetype:generate \
 configurations. Notice that this project already brings a sample DMN
 `Traffic Violation.dmn`.
 +
+[.console-input]
+[source,shell]
 ....
 $ code event-driven-decision-lab/
 ....
@@ -117,6 +129,8 @@ extension to the service we’ve just created by adding it to the
 `pom.xml` file. _TIP: Since we are using the `kogito-quarkus-bom` Maven
 can infer the right version to use from the parent bom._
 +
+[.console-input]
+[source,xml]
 ....
 <dependency>
   <groupId>org.kie.kogito</groupId>
@@ -128,6 +142,8 @@ image:kogito-events-addon-extension.pom.png[800]
 . The Kogito event driven add-ons uses SmallRye under the covers. So we
 also need to add this dependency to the project:
 +
+[.console-input]
+[source,xml]
 ....
 <dependency>
    <groupId>io.quarkus</groupId>
@@ -162,6 +178,8 @@ The required configurations for the service will be done in the
 . In VSCode, open the file `src/main/resources/applications.properties`
 and add the following configuration:
 +
+[.console-input]
+[source,props]
 ....
 mp.messaging.incoming.kogito_incoming_stream.group.id=dmn-event-driven-example
 mp.messaging.incoming.kogito_incoming_stream.connector=smallrye-kafka
@@ -217,7 +235,11 @@ Now, let’s test the application.
 `ctrl+shift+p` and search for _Create new integrated terminal_);
 . Start the decision service in dev mode:
 +
-`$ mvn quarkus:dev`
+[.console-input]
+[source,shell]
+....
+$ mvn quarkus:dev
+....
 +
 image:event-driven-ds-config.png[800]
 
@@ -259,12 +281,20 @@ image:cli-consumer01.png[800]
 `dmn-event-driven-requests`. Open another terminal tab and start the
 kafka console publisher:
 +
-`$ docker exec kafka bin/kafka-console-producer.sh --topic dmn-event-driven-requests --bootstrap-server localhost:9092`
+[.console-input]
+[source,shell]
+....
+$ docker exec kafka bin/kafka-console-producer.sh --topic dmn-event-driven-requests --bootstrap-server localhost:9092
+....
 . Now, we will send an event with the inputs to make a decision about
 traffic violation (should the driver be suspended?). Copy the payload
 below and send as an input to the producer:
 +
-`{"specversion": "1.0", "id": "a89b61a2-5644-487a-8a86-144855c5dce8", "source": "SomeEventSource", "type": "DecisionRequest", "subject": "TheSubject", "kogitodmnmodelname": "Traffic Violation", "kogitodmnmodelnamespace": "https://github.com/kiegroup/drools/kie-dmn/_A4BCA8B8-CF08-433F-93B2-A2598F19ECFF", "data": {"Driver": {"Age": 25,"Points": 13},"Violation": {"Type": "speed","Actual Speed": 115,"Speed Limit":100}}}`
+[.console-input]
+[source,json]
+....
+{"specversion": "1.0", "id": "a89b61a2-5644-487a-8a86-144855c5dce8", "source": "SomeEventSource", "type": "DecisionRequest", "subject": "TheSubject", "kogitodmnmodelname": "Traffic Violation", "kogitodmnmodelnamespace": "https://github.com/kiegroup/drools/kie-dmn/_A4BCA8B8-CF08-433F-93B2-A2598F19ECFF", "data": {"Driver": {"Age": 25,"Points": 13},"Violation": {"Type": "speed","Actual Speed": 115,"Speed Limit":100}}}
+....
 +
 image:cli-producer01.png[800]
 . Switch to the terminal tab where you started the consumer CLI. Confirm
@@ -304,6 +334,8 @@ resulting payload.
 The payload expected by the Kogito add on must follow the
 https://cloudevents.io/[CloudEvents] 1.0 specification.
 
+[.console-input]
+[source,json]
 ....
 {
   "specversion": "1.0",
@@ -353,6 +385,8 @@ and in the `data` field we can find the result of the decision nodes
 `Fine` and `Should the driver be suspended?`, along with the input data
 that was used to get to this decision.
 
+[.console-input]
+[source,json]
 ....
 {
   "specversion": "1.0",
