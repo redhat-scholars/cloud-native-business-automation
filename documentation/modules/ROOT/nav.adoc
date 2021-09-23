@@ -21,4 +21,11 @@
 ** xref:04-build-decision-service-logic.adoc#run-locally[Run locally the Decision Service]
 ** xref:04-build-decision-service-logic.adoc#test[Create a Test Scenario]
 
-* xref:09-build-process-service.adoc[5. Build a Process Service]
+* xref:05-event-driven-decision-services.adoc[5. Event Driven Decision Services]
+** xref:05-event-driven-decision-services.adoc#prepare[Prepare the messaging backbone]
+** xref:05-event-driven-decision-services.adoc#project[Creating an event-driven decision project]
+** xref:05-event-driven-decision-services.adoc#config[Configuring the Decision service]
+** xref:05-event-driven-decision-services.adoc#testing[Testing the Decision Service]
+** xref:05-event-driven-decision-services.adoc#further[Going further]
+
+* xref:09-build-process-service.adoc[6. Build a Process Service]
