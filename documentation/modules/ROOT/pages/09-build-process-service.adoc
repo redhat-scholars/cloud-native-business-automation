@@ -1,4 +1,5 @@
 = Build a Process Service
+include::_attributes.adoc[]
 
 This lab introduces you to how you can get started with process projects that are based on Kogito and Quarkus, how to deploy and validate it.
 
