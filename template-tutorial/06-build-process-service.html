@@ -3,8 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Deploy Service :: Cloud Native Business Automation</title>
-    <link rel="canonical" href="https://redhat-scholars.github.io/course-template/template-tutorial/02-deploy.html">
+    <title>Build a Process Service :: Cloud Native Business Automation</title>
+    <link rel="canonical" href="https://redhat-scholars.github.io/course-template/template-tutorial/06-build-process-service.html">
+    <link rel="prev" href="05-event-driven-decision-services.html">
     <meta name="generator" content="Antora 2.3.4">
     <link rel="stylesheet" href="../_/css/site.css">
 <link rel="icon" href="../_/img/favicon.ico" type="image/x-icon">
@@ -159,18 +160,18 @@
   </li>
 </ul>
   </li>
-  <li class="nav-item" data-depth="1">
+  <li class="nav-item is-current-page" data-depth="1">
     <button class="nav-item-toggle"></button>
     <a class="nav-link" href="06-build-process-service.html">6. Build a Process Service</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="06-build-process-service.html#project-process">Creating a new process project based on Kogito and Quarkus</a>
+    <a class="nav-link" href="#project-process">Creating a new process project based on Kogito and Quarkus</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="06-build-process-service.html#design-process">Design the Order Approval process </a>
+    <a class="nav-link" href="#design-process">Design the Order Approval process </a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="06-build-process-service.html#run-process">Run the process</a>
+    <a class="nav-link" href="#run-process">Run the process</a>
   </li>
 </ul>
   </li>
@@ -205,91 +206,256 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">Cloud Native Business Automation</a></li>
-    <li><a href="02-deploy.html">Deploy Service</a></li>
+    <li><a href="06-build-process-service.html">6. Build a Process Service</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/redhat-scholars/cloud-native-business-automation/edit/master/documentation/modules/ROOT/pages/02-deploy.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/redhat-scholars/cloud-native-business-automation/edit/master/documentation/modules/ROOT/pages/06-build-process-service.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">Deploy Service</h1>
-<div class="sect1">
-<h2 id="service"><a class="anchor" href="#service"></a>The Service</h2>
+<h1 class="page">Build a Process Service</h1>
+<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>The code:</p>
+<p>This lab introduces you to how you can get started with process projects that are based on Kogito and Quarkus, how to deploy and validate it.</p>
 </div>
-<div class="listingblock lines_7 console-input">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class Main {
-
-    public static void main(String[] args) {
-
-    }
-
-}
-
-./mvnw compile</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="package"><a class="anchor" href="#package"></a>Packaging the Service</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>You can package the next bash script:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">#!/bin/sh
-echo "Hello World"</code></pre>
-</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Create a new quarkus-based process microservice</p>
+</li>
+<li>
+<p>Leverage Kogito tooling in VSCode to design a simple process</p>
+</li>
+<li>
+<p>Run the process in the development environment</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="deploy"><a class="anchor" href="#deploy"></a>Deploy the Service</h2>
+<h2 id="project-process"><a class="anchor" href="#project-process"></a>Creating a new process project based on Kogito and Quarkus</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>And then you can deploy the service and execute commands inside:</p>
+<p>In order to create a new process project based on Quarkus, we can use a Maven archetype to generate the Quarkus based project with the required dependencies for our decision application.</p>
 </div>
-<div class="paragraph">
-<p>Check that the pod is up and running:</p>
-</div>
-<div class="listingblock lines_space console-input">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kubectl get pods</code></pre>
-</div>
-</div>
-<div class="listingblock console-output">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">NAME                        READY   STATUS    RESTARTS   AGE
-apps   1/1     Running   0          5s</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Then let&#8217;s go into the running pod to execute some commands:</p>
-</div>
-<div class="listingblock console-input">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kubectl exec -ti apps /bin/bash</code></pre>
-</div>
-</div>
-<div class="admonitionblock note">
+<div class="admonitionblock warning">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-Change the pod name with your pod name.
+At the time of writing Kogito Process is still not released in the product, so we are going to explore the latest <strong>community</strong> version
 </td>
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>Navigate to a folder of your preference, and run the following command. Maven will create a new project with the name <code>process-lab01</code>.</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">mvn archetype:generate \
+    -DartifactId=process-lab01 \
+    -DgroupId=org.acme -Dversion=1.0-SNAPSHOT \
+    -DarchetypeGroupId=org.kie.kogito \
+    -DarchetypeArtifactId=kogito-quarkus-archetype \
+    -DarchetypeVersion=1.10.0.Final</code></pre>
 </div>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="design-process"><a class="anchor" href="#design-process"></a>Design the Order Approval process</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create <code>order-approval.bpmn</code> in <code>src/main/resources</code>:</p>
+</li>
+<li>
+<p>Design the process:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Add</strong> a <em>Start Event</em></p>
+</li>
+<li>
+<p>Next to the <em>Start Event</em> <strong>Click</strong> the box icon to add a task</p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/build-process-newtask.gif" alt="newtask" width="400">
+</div>
+</div>
+</li>
+<li>
+<p><strong>Name</strong> the task <code>Approve</code></p>
+</li>
+<li>
+<p>While the task is selected, <strong>open</strong> the <em>Properties</em> pane, <strong>update</strong> <em>Task Name</em> with <code>Approve</code></p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/build-process-task-prop.png" alt="taskprop" width="600">
+</div>
+</div>
+</li>
+<li>
+<p>Below the Task from the gear icon <strong>select</strong> the user shape</p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/build-process-user-task.gif" alt="user-task" width="400">
+</div>
+</div>
+</li>
+<li>
+<p>Complete the process design <strong>adding</strong> the <em>End Event</em></p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/build-process-approval-process.png" alt="approval-process.png" width="500">
+</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="run-process"><a class="anchor" href="#run-process"></a>Run the process</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Kogito generates a set of REST endpoints to interact with the process model at runtime.
+You can explore all the endpoints opening the <a href="http://localhost:8080/q/swagger-ui/">Swagger UI</a>.</p>
+</div>
+<div class="paragraph">
+<p>In this section, we propose the <em>REST Client</em> tool for the following reasons:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Often you need the outcome of a service to trigger the following service, a really convenient feature of the <em>REST Client</em> is the variable initialization from the response and this avoid you the burden of coping and pasting those values</p>
+</li>
+<li>
+<p>The <code>http</code> file can be stored along with your project and can be easily reused later.</p>
+</li>
+<li>
+<p>It&#8217;s really fast to repeat the test scenario, because you will have all the REST calls in the correct order.</p>
+</li>
+<li>
+<p>The same file can be reused with the service running in a different environment just changing the <code>HOST</code> variable.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The following steps guide you to start a local Kogito runtime and probe the process model through the basic operations: start a new process instance, read the task list, complete the task and consequently complete the process instance.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Start</strong> the application in dev mode:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ mvn quarkus:dev</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>Create</strong> the file <code>order-approval.http</code> in <code>src/test/http/</code> folder</p>
+</li>
+<li>
+<p><strong>Add</strong> the new process REST request:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">@HOST=localhost:8080
+
+###
+# @name order_approval
+POST http://{{HOST}}/order_approval
+Accept: application/json
+Content-Type: application/json
+
+{}
+
+@piid={{order_approval.response.body.id}}</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Start a new process instance <strong>clicking</strong> <em>Send Request</em> link above <code>POST</code>, the response body should resemble the following:</p>
+<div class="listingblock console-output">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+"id": "333ed660-eda6-444b-8d75-6b411c18486d"
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<em>Rest Client</em> parses the response and assign the <em>process instance id</em> to the <code>piid</code> variable
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p><strong>Get</strong> the <em>task list</em> and pick the first task id</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">###
+# @name order_approval_tasks
+GET http://{{HOST}}/order_approval/{{piid}}/tasks
+Accept: application/json
+Content-Type: application/json
+
+@taskid={{order_approval_tasks.response.body.0.id}}
+@task_name={{order_approval_tasks.response.body.0.name}}</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>Claim</strong> the task</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">###
+# @name task_claim
+POST http://{{HOST}}/order_approval/{{piid}}/{{task_name}}/{{taskid}}?phase=claim
+Accept: application/json
+Content-Type: application/json
+
+{}</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>Complete</strong> the task</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">###
+# @name task_complete
+POST http://{{HOST}}/order_approval/{{piid}}/{{task_name}}/{{taskid}}?phase=complete
+Accept: application/json
+Content-Type: application/json
+
+{}</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="05-event-driven-decision-services.html">5. Event Driven Decision Services</a></span>
+</nav>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
