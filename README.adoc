@@ -1,6 +1,6 @@
-Check the build courseware https://redhat-scholars.github.io/build-course[documentation]  on how folder structure, how to use macros and other gotchas
+== CLOUD NATIVE BUSINESS AUTOMATION
 
-== WORK IN PROGRESS
+https://redhat-scholars.github.io/cloud-native-business-automation[Access to the tutorial]
 
 For a live preview:
 
@@ -15,3 +15,7 @@ yarn add gulp
 ```	
 npx gulp
 ```
+
+== How to build the tutorial
+
+Check the build courseware https://redhat-scholars.github.io/build-course[documentation]  on how folder structure, how to use macros and other gotchas
