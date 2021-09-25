@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Prepare your Development Environment :: Cloud Native Business Automation</title>
+    <link rel="canonical" href="https://redhat-scholars.github.io/course-template/cnba-tutorial/01-prepare-dev.html">
+    <link rel="prev" href="index.html">
+    <link rel="next" href="02-build-decision-service.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../_/css/site.css">
+<link rel="icon" href="../_/img/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://developers.redhat.com" target="_blank"><img
+          src="../_/img/header_logo.png" height="40px" alt="Red Hat Developer Program"></a>
+      <a class="navbar-item" href="https://redhat-scholars.github.io/course-template">Cloud Native Business Automation</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Books</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">CheatSheets</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">CheatSheet A</a>
+            <a class="navbar-item" href="#">CheatSheet B</a>
+            <a class="navbar-item" href="#">CheatSheet C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Upcoming Events</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Event A</a>
+            <a class="navbar-item" href="#">Event B</a>
+            <a class="navbar-item" href="#">Event C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">More Tutorials</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Tutorial A</a>
+            <a class="navbar-item" href="#">Tutorial B</a>
+            <a class="navbar-item" href="#">Tutorial C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="cnba-tutorial" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">Cloud Native Business Automation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="01-prepare-dev.html">1. Prepare your Development Environment</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#base-folder">Creating the base folder for the labs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#install-code">Installing Visual Studio Code IDE</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#mandrel">Install Mandrel VM</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="02-build-decision-service.html">2. Build Decision Service</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02-build-decision-service.html#new-project">Creating a new decision project based on Kogito and Quarkus</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02-build-decision-service.html#examine">Examine the project and decision</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02-build-decision-service.html#running">Running the project</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02-build-decision-service.html#updating">Updating the Decision</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02-build-decision-service.html#packaging">Packaging and running the application</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="03-run-decision-service.html">3. Run the Decision Service in Cloud</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03-run-decision-service.html#deploy">Deploy the decision in OpenShift</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03-run-decision-service.html#probe">Probe the decision</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03-run-decision-service.html#clean">Clean up your environment</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="04-build-decision-service-logic.html">4. Build Decision Service Logic</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="04-build-decision-service-logic.html#challenge">Challenge description</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="04-build-decision-service-logic.html#hints">Hints</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="04-build-decision-service-logic.html#run-locally">Run locally the Decision Service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="04-build-decision-service-logic.html#test">Create a Test Scenario</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="05-event-driven-decision-services.html">5. Event Driven Decision Services</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="05-event-driven-decision-services.html#prepare">Prepare the messaging backbone</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="05-event-driven-decision-services.html#project">Creating an event-driven decision project</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="05-event-driven-decision-services.html#config">Configuring the Decision service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="05-event-driven-decision-services.html#testing">Testing the Decision Service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="05-event-driven-decision-services.html#further">Going further</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="06-build-process-service.html">6. Build a Process Service</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="06-build-process-service.html#project-process">Creating a new process project based on Kogito and Quarkus</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="06-build-process-service.html#design-process">Design the Order Approval process </a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="06-build-process-service.html#run-process">Run the process</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Cloud Native Business Automation</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Cloud Native Business Automation</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Cloud Native Business Automation</a></li>
+    <li><a href="01-prepare-dev.html">1. Prepare your Development Environment</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/redhat-scholars/cloud-native-business-automation/edit/master/documentation/modules/ROOT/pages/01-prepare-dev.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Prepare your Development Environment</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this step you will prepare the environment that you will use throughout the rest of the modules. You will:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="#base-folder">Create a base folder to be used during the enablement labs</a></p>
+</li>
+<li>
+<p><a href="#install-code">Install Visual Studio Code IDE</a></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Configure VScode command line tools</p>
+</li>
+<li>
+<p>Install VSCode Language Support for Java</p>
+</li>
+<li>
+<p>Install Red Hat Business Automation Bundle in VSCode</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p><a href="#graalvm">Install GraalVM <strong>(Optional)</strong></a></p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="base-folder"><a class="anchor" href="#base-folder"></a>Creating the base folder for the labs</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In these labs, the commands will consider the directory <code>~/enablement</code> as the base directory to clone GitHub repos or create new projects.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>To create a new folder named <code>enablement</code> using your terminal you can use the following command (Linux/OSX):</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ mkdir ~/enablement &amp;&amp; cd ~/enablement</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="install-code"><a class="anchor" href="#install-code"></a>Installing Visual Studio Code IDE</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To install Visual Studio Code, navigate to the [VSCode website](<a href="https://code.visualstudio.com/" class="bare">https://code.visualstudio.com/</a>), and click the blue <strong>Download</strong> button to download the IDE for your operating system.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/vscode-download-page.png" alt="400">
+</div>
+</div>
+<div class="paragraph">
+<p>Follow the standard installation instructions.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+If you do not want to get automatic updates, you can set the Update: Mode setting from default to none . To modify the update mode, go to File &gt; Preferences &gt; Settings (macOS: Code &gt; Preferences &gt; Settings), search for update mode and change the setting to none.*
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_configuring_vscode_to_run_via_command_line"><a class="anchor" href="#_configuring_vscode_to_run_via_command_line"></a>Configuring VSCode to run via Command Line</h3>
+<div class="paragraph">
+<p>This step will allow you to start VSCode using your terminal using the command <code>code</code>.</p>
+</div>
+<div class="paragraph">
+<p>Open VSCode, and look for the <code>Command Pallet</code> option (it can also be opened pressing ctrl+shift+p or cmd+shift+p):</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/vscode-command-pallet.png" alt="VSCode Command Pallet" width="600">
+</div>
+</div>
+<div class="paragraph">
+<p>Type <code>code</code> and select the option <code>Shell Command: install 'code' command in PATH</code>:</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/vscode-install-code-cmd.png" alt="VSCode Install Code Command" width="600">
+</div>
+</div>
+<div class="paragraph">
+<p>When you click the option above, VSCode will configure your operational system so that you can run the <code>code</code> command in your terminal to open VSCode.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_installing_vscode_plugins"><a class="anchor" href="#_installing_vscode_plugins"></a>Installing VSCode Plugins</h3>
+<div class="paragraph">
+<p>It is possible to install plugins in VScode in two different ways:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>by searching in the VSCode Marketplace website and installing it from there, or</p>
+</li>
+<li>
+<p>by opening the extensions in the VSCode IDE, searching and installing it.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We need to install two extensions to work the labs: <strong>Language Support for Java by Red Hat</strong> and <strong>Red Hat Business Automation Bundle</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Choose one of the two alternatives below and install both extensions.</p>
+</div>
+<div class="sect3">
+<h4 id="_option_1_installing_via_vscode_marketplace"><a class="anchor" href="#_option_1_installing_via_vscode_marketplace"></a>Option 1: Installing via VSCode Marketplace</h4>
+<div class="paragraph">
+<p>In VSCode marketplace, you can find the plugins at:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>[Java Support by Red Hat](<a href="https://marketplace.visualstudio.com/items?itemName=redhat.java" class="bare">https://marketplace.visualstudio.com/items?itemName=redhat.java</a>)</p>
+</li>
+<li>
+<p>[Red Hat Business Automation Bundle](<a href="https://marketplace.visualstudio.com/items?itemName=redhat.vscode-extension-red-hat-business-automation-bundle" class="bare">https://marketplace.visualstudio.com/items?itemName=redhat.vscode-extension-red-hat-business-automation-bundle</a>)</p>
+</li>
+<li>
+<p>[REST Client](<a href="https://marketplace.visualstudio.com/items?itemName=humao.rest-client" class="bare">https://marketplace.visualstudio.com/items?itemName=humao.rest-client</a>)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Open the page for each extension and click the green install button on each of the extensions to install it.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_option_2_installing_directly_through_vscode"><a class="anchor" href="#_option_2_installing_directly_through_vscode"></a>Option 2: Installing directly through VSCode</h4>
+<div class="paragraph">
+<p>It is also possible to install the plugin directly from within VSCode.</p>
+</div>
+<div class="paragraph">
+<p>Click the extensions tab from the left side bar:</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/vscode-preferences-extensions.png" alt="VSCode Preferences Extensions" width="400">
+</div>
+</div>
+<div class="paragraph">
+<p>In the search box, search for <strong>language support for java</strong>. The Red Hat extension should be on the top of the list. Select the extension and click on the <strong>Install</strong> button.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/vscode-redhat-java-extension.png" alt="VSCode Red Hat Java Extension" width="600">
+</div>
+</div>
+<div class="paragraph">
+<p>In the search box, search for <strong>Business Automation Bundle</strong>, and select it. Click the install button.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/vscode-redhat-business-automation-extension.png" alt="VSCode Red Hat Business Automation Bundle Extension" width="600">
+</div>
+</div>
+<div class="paragraph">
+<p>Your IDE is now ready to start working with Kogito applications.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="graalvm"><a class="anchor" href="#graalvm"></a>Install Mandrel VM ( <strong>Optional</strong> )</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>GraalVM is a Java VM and JDK based on HotSpot/OpenJDK, implemented in Java. It supports additional programming languages and execution modes, like ahead-of-time compilation of Java applications for fast startup and low memory footprint.</p>
+</div>
+<div class="paragraph">
+<p>Most of the exercises in our Kogito lab can be done on OpenJDK or Oracle Hotspot. Although if you want to try compiling the application into a <strong>native executable</strong>,  you will need GraalVM.</p>
+</div>
+<div class="paragraph">
+<p>Download GraalVM Community 20.1.0 Java 11 (<code>graalvm-ce-java11</code>) from [the following website](<a href="https://www.graalvm.org/downloads/" class="bare">https://www.graalvm.org/downloads/</a>) for your operating system, and follow the [installation instructions](<a href="https://www.graalvm.org/docs/getting-started/#install-graalvm" class="bare">https://www.graalvm.org/docs/getting-started/#install-graalvm</a>) for your operating system.</p>
+</div>
+<div class="paragraph">
+<p>You don’t need the <code>ruby</code>, <code>r</code>, <code>python</code> and <code>wasm</code> packages. You only need the <code>native-image</code> package.</p>
+</div>
+<div class="paragraph">
+<p>Getting Started with GraalVM:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>MacOS: <a href="https://www.graalvm.org/docs/getting-started/macos" class="bare">https://www.graalvm.org/docs/getting-started/macos</a></p>
+</li>
+<li>
+<p>Linux: <a href="https://www.graalvm.org/docs/getting-started/linux" class="bare">https://www.graalvm.org/docs/getting-started/linux</a></p>
+</li>
+<li>
+<p>Windows: <a href="https://www.graalvm.org/docs/getting-started/windows" class="bare">https://www.graalvm.org/docs/getting-started/windows</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If you find any "permission denied" errors while running the <code>setx</code> command, try opening your terminal (command line) as an admin user by right clicking the command shell icon, and selecting <code>run as administrator</code>.</p>
+</div>
+<div class="paragraph">
+<p>If running on Windows, make sure GraalVM is the last Java configured on your PATH environment variable</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_congratulations"><a class="anchor" href="#_congratulations"></a>Congratulations!</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We’ve setup the environment to run our Kogito Labs.</p>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="index.html">Cloud Native Business Automation</a></span>
+  <span class="next"><a href="02-build-decision-service.html">2. Build Decision Service</a></span>
+</nav>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <a class="rhd-logo" href="https://developers.redhat.com" target="_blank"></div>
+</footer>
+<script src="../_/js/vendor/clipboard.js"></script>
+<script src="../_/js/site.js"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

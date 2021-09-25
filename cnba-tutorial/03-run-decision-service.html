@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Run the Decision Service in Cloud :: Cloud Native Business Automation</title>
+    <link rel="canonical" href="https://redhat-scholars.github.io/course-template/cnba-tutorial/03-run-decision-service.html">
+    <link rel="prev" href="02-build-decision-service.html">
+    <link rel="next" href="04-build-decision-service-logic.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../_/css/site.css">
+<link rel="icon" href="../_/img/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://developers.redhat.com" target="_blank"><img
+          src="../_/img/header_logo.png" height="40px" alt="Red Hat Developer Program"></a>
+      <a class="navbar-item" href="https://redhat-scholars.github.io/course-template">Cloud Native Business Automation</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Books</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">CheatSheets</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">CheatSheet A</a>
+            <a class="navbar-item" href="#">CheatSheet B</a>
+            <a class="navbar-item" href="#">CheatSheet C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Upcoming Events</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Event A</a>
+            <a class="navbar-item" href="#">Event B</a>
+            <a class="navbar-item" href="#">Event C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">More Tutorials</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Tutorial A</a>
+            <a class="navbar-item" href="#">Tutorial B</a>
+            <a class="navbar-item" href="#">Tutorial C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="cnba-tutorial" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">Cloud Native Business Automation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="01-prepare-dev.html">1. Prepare your Development Environment</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01-prepare-dev.html#base-folder">Creating the base folder for the labs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01-prepare-dev.html#install-code">Installing Visual Studio Code IDE</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01-prepare-dev.html#mandrel">Install Mandrel VM</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="02-build-decision-service.html">2. Build Decision Service</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02-build-decision-service.html#new-project">Creating a new decision project based on Kogito and Quarkus</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02-build-decision-service.html#examine">Examine the project and decision</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02-build-decision-service.html#running">Running the project</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02-build-decision-service.html#updating">Updating the Decision</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02-build-decision-service.html#packaging">Packaging and running the application</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="03-run-decision-service.html">3. Run the Decision Service in Cloud</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#deploy">Deploy the decision in OpenShift</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#probe">Probe the decision</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#clean">Clean up your environment</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="04-build-decision-service-logic.html">4. Build Decision Service Logic</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="04-build-decision-service-logic.html#challenge">Challenge description</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="04-build-decision-service-logic.html#hints">Hints</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="04-build-decision-service-logic.html#run-locally">Run locally the Decision Service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="04-build-decision-service-logic.html#test">Create a Test Scenario</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="05-event-driven-decision-services.html">5. Event Driven Decision Services</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="05-event-driven-decision-services.html#prepare">Prepare the messaging backbone</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="05-event-driven-decision-services.html#project">Creating an event-driven decision project</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="05-event-driven-decision-services.html#config">Configuring the Decision service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="05-event-driven-decision-services.html#testing">Testing the Decision Service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="05-event-driven-decision-services.html#further">Going further</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="06-build-process-service.html">6. Build a Process Service</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="06-build-process-service.html#project-process">Creating a new process project based on Kogito and Quarkus</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="06-build-process-service.html#design-process">Design the Order Approval process </a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="06-build-process-service.html#run-process">Run the process</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Cloud Native Business Automation</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Cloud Native Business Automation</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Cloud Native Business Automation</a></li>
+    <li><a href="03-run-decision-service.html">3. Run the Decision Service in Cloud</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/redhat-scholars/cloud-native-business-automation/edit/master/documentation/modules/ROOT/pages/03-run-decision-service.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Run the Decision Service in Cloud</h1>
+<div class="sect1">
+<h2 id="deploy"><a class="anchor" href="#deploy"></a>Deploy the decision in OpenShift</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Login</strong> in your OCP cluster and <strong>create</strong> a new project</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">oc new-project decision-lab01</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>Build</strong> the <em>Quarkus Uberjar</em></p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">mvn clean package -Dquarkus.package.type=uber-jar -DskipTests</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>Create</strong> a new image from binaries:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">oc new-build registry.access.redhat.com/openjdk/openjdk-11-rhel7:latest --binary --name=discount -l app=discount
+oc start-build discount --from-file target/*-runner.jar --follow</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Optionally, check that the <em>ImageStreams</em> are correctly created:</p>
+</div>
+<div class="listingblock console-output">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ oc get is
+NAME               IMAGE REPOSITORY                                                                                                        TAGS     UPDATED
+discount           default-route-openshift-image-registry.apps.cluster-972c.972c.sandbox1438.opentlc.com/decision-lab01/discount           latest   13 seconds ago
+openjdk-11-rhel7   default-route-openshift-image-registry.apps.cluster-972c.972c.sandbox1438.opentlc.com/decision-lab01/openjdk-11-rhel7   latest   About a minute ago</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>Create</strong> the application:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">oc new-app --name discount discount</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>Expose</strong> the application (create a route)</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">oc expose svc/discount</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="probe"><a class="anchor" href="#probe"></a>Probe the decision</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Retrieve</strong> the service URL:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">oc get route discount -o jsonpath='{.spec.host}'</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>Open</strong> the file <code>dmn-test.http</code> and <strong>update</strong> the <code>URL</code> variable with
+the result of the previous command.</p>
+</li>
+<li>
+<p><strong>Trigger</strong> the REST call through <strong>Send Request</strong> link (right above the
+<code>POST</code> line)</p>
+</li>
+<li>
+<p><strong>Check</strong> that the service reply</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<strong>Alternatively,</strong> through the <code>curl</code> command:
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">export URL=&lt;your url&gt;
+curl --request POST \
+  --url $URL \
+  --header 'accept: application/json' \
+  --header 'content-type: application/json' \
+  --header 'user-agent: vscode-restclient' \
+  --data '{"Cart": [{"category": "electronics","price": 80},{"category": "food","price": 20}]}'</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="clean"><a class="anchor" href="#clean"></a>Clean up your environment</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Optionally, if you want to remove everything:</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">oc delete all -l app=discount</code></pre>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="02-build-decision-service.html">2. Build Decision Service</a></span>
+  <span class="next"><a href="04-build-decision-service-logic.html">4. Build Decision Service Logic</a></span>
+</nav>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <a class="rhd-logo" href="https://developers.redhat.com" target="_blank"></div>
+</footer>
+<script src="../_/js/vendor/clipboard.js"></script>
+<script src="../_/js/site.js"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

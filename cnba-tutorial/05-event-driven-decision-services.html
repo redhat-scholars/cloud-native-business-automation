@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Event Driven Decision Services :: Cloud Native Business Automation</title>
+    <link rel="canonical" href="https://redhat-scholars.github.io/course-template/cnba-tutorial/05-event-driven-decision-services.html">
+    <link rel="prev" href="04-build-decision-service-logic.html">
+    <link rel="next" href="06-build-process-service.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../_/css/site.css">
+<link rel="icon" href="../_/img/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://developers.redhat.com" target="_blank"><img
+          src="../_/img/header_logo.png" height="40px" alt="Red Hat Developer Program"></a>
+      <a class="navbar-item" href="https://redhat-scholars.github.io/course-template">Cloud Native Business Automation</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Books</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">CheatSheets</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">CheatSheet A</a>
+            <a class="navbar-item" href="#">CheatSheet B</a>
+            <a class="navbar-item" href="#">CheatSheet C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Upcoming Events</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Event A</a>
+            <a class="navbar-item" href="#">Event B</a>
+            <a class="navbar-item" href="#">Event C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">More Tutorials</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Tutorial A</a>
+            <a class="navbar-item" href="#">Tutorial B</a>
+            <a class="navbar-item" href="#">Tutorial C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="cnba-tutorial" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">Cloud Native Business Automation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="01-prepare-dev.html">1. Prepare your Development Environment</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01-prepare-dev.html#base-folder">Creating the base folder for the labs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01-prepare-dev.html#install-code">Installing Visual Studio Code IDE</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01-prepare-dev.html#mandrel">Install Mandrel VM</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="02-build-decision-service.html">2. Build Decision Service</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02-build-decision-service.html#new-project">Creating a new decision project based on Kogito and Quarkus</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02-build-decision-service.html#examine">Examine the project and decision</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02-build-decision-service.html#running">Running the project</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02-build-decision-service.html#updating">Updating the Decision</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02-build-decision-service.html#packaging">Packaging and running the application</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="03-run-decision-service.html">3. Run the Decision Service in Cloud</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03-run-decision-service.html#deploy">Deploy the decision in OpenShift</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03-run-decision-service.html#probe">Probe the decision</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03-run-decision-service.html#clean">Clean up your environment</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="04-build-decision-service-logic.html">4. Build Decision Service Logic</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="04-build-decision-service-logic.html#challenge">Challenge description</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="04-build-decision-service-logic.html#hints">Hints</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="04-build-decision-service-logic.html#run-locally">Run locally the Decision Service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="04-build-decision-service-logic.html#test">Create a Test Scenario</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="05-event-driven-decision-services.html">5. Event Driven Decision Services</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#prepare">Prepare the messaging backbone</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#project">Creating an event-driven decision project</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#config">Configuring the Decision service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#testing">Testing the Decision Service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#further">Going further</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="06-build-process-service.html">6. Build a Process Service</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="06-build-process-service.html#project-process">Creating a new process project based on Kogito and Quarkus</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="06-build-process-service.html#design-process">Design the Order Approval process </a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="06-build-process-service.html#run-process">Run the process</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Cloud Native Business Automation</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Cloud Native Business Automation</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Cloud Native Business Automation</a></li>
+    <li><a href="05-event-driven-decision-services.html">5. Event Driven Decision Services</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/redhat-scholars/cloud-native-business-automation/edit/master/documentation/modules/ROOT/pages/05-event-driven-decision-services.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Event Driven Decision Services</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This lab introduces you to the concept of event-driven decision
+services. In other words, we’ll work with services that can process the
+decisions based on events that are published to specific topics, and
+that can publish the decision response also via events. This type of
+service matches very well the popular event-driven architecture,
+allowing the business logic to be decoupled and independent of other
+services.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="prepare"><a class="anchor" href="#prepare"></a>Prepare the messaging backbone</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Kafka is an open-source even streaming platform, and currently, one of
+the most popular tools. In event-driven architectures, the Kafka
+<code>topics</code> are used as the communication layer in between the services.
+Each service can now be considered a <code>consumer</code> or a <code>producer</code>, in other
+words, each service can publish or consume events to/from the <code>topics</code>.</p>
+</div>
+<div class="paragraph">
+<p>Red Hat supports the integration between RHPAM and AMQ Streams (Kafka).
+To follow the labs, you should have an accessible Kafka server. The
+Kogito Engine (decision engine) will communicate with the topics that we
+will create in the Kafka server. When working with event-driven
+applications, you will have decoupled decision services that can react
+to certain events and publish the result of the decision back in form of
+events.</p>
+</div>
+<div class="paragraph">
+<p>In this step, we will set up a Kafka environment in your local
+environment using Docker. If you already have a local Kafka broker and
+you want to use it, that is totally fine!</p>
+</div>
+<div class="paragraph">
+<p><strong>IMPORTANT:</strong> When using AMQ Streams (Kafka) in OpenShift, a secure
+communication is required in between the client applications and the
+Kafka broker. Extra configurations in the client applications like
+<code>kafka.sasl.mechanism</code>, <code>kafka.security.protocol</code>,
+<code>kafka.sasl.jaas.config</code> and <code>kafka.sasl.login.callback.handler.class</code>
+are not needed when TLS communication is not enabled.</p>
+</div>
+<div class="sect2">
+<h3 id="_pre_requisites"><a class="anchor" href="#_pre_requisites"></a>Pre requisites</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Docker</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_setting_up_a_local_kafka_environment_using_docker"><a class="anchor" href="#_setting_up_a_local_kafka_environment_using_docker"></a>Setting up a local Kafka environment using Docker</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In your local machine, access the enablement’s base folder:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ cd ~/enablement</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Clone the repository containing the docker files we need:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ git clone https://github.com/hguerrero/amq-examples</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The docker-compose file available in this quickstart should bootstrap
+everything you need to have your Strimzi up and running: Zookeeper,
+Kafka server v2.5.0, Apicurio Registry and a Kafka Bridge.</p>
+</div>
+</li>
+<li>
+<p>Access the <code>amq-examples/strimzi-all-in-one/</code> folder:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ cd amq-examples/strimzi-all-in-one/</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Start the Kafka environment:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">docker compose up</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The necessary images will be downloaded and the containers should be up
+and ready for you to use in a couple of minutes. In order to stop the
+environment, you can hit <code>ctrl+c</code>. Whenever you want to start it, just
+navigate to the directory
+<code>~/enablement/amq-examples/strimzi-all-in-one/</code> and run the
+<code>docker compose up</code> command.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="project"><a class="anchor" href="#project"></a>Creating an event-driven decision project</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Let’s create a new project to work with our event-driven decision
+project. Kogito applications can be created either for Quarkus or
+SpringBoot runtimes. In this lab, we will use a Maven archetype to
+generate a Quarkus based project with the required dependencies for our
+Kogito decision application.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Navigate to a folder of your preference, and run the following
+command. Maven will create a new project with the name
+<code>event-driven-decision-lab</code>.</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ mvn archetype:generate \
+-DarchetypeGroupId=org.kie.kogito \
+-DarchetypeArtifactId=kogito-quarkus-dm-archetype \
+-DgroupId=org.acme -DartifactId=event-driven-decision-lab \
+-DarchetypeVersion=1.5.0.redhat-00004 \
+-Dversion=1.0-SNAPSHOT</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Open the project in VSCode so we can start adding the required
+configurations. Notice that this project already brings a sample DMN
+<code>Traffic Violation.dmn</code>.</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ code event-driven-decision-lab/</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="_images/event-driven-lab-dmn.png" alt="800"></span></p>
+</div>
+</li>
+<li>
+<p>In order to natively work with Kafka topics without the need of adding
+extra code we can use one of the Kogito Add Ons, the <strong>Kogito Event
+Driven Decisions Add-on</strong>. This add on allows our decision service to
+subscribe to Kafka topics, and trigger specific decisions based on the
+event inputs. It also allows our service to publish the result of the
+executed decisions to a Kafka topic. So, to get started, let’s add this
+extension to the service we’ve just created by adding it to the
+<code>pom.xml</code> file. <em>TIP: Since we are using the <code>kogito-quarkus-bom</code> Maven
+can infer the right version to use from the parent bom.</em></p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;org.kie.kogito&lt;/groupId&gt;
+  &lt;artifactId&gt;kogito-event-driven-decisions-quarkus-addon&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="_images/kogito-events-addon-extension.pom.png" alt="800"></span></p>
+</div>
+</li>
+<li>
+<p>The Kogito event driven add-ons uses SmallRye under the covers. So we
+also need to add this dependency to the project:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+   &lt;groupId&gt;io.quarkus&lt;/groupId&gt;
+   &lt;artifactId&gt;quarkus-smallrye-reactive-messaging-kafka&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>We now have a decision project with a sample DMN and the required
+dependencies.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="config"><a class="anchor" href="#config"></a>Configuring the Decision service</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Instead of creating a middle layer (<code>`glue code'') in our app to
+integrate our decision with Kafka topics, all we need to do is add the
+respective configurations to the `application.properties</code> file. In this
+lab we are using Quarkus, and under the hoods, our decision service will
+make use of the its Microprofile Reactive Messaging add-on, SmallRye.</p>
+</div>
+<div class="paragraph">
+<p><strong>INFO:</strong> SmallRye Reactive Messaging is a framework for building
+event-driven, data streaming, and event-sourcing applications using
+<a href="http://www.cdi-spec.org/">CDI</a>. It lets your application interaction
+using various messaging technologies such as Apache Kafka, AMQP or MQTT.
+The framework provides a flexible programming model bridging CDI and
+event-driven. SmallRye Reactive Messaging is an implementation of the
+Eclipse MicroProfile Reactive Messaging specification 1.0.</p>
+</div>
+<div class="paragraph">
+<p>The required configurations for the service will be done in the
+<code>application.properties</code> file.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In VSCode, open the file <code>src/main/resources/applications.properties</code>
+and add the following configuration:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-props hljs" data-lang="props">mp.messaging.incoming.kogito_incoming_stream.group.id=dmn-event-driven-example
+mp.messaging.incoming.kogito_incoming_stream.connector=smallrye-kafka
+mp.messaging.incoming.kogito_incoming_stream.topic=dmn-event-driven-requests
+mp.messaging.incoming.kogito_incoming_stream.value.deserializer=org.apache.kafka.common.serialization.StringDeserializer
+
+mp.messaging.outgoing.kogito_outgoing_stream.group.id=dmn-event-driven-example
+mp.messaging.outgoing.kogito_outgoing_stream.connector=smallrye-kafka
+mp.messaging.outgoing.kogito_outgoing_stream.topic=dmn-event-driven-responses
+mp.messaging.outgoing.kogito_outgoing_stream.value.serializer=org.apache.kafka.common.serialization.StringSerializer</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>About these properties:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The configurations for <strong>incoming</strong>, are respective to the topic this
+Kogito service will <em>subscribe</em> to listen to events;</p>
+</li>
+<li>
+<p>The configurations for <strong>outgoing</strong>, are respective to the topic this
+Kogito service will <em>publish</em> the result of the processed decisions to;</p>
+</li>
+<li>
+<p>In Process Automation 7.11.x (based on Kogito 1.5.x), the
+<a href="https://github.com/kiegroup/kogito-runtimes/blob/fb4856ed9541f56a176515060ee3d8648649eebf/api/kogito-events-api/src/main/java/org/kie/kogito/event/KogitoEventStreams.java#L19-L20">Kogito
+runtimes</a> expect the channel names to be <code>kogito_incoming_stream</code> and
+<code>kogito_outgoing_stream</code>.</p>
+</li>
+<li>
+<p>For the incoming and outgoing streaming topic, we need to configure
+the <em>group id, connector type, topic name, serializer and deserializer</em>
+where (according to the
+<a href="https://smallrye.io/smallrye-reactive-messaging/smallrye-reactive-messaging/2/kafka/kafka.html">SmallRye
+framework documentation</a>):</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>group.id</code>: A unique string that identifies the consumer group the
+application belongs to. If not set, a unique, generated id is used;</p>
+</li>
+<li>
+<p><code>topic</code>: The consumed / populated Kafka topic.</p>
+</li>
+<li>
+<p><code>connector</code>: The SmallRye connector we want to use in this streaming
+resource.</p>
+</li>
+<li>
+<p><code>serializer</code>/ <code>deserializer</code>: Sets the (Kafka)
+serializer/deserializer to write/read the record’s value.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="testing"><a class="anchor" href="#testing"></a>Testing the Decision Service</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>So far, you should have:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A decision application with the Kogito Event Driven Add-on and
+SmallRye dependencies;</p>
+</li>
+<li>
+<p>Application properly configured to listen to the topic
+<code>dmn-event-driven-requests</code> and to publish to the topic
+<code>dmn-event-driven-responses</code>;</p>
+</li>
+<li>
+<p>Kafka up and running;</p>
+</li>
+<li>
+<p>Decision Service up and running;</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Now, let’s test the application.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In VScode, open the integrated terminal (Use <code>cmd+shift+p</code> or
+<code>ctrl+shift+p</code> and search for <em>Create new integrated terminal</em>);</p>
+</li>
+<li>
+<p>Start the decision service in dev mode:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ mvn quarkus:dev</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="_images/event-driven-ds-config.png" alt="800"></span></p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Your application is now subscribed to the topic
+<code>dmn-event-driven-requests</code> and ready to process the decisions! Let’s
+see how the expected event looks like.</p>
+</div>
+<div class="paragraph">
+<p>To test our app, we will publish an event to the
+<code>dmn-event-driven-requests</code> topic, and will monitor the
+<code>dmn-event-driven-responses</code> to confirm that the application will post
+the result of the decision processing also via events. Kafka brings two
+CLI tools that will be very helpful in our lab, the
+<em>kafka-console-producer.sh</em> and the <em>kafka-console-consumer.sh</em>.</p>
+</div>
+<div class="paragraph">
+<p>These are the steps we’ll now follow to test our decision service:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>In terminal, start a Kafka consumer to listen to every event in the
+topic <code>dmn-event-driven-responses</code></p>
+</li>
+<li>
+<p>In another terminal tab, start a Kafka producer to emitt an event to
+the <code>dmn-event-driven-requests</code>;</p>
+</li>
+<li>
+<p>Check the consumer to confirm the decision response was published in
+the <code>dmn-event-driven-responses</code> topics;</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>So let’s get started.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In a new terminal tab, let’s use the Kafka consumer CLI tool that is
+available in the Kafka container:</p>
+</li>
+<li>
+<p><code>$ docker exec kafka bin/kafka-console-consumer.sh --topic dmn-event-driven-responses --from-beginning --bootstrap-server localhost:9092</code></p>
+<div class="paragraph">
+<p><strong>TIP:</strong> If you see a WARN message containing the message
+<code>{dmn-event-driven-responses=LEADER_NOT_AVAILABLE}</code>, it is fine! It
+means that the topic that we’re trying to consume still did not exist.
+When allowed by the Kafka broker, the Kogito decision service can
+automatically create the topics when needed.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="_images/cli-consumer01.png" alt="800"></span></p>
+</div>
+</li>
+<li>
+<p>We will now publish a message to the topic
+<code>dmn-event-driven-requests</code>. Open another terminal tab and start the
+kafka console publisher:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ docker exec kafka bin/kafka-console-producer.sh --topic dmn-event-driven-requests --bootstrap-server localhost:9092</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Now, we will send an event with the inputs to make a decision about
+traffic violation (should the driver be suspended?). Copy the payload
+below and send as an input to the producer:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{"specversion": "1.0", "id": "a89b61a2-5644-487a-8a86-144855c5dce8", "source": "SomeEventSource", "type": "DecisionRequest", "subject": "TheSubject", "kogitodmnmodelname": "Traffic Violation", "kogitodmnmodelnamespace": "https://github.com/kiegroup/drools/kie-dmn/_A4BCA8B8-CF08-433F-93B2-A2598F19ECFF", "data": {"Driver": {"Age": 25,"Points": 13},"Violation": {"Type": "speed","Actual Speed": 115,"Speed Limit":100}}}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="_images/cli-producer01.png" alt="800"></span></p>
+</div>
+</li>
+<li>
+<p>Switch to the terminal tab where you started the consumer CLI. Confirm
+you got the decision result:</p>
+<div class="paragraph">
+<p><span class="image"><img src="_images/cli-consumer02.png" alt="800"></span></p>
+</div>
+</li>
+</ol>
+</div>
+<div class="sect2">
+<h3 id="_what_just_happened"><a class="anchor" href="#_what_just_happened"></a><strong>What just happened?</strong></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>You have created a Kogito project that is based on Quarkus.</p>
+</li>
+<li>
+<p>You added the dependency to the Kogito Event Driven Decisions add-on
+that relies on the SmallRye Messaging framework, so you also added its
+dependency.</p>
+</li>
+<li>
+<p>The project you created already has the decision Traffic Violation
+that is based on the DMN specification, so we could start testing the
+eventing capabilities with it.</p>
+</li>
+<li>
+<p>You started the project using Quarkus dev mode. In this mode you can
+make use of the hot reload capabilities while working in the code and
+also in the business assets like. If you package the application using
+JVM or Native modes, you should be able to get the same functionalities.
+(<em>Native execution is not supported in Process Automation 7.11</em>)</p>
+</li>
+<li>
+<p>When started, the decision service created the topic
+<code>dmn-event-driven-requests</code> since it didn’t exist yet.</p>
+</li>
+<li>
+<p>You used Kafka CLI tools to subscribe to the topic
+<code>dmn-event-driven-responses</code> so you could see the result of the decision
+execution.</p>
+</li>
+<li>
+<p>You sent an event to the topic <code>dmn-event-driven-requests</code>. Since the
+decision service is subscribed to it and the event details matches the
+expected payload for a decision, Kogito identified the decision to be
+triggered and processed it, next, it posted the decision result to the
+<code>dmn-event-driven-responses</code> topic.</p>
+</li>
+<li>
+<p>The Kafka consumer tool captured the result event and showed you the
+resulting payload.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_now_lets_understand_about_the_data_payload"><a class="anchor" href="#_now_lets_understand_about_the_data_payload"></a>Now, let’s understand about the data payload.</h3>
+<div class="paragraph">
+<p>The payload expected by the Kogito add on must follow the
+<a href="https://cloudevents.io/">CloudEvents</a> 1.0 specification.</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "specversion": "1.0",
+  "id": "a89b61a2-5644-487a-8a86-144855c5dce8",
+  "source": "SomeEventSource",
+  "type": "DecisionRequest",
+  "subject": "TheSubject",
+  "kogitodmnmodelname": "Traffic Violation",
+  "kogitodmnmodelnamespace": "https://github.com/kiegroup/drools/kie-dmn/_A4BCA8B8-CF08-433F-93B2-A2598F19ECFF",
+  "data": {
+    "Driver": {
+      "Age": 25,
+      "Points": 13
+    },
+    "Violation": {
+      "Type": "speed",
+      "Actual Speed": 115,
+      "Speed Limit": 100
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>According to the CloudEvents specification:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>specversion</code>: The version of the CloudEvents specification which the
+event uses.</p>
+</li>
+<li>
+<p><code>id</code>: Identifies the event;</p>
+</li>
+<li>
+<p><code>source</code>: Identifies the context in which an event happened;</p>
+</li>
+<li>
+<p><code>type</code>: This attribute contains a value describing the type of event
+related to the originating occurrence;</p>
+</li>
+<li>
+<p><code>subject</code>: describes the subject of the event in the context of the
+event producer (identified by <code>source</code>).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>We also need to specify some information about which decision we want
+to trigger:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>kogitodmnmodelname</code>: Name of the DMN model;</p>
+</li>
+<li>
+<p><code>kogitodmnmodelnamespace</code>: Namespace of the DMN model to be
+triggered. Can be found in the DMN model properties panel.</p>
+</li>
+<li>
+<p><code>data</code>: The input data expected by the DMN model to be used in the
+decisions evaluation.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The image below shows the DMN model name, namespace and data inputs:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="_images/dmn-model-json-map.png" alt="800"></span></p>
+</div>
+<div class="paragraph">
+<p>On the output, we can see the CloudEvents pattern in the event payload,
+and in the <code>data</code> field we can find the result of the decision nodes
+<code>Fine</code> and <code>Should the driver be suspended?</code>, along with the input data
+that was used to get to this decision.</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "specversion": "1.0",
+  "id": "8bc58660-ce25-40ee-86cf-ae6a163510fd",
+  "source": "http://localhost:8080/Traffic+Violation",
+  "type": "DecisionResponse",
+  "subject": "TheSubject",
+  "kogitodmnmodelnamespace": "https://github.com/kiegroup/drools/kie-dmn/_A4BCA8B8-CF08-433F-93B2-A2598F19ECFF",
+  "kogitodmnmodelname": "Traffic Violation",
+  "data": {
+    "Violation": {
+      "Type": "speed",
+      "Speed Limit": 100,
+      "Actual Speed": 115,
+      "Code": null,
+      "Date": null
+    },
+    "Driver": {
+      "Points": 13,
+      "State": null,
+      "City": null,
+      "Age": 25,
+      "Name": null
+    },
+    "Fine": {
+      "Points": 3,
+      "Amount": 500
+    },
+    "Should the driver be suspended?": "No"
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>See on the image below the two decision nodes:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="_images/decision-results.png" alt="800"></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="further"><a class="anchor" href="#further"></a>Going further</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Congratulations, you’ve implemented an event-driven decision service! If
+you are interested in learning and trying even more, here are some
+suggestions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Try out the hot reload capabilities of DMN along with event-driven
+decisions;</p>
+</li>
+<li>
+<p>Package the application in JVM mode and check if works.</p>
+</li>
+<li>
+<p>Notice that, if you stop the kafka broker, the unit tests of the
+application will fail.</p>
+</li>
+<li>
+<p>Use Red Hat OpenShift for Streams for Apache Kafka
+<a href="https://red.ht/TryKafka" class="bare">https://red.ht/TryKafka</a>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>You will need to configure the authentication for your application in
+order to be authorized to connect to the managed Kafka broker. You can
+find a sample of an <code>application.properties</code> file
+<a href="https://github.com/kmacedovarela/event-driven-decision-service/blob/master/src/main/resources/application.properties">here</a>.
+The variables <code>BOOTSTRAP_SERVER</code>, <code>CLIENT_ID</code>, <code>CLIENT_SECRET</code> and
+<code>OAUTH_TOKEN_ENDPOINT_URI</code> can all be obtained in the managed Kafka
+service.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_conclusion"><a class="anchor" href="#_conclusion"></a>Conclusion</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Congratulations, you created your first event-driven decision
+application and sucessfully triggered a decision implemented with DMN
+using events. You also learned what is needed to get the decision
+results published through events. Using Kogito you can easily create
+cloud-native microservices with decoupled business decisions, and deploy
+and scale them independently.</p>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="04-build-decision-service-logic.html">4. Build Decision Service Logic</a></span>
+  <span class="next"><a href="06-build-process-service.html">6. Build a Process Service</a></span>
+</nav>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <a class="rhd-logo" href="https://developers.redhat.com" target="_blank"></div>
+</footer>
+<script src="../_/js/vendor/clipboard.js"></script>
+<script src="../_/js/site.js"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

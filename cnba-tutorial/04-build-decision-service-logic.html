@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Build Decision Service Logic :: Cloud Native Business Automation</title>
+    <link rel="canonical" href="https://redhat-scholars.github.io/course-template/cnba-tutorial/04-build-decision-service-logic.html">
+    <link rel="prev" href="03-run-decision-service.html">
+    <link rel="next" href="05-event-driven-decision-services.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../_/css/site.css">
+<link rel="icon" href="../_/img/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://developers.redhat.com" target="_blank"><img
+          src="../_/img/header_logo.png" height="40px" alt="Red Hat Developer Program"></a>
+      <a class="navbar-item" href="https://redhat-scholars.github.io/course-template">Cloud Native Business Automation</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Books</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">CheatSheets</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">CheatSheet A</a>
+            <a class="navbar-item" href="#">CheatSheet B</a>
+            <a class="navbar-item" href="#">CheatSheet C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Upcoming Events</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Event A</a>
+            <a class="navbar-item" href="#">Event B</a>
+            <a class="navbar-item" href="#">Event C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">More Tutorials</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Tutorial A</a>
+            <a class="navbar-item" href="#">Tutorial B</a>
+            <a class="navbar-item" href="#">Tutorial C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="cnba-tutorial" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">Cloud Native Business Automation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="01-prepare-dev.html">1. Prepare your Development Environment</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01-prepare-dev.html#base-folder">Creating the base folder for the labs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01-prepare-dev.html#install-code">Installing Visual Studio Code IDE</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01-prepare-dev.html#mandrel">Install Mandrel VM</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="02-build-decision-service.html">2. Build Decision Service</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02-build-decision-service.html#new-project">Creating a new decision project based on Kogito and Quarkus</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02-build-decision-service.html#examine">Examine the project and decision</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02-build-decision-service.html#running">Running the project</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02-build-decision-service.html#updating">Updating the Decision</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02-build-decision-service.html#packaging">Packaging and running the application</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="03-run-decision-service.html">3. Run the Decision Service in Cloud</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03-run-decision-service.html#deploy">Deploy the decision in OpenShift</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03-run-decision-service.html#probe">Probe the decision</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03-run-decision-service.html#clean">Clean up your environment</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="04-build-decision-service-logic.html">4. Build Decision Service Logic</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#challenge">Challenge description</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#hints">Hints</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#run-locally">Run locally the Decision Service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#test">Create a Test Scenario</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="05-event-driven-decision-services.html">5. Event Driven Decision Services</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="05-event-driven-decision-services.html#prepare">Prepare the messaging backbone</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="05-event-driven-decision-services.html#project">Creating an event-driven decision project</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="05-event-driven-decision-services.html#config">Configuring the Decision service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="05-event-driven-decision-services.html#testing">Testing the Decision Service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="05-event-driven-decision-services.html#further">Going further</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="06-build-process-service.html">6. Build a Process Service</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="06-build-process-service.html#project-process">Creating a new process project based on Kogito and Quarkus</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="06-build-process-service.html#design-process">Design the Order Approval process </a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="06-build-process-service.html#run-process">Run the process</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Cloud Native Business Automation</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Cloud Native Business Automation</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Cloud Native Business Automation</a></li>
+    <li><a href="04-build-decision-service-logic.html">4. Build Decision Service Logic</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/redhat-scholars/cloud-native-business-automation/edit/master/documentation/modules/ROOT/pages/04-build-decision-service-logic.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Build Decision Service Logic</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this lab you are going to create a new decision logic from scratch.
+The main goal is to learn how to build a decision logic taking advantage of the powerful DMN notation.</p>
+</div>
+<div class="paragraph">
+<p>Before proceeding, you should review the following tutorials to get a first introduction to the DMN basis:</p>
+</div>
+<div class="paragraph">
+<p><a href="https://learn-dmn-in-15-minutes.com/">Learn DMN in 15 minutes</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://youtu.be/77vwWG17KO4">DMN Tutorial - Video</a></p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This hands on is not going to give you a step by step guidance on how to craft the DMN, it&#8217;s structured as a <strong>puzzle</strong> that you have to solve with some hints.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="challenge"><a class="anchor" href="#challenge"></a>Challenge description</h2>
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>A <strong>Cart</strong> contains multiple items, an item is defined by a <em>category</em> and a <em>price</em>. The outcome of the decision is the <strong>Final Price</strong> of the cart. A first discount is evaluated on every item in the cart depending on the category: for the <em>food</em> category, the discount is 5% if the price is more than 19 otherwise 2%; for all other categories the discount is 10% if the price is more than 15. Finally, if the overall amount of the cart (after the item discount) is more than 70 then apply an extra discount of 10%.</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Start creating the file: <code>discount.dmn</code> inside the project created in the previous hands on.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The folder for DMN and BPMN artefacts is: <code>src/main/resources/</code>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="hints"><a class="anchor" href="#hints"></a>Hints</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_create_the_data_types"><a class="anchor" href="#_create_the_data_types"></a>Create the Data Types</h3>
+<div class="paragraph">
+<p>Add:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The type for the item: <code>tItem</code> with <code>category</code> and <code>price</code></p>
+</li>
+<li>
+<p>The type for the list of item: <code>tItemList</code></p>
+</li>
+<li>
+<p>The type for the list of numbers</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_create_the_decision_requirement_graph"><a class="anchor" href="#_create_the_decision_requirement_graph"></a>Create the Decision Requirement Graph</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>The input is the <strong>Cart</strong> which is a list of item.</p>
+</li>
+<li>
+<p>The output is a decision called <strong>Final Price</strong> which is a number.</p>
+</li>
+<li>
+<p>Create a Business Knowledge Model called <strong>Discount</strong>, which goal is to compute the discount for an item.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_implement_the_decision_nodes"><a class="anchor" href="#_implement_the_decision_nodes"></a>Implement the Decision Nodes</h3>
+<div class="paragraph">
+<p>Open the <strong>Discount</strong> BKM:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>the input parameter is <code>item</code> typed <code>tItem</code></p>
+</li>
+<li>
+<p>the output is a <code>number</code></p>
+</li>
+<li>
+<p>the core of the BKM can be implemented as a decision table:</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Input clause <code>item.category</code> (string)</p>
+</li>
+<li>
+<p>Input clause <code>item.price</code> (number)</p>
+</li>
+<li>
+<p>Output clause <code>Discount</code> (number)</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Open the <strong>Final Price</strong> decision node:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Select <code>context</code> as logic type</p>
+</li>
+<li>
+<p>Implement the following entries:</p>
+</li>
+<li>
+<p><code>discounted prices</code> the list with the discounted prices</p>
+</li>
+<li>
+<p><code>discounted total</code> the sum of the discounted prices</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_feel_syntax_reminder"><a class="anchor" href="#_feel_syntax_reminder"></a>FEEL syntax reminder:</h4>
+<div class="paragraph">
+<p>A BKM is function, the syntax is: <code>Discount(item)</code></p>
+</div>
+<div class="paragraph">
+<p>The <strong>for</strong> loop expression iterates over lists of elements or ranges of numbers. The general syntax is:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>for i 1 in ic return e</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>where <code>ic</code> stands for iteration context and can be:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>a list</p>
+</li>
+<li>
+<p>a range e.g. <code>1..10</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The function <code>sum</code> return sum of numbers:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>list = [1,2,3]
+sum(list) -&gt; 6</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="run-locally"><a class="anchor" href="#run-locally"></a>Run locally the Decision Service</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Start</strong> quarkus in dev mode:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">mvn quarkus:dev</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>Create</strong> the file: <code>src/test/resources/dmn-test.http</code> with the following content:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">POST http://localhost:8080/discount
+Accept: application/json
+Content-Type: application/json
+
+{
+   "Cart": [
+      {
+      "category": "electronics",
+      "price": 80
+      },
+      {
+      "category": "food",
+      "price": 20
+      }
+   ]
+}</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>Click</strong> on the <code>Send request</code> link to probe the DMN service.
+In the result page you should spot: <code>"Final Price": 81.9</code></p>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+If you haven&#8217;t installed the <em>Rest Client</em> plug-in, you can probe the DMN service through the <em>Swagger UI</em>: <code><a href="http://localhost:8080/q/swagger-ui/" class="bare">http://localhost:8080/q/swagger-ui/</a></code>
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="test"><a class="anchor" href="#test"></a>Create a Test Scenario</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Add</strong> to the <code>pom.xml</code> file the following dependency:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+   &lt;groupId&gt;org.kie.kogito&lt;/groupId&gt;
+   &lt;artifactId&gt;kogito-scenario-simulation&lt;/artifactId&gt;
+   &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>Create</strong> the Java class <code>KogitoScenarioJUnitActivatorTest.java</code> in the folder <code>src/test/java/testscenario</code></p>
+</li>
+<li>
+<p><strong>Add</strong> the annotation <code>@RunWith</code> as in the snippet:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">import org.junit.runner.RunWith;
+import org.kogito.scenariosimulation.runner.KogitoJunitActivator;
+
+@RunWith(KogitoJunitActivator.class)
+public class KogitoScenarioJunitActivatorTest {</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>Create</strong> the file <code>DiscountTS.scesim</code> in the folder <code>src/test/resources/</code></p>
+</li>
+<li>
+<p>In the dialogue box <code>Create Test Scenario</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Select</strong> <code>DMN</code>, then <code>discount.dmn</code> and <code>Create</code> button.</p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/dmn-ts.png" alt="test scenario" width="800">
+</div>
+</div>
+</li>
+<li>
+<p>You should get a quite simple table with a column named <strong>GIVEN</strong> and another named <strong>EXPECTED</strong>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>In the <strong>GIVEN</strong> column, <strong>double click</strong> on the last cell (there is a place holder text: <em>Insert value</em>)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>In the pop up window, <strong>select</strong> <code>Add list value</code></p>
+</li>
+<li>
+<p><strong>Type</strong> <code>"food"</code> in the category field (make sure to type the double quote <code>"</code>)</p>
+</li>
+<li>
+<p><strong>Type</strong> <code>20</code> in the price field</p>
+</li>
+<li>
+<p><strong>Click</strong> the confirmation button (check mark)</p>
+</li>
+<li>
+<p><strong>Click</strong> the <code>Save</code> button</p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/dmn-list-value.png" alt="list value" width="600">
+</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>In the <strong>EXPECTED</strong> column, <strong>double click</strong> on the last cell (there is a place holder text: <em>Insert value</em>)</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong> <code>0</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>From a terminal <strong>launch</strong> the tests: <code>mvn clean test</code></p>
+</li>
+<li>
+<p>You should get a failure message: <code>KogitoScenarioJunitActivatorTest #1: Failed in "Final Price": The expected value is "0" but the actual one is "19.00" (DiscountTS)</code></p>
+</li>
+<li>
+<p><strong>Change</strong> the test scenario accordingly and run the test again to check the successful execution.</p>
+</li>
+<li>
+<p>Optionally, add other rows to the test scenarios.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_appendix_a_possible_solution"><a class="anchor" href="#_appendix_a_possible_solution"></a>Appendix: a possible solution</h2>
+<div class="sectionbody">
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<strong>DON&#8217;T READ THIS SECTION</strong> try before to solve the challenge with hints provided above.
+It&#8217;s not important if your solution does not work as expected or it&#8217;s different from the following: the philosophy of this hands on is that you can learn more from a failed attempt than from a "guided" success.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_data_types"><a class="anchor" href="#_data_types"></a>Data types</h3>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/dmn-solution-dt.png" alt="600">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_decision_requirement_graph"><a class="anchor" href="#_decision_requirement_graph"></a>Decision Requirement Graph</h3>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/dmn-solution-drd.png" alt="600">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_decision_nodes"><a class="anchor" href="#_decision_nodes"></a>Decision Nodes</h3>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/dmn-solution-bkm.png" alt="600">
+</div>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/dmn-solution-decision.png" alt="600">
+</div>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="03-run-decision-service.html">3. Run the Decision Service in Cloud</a></span>
+  <span class="next"><a href="05-event-driven-decision-services.html">5. Event Driven Decision Services</a></span>
+</nav>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <a class="rhd-logo" href="https://developers.redhat.com" target="_blank"></div>
+</footer>
+<script src="../_/js/vendor/clipboard.js"></script>
+<script src="../_/js/site.js"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
