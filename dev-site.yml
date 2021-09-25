@@ -4,7 +4,7 @@ runtime:
 site:
   title: Cloud Native Business Automation(Dev Mode)
   url: http://localhost:3000/rhs-build-course/index.html
-  start_page: template-tutorial::index.adoc
+  start_page: cnba-tutorial::index.adoc
 
 content:
   sources:
@@ -19,7 +19,7 @@ asciidoc:
     - ./lib/tab-block.js
 ui:
   bundle:
-    url: https://github.com/redhat-scholars/course-ui/releases/download/v0.1.1/ui-bundle.zip
+    url: https://github.com/redhat-scholars/course-ui/releases/download/v0.1.12/ui-bundle.zip
     snapshot: true
   supplemental_files: ./supplemental-ui
 output:
