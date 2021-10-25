@@ -31,4 +31,6 @@
 * xref:06-build-process-service.adoc[6. Build a Process Service]
 ** xref:06-build-process-service.adoc#project-process[Creating a new process project based on Kogito and Quarkus]
 ** xref:06-build-process-service.adoc#design-process[Design the Order Approval process ]
-** xref:06-build-process-service.adoc#run-process[Run the process]
+* xref:07-learn-dmn.adoc#learn-dmn[7. Deep Dive: Practicing DMN]
+** xref:07-learn-dmn.adoc#java-dmn[Use the power of Java in DMN]
+** xref:07-learn-dmn.adoc#party-lab[The Party Challenge]

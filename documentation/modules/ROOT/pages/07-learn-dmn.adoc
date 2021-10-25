@@ -1,0 +1,190 @@
+= Practicing Decision Modeling with DMN
+
+This section brings labs to help you get familiar with decision automation using the DMN standard and FEEL expression language.
+
+The guides' instructions will give you a task to automate with specific goals. You should explore Kogito and Quarkus, develop, test and run the decision scenarios.
+
+NOTE: Some exercises were inspired by examples in the book https://www.amazon.com/dp/0982368186[DMN Cookbook] and its free examples.
+
+[#java-dmn]
+== Use the power of Java in DMN
+
+DMN supports business-level users to author most of the decision diagram and its core logic. One of this specification strengths is that it is not restricted to a single persona, instead, since it supports the cooperation also with technical teams. An example of a common practice is the usage of decoupled logic and reusable functions where the analyst delegates, when necessary, partial logic implementation to a developer, by for example, leveraging BKM to do an operation.
+
+*FEEL* (Friendly enough expression language) brings several operations to support the logic implementation. On the other hand, we also have available the extensive options available in Java classes to support logic execution. In this lab, you will practice how to use the BKM node along with the power of Java classes and its methods to support DMN Decisions.
+
+=== Creating the project
+
+The first step is to create a project to contain your decisions. Let's use Kogito and Quarkus so that we can use the capabilities of automatic code generation. 
+
+. Create a new Quarkus application using the *Quarkus archetype*. Make sure to add:
+- *Kogito Decision* extension for decision execution capabilities;
+- *Quarkus Smallrye Openapi* to allow using Swagger to facilitate REST interaction via UI;
+- *Kogito Scenario Simulation* to allow using test scenarios (scesim) capabilities in your service;
++
+[.console-input]
+[source,shell]
+----
+$ mvn io.quarkus:quarkus-maven-plugin:1.11.7.Final-redhat-00009:create \
+    -DplatformGroupId=com.redhat.quarkus \
+    -DplatformVersion=1.11.7.Final-redhat-00009 \
+    -DprojectGroupId=org.acme \
+    -DprojectArtifactId=practicing-dmn \
+    -Dextensions="kogito-quarkus-decisions,quarkus-smallrye-openapi" \
+    -DnoExamples
+----
+
+=== Decision Diagram basic definition
+. Create a new decision `src/main/resources/DecisionWithJava.dmn`  
+. In the `Data Types` of your decision, add a new List of strings with name `tNameList`.
++
+TIP: When adding the new type, select Type `String` and make sure to click on the list selector to categorize it as a list type.
++
+. Back to the Editor, drag and drop an input node and name it  `Names`;
+. Configure the input `Names` with Data Type `tNameList`.
+. Add a `Decision Node` named `Final Name` with Data Type `string`.
+
+Now, before implementing the actual decision logic, let's create a unit test to support us during the development process. We will use a test scenario to implement unit tests for this decision.
+
+=== Start through the tests
+. When developing a decision, one way to check if it is working is start your quarkus service in dev mode (`mvn quarkus:dev`) and invoke the respective REST endpoint passing an input and output until you're satisfied. Once you're happy with the result, you can move ahead and start writing the unit test. 
++ 
+Another approach, is to start with the unit testing and validate as many valid and invalid inputs and resulting execution outputs. Once the test is finished, you code your decision, checking its validity through automated test. With this approach, once you can successfully run your tests, you'll have completed both implementation and its respective unit test. 
++
+TIP: To know more about Test Driven Development practices, check the https://tddmanifesto.com/[TDD Manifesto]. 
++
+. Open the `pom.xml` and add the dependency to the test scenario library so we can use `Test Scenario` capabilities.
++
+[.console-input]
+[source,xml]
+....
+<dependency>
+  <groupId>org.kie.kogito</groupId>
+  <artifactId>kogito-scenario-simulation</artifactId>
+  <scope>test</scope>
+</dependency>
+....
++
+. Add two new test directory structures:  `src/test/resources` and `src/test/java/testscenario`. 
+. Create a new Java class that will allow our test scenarios to be part of the maven test lifecycle within JUnit scope. In `src/main/resources/java/testscenario` add the new Java class  `KogitoScenarioJunitActivatorTest.java` with the following content:
++
+[.console-input]
+[source,java]
+....
+package testscenario;
+
+/**
+ * KogitoJunitActivator is a custom JUnit runner that enables the execution of Test Scenario files (*.scesim).
+ * This activator class, when executed, will load all scesim files available in the project and run them.
+ * Each row of the scenario will generate a test JUnit result.
+ */
+@org.junit.runner.RunWith(org.kogito.scenariosimulation.runner.KogitoJunitActivator.class)
+public class KogitoScenarioJunitActivatorTest {
+}
+....
++ 
+. Now, in `src/test/resources/` add a new Test Scenario called `DecisionWithJavaTest.scesim`.
+. decision needs to  will receive an Array of Strings and returns a String resulted from the concatenation of all the elements.
+. Once you open your new test scenario file (if the https://marketplace.visualstudio.com/items?itemName=redhat.vscode-extension-red-hat-business-automation-bundle[Red Hat Business Automation Bundle VSCode extension] is installed), you should be able to choose `DMN`, and select your DMN file in the list of available decisions.
+. Click `create` once you finish. The test scenario should be already configured using the Input and Outputs of the Decision file you selected. 
+. Now, add the following validation scenarios:
+- Should return an empty String for a list with zero elements. (e.g. "")
+- Should return a String for a list with one element (string). (e.g. "Karina")
+- Should return a String with words separated by comma for a list with two elements (e.g. "Karina,Varela")
+
+Check below some tips on the configuration of the list of given inputs and the final test implementation:
+
+- Configured list input with "Create List" guided form. 
+
+TIP: You can also use the option "Define List" with value like `["John Doe","Ash"]`.
+
+image::dmn-ts-list-configuration.png[Test input configuration,800,align="center"]
+
+- Test Scenario example:
+
+image::decision-with-java-ts.png[decision with java test scenario,800,align="center"]
+
+If you open your project in a command line and execute the tests using maven, you should be able to see your broken tests. Something similar to:
+[.console-input]
+[source,shell]
+....
+$ mvn test
+(...)
+
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Errors: 
+[ERROR]   #1 Should return an empty string for empty list: Failure reason: The decision Final Name has not been successfully evaluated: SKIPPED (DecisionWithJavaTest)
+[ERROR]   #2 Should return a string for one element list: Failure reason: The decision Final Name has not been successfully evaluated: SKIPPED (DecisionWithJavaTest)
+[ERROR]   #3 Should return string with the concatenated elements separated by comma: Failure reason: The decision Final Name has not been successfully evaluated: SKIPPED (DecisionWithJavaTest)
+[INFO] 
+[ERROR] Tests run: 3, Failures: 0, Errors: 3, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+....
+
+=== Implementing the Decision Logic 
+
+With the project, a basic DMN and some unit tests, we now have a good base structure to start coding our decision logic. The same result could be achieved in many different ways, but for the purpose of this exercise, you should create the actual logic by using the Java `String` class. 
+
+* *Goals*: Fix the `DecisionWithJava.dmn` to concatenate the incoming list of strings and return a single String. The decision output should be a unique string containing every string from the list separated by a space (e.g. ["John","Doe","Ash"]) results in "John Doe Ash").
+* *Try to accomplish these in your solution*:
+** The decision node `Final Name` should rely on a *BKM Node*: this will decouple and externalize the technical implementation aspects of the decision logic.
+** When invoking the solution provided by the BKM, the decision node `Final Name` should send the list `Names` and `","`, a space character to be used as the delimiter when concatenating the list of strings.
+** Use the class `java.lang.String`. It has a static method https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#join-java.lang.CharSequence-java.lang.Iterable-["join"] that may be useful. This method expects, in simple terms, two parameters: the delimiter used in between concatenated elements, and a list.
+
+Before checking the following hints, try to implement this and adjust your decision until you get all the tests to pass. If you need, check the hints below. 
+
+==== Solution Tips
+* Use a `Business Knowledge Model` (BKM) node to create the reusable logic that will be invoked by the `Final Name` decision node.    
+** It should be a `Function`, and the function kind should be `Java` (J).
+** Add two parameters, one named delimiter( with type `string`) and one names list (with type `tNamesList`). These will be sent by the node invoking this BKM, and will be sent as input to the Java method.   
+** The `class` can be configured as `java.lang.String`; 
+** The method signature can be configured with `"join(java.lang.CharSequence,java.lang.Iterable)"`.
+* The decision node `Final Name` can be implemented with a boxed expression of type *Invocation*. 
+** On the second table cell (with default value _Enter function_) type the name of your BKM.
+** Add two lines, one with parameter name `delimiter` and literal value `","` ; The other with name `list` and literal value `Names`. Here, you are configuring the values you want to send to the BKM, where you are referencing the input `Names` as the list.
+
+[#party-lab]
+== Party Challenge
+
+In this challenge, you're requested to create a decision service that helps a party owner to decide whether or not a guest can join the party.
+
+TIP: During this challenge development you will exercise FEEL, String manipulation, list manipulation, temporal operators, Data Types, different decision options and more.
+
+* *Goal*: Return true or false, depending on the fact that a `Guest` can join a party on a specific `Planned Date`.
+* Party rules:
+** To make a decision on whether a specific `Guest` `Can Party`, the party owner will inform:
+*** A `Guest`, with `name` (text) and `birthdate` (`"YYYY-MM-DD"` format). 
+*** A `Planned Date` for this party (`"YYYY-MM-DD"` format).
+** Only guests that are 18 years or more *can* party.
+** There is a `Banned guests` list, that defines that _"Chucky"_ and _"Carrie"_ *can't* party.
+
+*Input Example:* 
+
+Example of input that can be sent to validate *Karina V*, born on *Jan 1st 1980*, can join a party that will happen on *25th Oct 2021*:
+[.console-input]
+[source,json]
+....
+{
+    "Guest": {
+        "birthdate": "1980-01-01",
+        "name": "Karina V"
+    },
+    "Planned date": "2021-10-25"
+}
+....
+
+*Automate the validation with unit tests*
+
+The user party wants to be able to read and increment the automated tests once your solution is delivered to him. Initially you need to implement automated tests to validate that:
+
+* Guest "Chucky" *can't* party.
+* Guest "Karina" *can* party.
+* Guest under 18y *can't* party.
+* Guests over 18y *can* party.
+* Guest that is not yet 18, but will be on the party planned date, *can* party. 
+
