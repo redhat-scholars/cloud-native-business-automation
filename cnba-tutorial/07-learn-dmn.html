@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Practicing Decision Modeling with DMN :: Cloud Native Business Automation</title>
+    <link rel="canonical" href="https://redhat-scholars.github.io/course-template/cnba-tutorial/07-learn-dmn.html">
+    <link rel="prev" href="06-build-process-service.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../_/css/site.css">
+<link rel="icon" href="../_/img/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://developers.redhat.com" target="_blank"><img
+          src="../_/img/header_logo.png" height="40px" alt="Red Hat Developer Program"></a>
+      <a class="navbar-item" href="https://redhat-scholars.github.io/course-template">Cloud Native Business Automation</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Books</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">CheatSheets</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">CheatSheet A</a>
+            <a class="navbar-item" href="#">CheatSheet B</a>
+            <a class="navbar-item" href="#">CheatSheet C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Upcoming Events</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Event A</a>
+            <a class="navbar-item" href="#">Event B</a>
+            <a class="navbar-item" href="#">Event C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">More Tutorials</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Tutorial A</a>
+            <a class="navbar-item" href="#">Tutorial B</a>
+            <a class="navbar-item" href="#">Tutorial C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="cnba-tutorial" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">Cloud Native Business Automation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="01-prepare-dev.html">1. Prepare your Development Environment</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01-prepare-dev.html#base-folder">Creating the base folder for the labs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01-prepare-dev.html#install-code">Installing Visual Studio Code IDE</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01-prepare-dev.html#mandrel">Install Mandrel VM</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="02-build-decision-service.html">2. Build Decision Service</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02-build-decision-service.html#new-project">Creating a new decision project based on Kogito and Quarkus</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02-build-decision-service.html#examine">Examine the project and decision</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02-build-decision-service.html#running">Running the project</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02-build-decision-service.html#updating">Updating the Decision</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02-build-decision-service.html#packaging">Packaging and running the application</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="03-run-decision-service.html">3. Run the Decision Service in Cloud</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03-run-decision-service.html#deploy">Deploy the decision in OpenShift</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03-run-decision-service.html#probe">Probe the decision</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03-run-decision-service.html#clean">Clean up your environment</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="04-build-decision-service-logic.html">4. Build Decision Service Logic</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="04-build-decision-service-logic.html#challenge">Challenge description</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="04-build-decision-service-logic.html#hints">Hints</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="04-build-decision-service-logic.html#run-locally">Run locally the Decision Service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="04-build-decision-service-logic.html#test">Create a Test Scenario</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="05-event-driven-decision-services.html">5. Event Driven Decision Services</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="05-event-driven-decision-services.html#prepare">Prepare the messaging backbone</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="05-event-driven-decision-services.html#project">Creating an event-driven decision project</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="05-event-driven-decision-services.html#config">Configuring the Decision service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="05-event-driven-decision-services.html#testing">Testing the Decision Service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="05-event-driven-decision-services.html#further">Going further</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="06-build-process-service.html">6. Build a Process Service</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="06-build-process-service.html#project-process">Creating a new process project based on Kogito and Quarkus</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="06-build-process-service.html#design-process">Design the Order Approval process </a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="#learn-dmn">7. Deep Dive: Practicing DMN</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#java-dmn">Use the power of Java in DMN</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#party-lab">The Party Challenge</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Cloud Native Business Automation</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Cloud Native Business Automation</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Cloud Native Business Automation</a></li>
+    <li><a href="#learn-dmn">7. Deep Dive: Practicing DMN</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/redhat-scholars/cloud-native-business-automation/edit/master/documentation/modules/ROOT/pages/07-learn-dmn.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Practicing Decision Modeling with DMN</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section brings labs to help you get familiar with decision automation using the DMN standard and FEEL expression language.</p>
+</div>
+<div class="paragraph">
+<p>The guides' instructions will give you a task to automate with specific goals. You should explore Kogito and Quarkus, develop, test and run the decision scenarios.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Some exercises were inspired by examples in the book <a href="https://www.amazon.com/dp/0982368186">DMN Cookbook</a> and its free examples.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="java-dmn"><a class="anchor" href="#java-dmn"></a>Use the power of Java in DMN</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>DMN supports business-level users to author most of the decision diagram and its core logic. One of this specification strengths is that it is not restricted to a single persona, instead, since it supports the cooperation also with technical teams. An example of a common practice is the usage of decoupled logic and reusable functions where the analyst delegates, when necessary, partial logic implementation to a developer, by for example, leveraging BKM to do an operation.</p>
+</div>
+<div class="paragraph">
+<p><strong>FEEL</strong> (Friendly enough expression language) brings several operations to support the logic implementation. On the other hand, we also have available the extensive options available in Java classes to support logic execution. In this lab, you will practice how to use the BKM node along with the power of Java classes and its methods to support DMN Decisions.</p>
+</div>
+<div class="sect2">
+<h3 id="_creating_the_project"><a class="anchor" href="#_creating_the_project"></a>Creating the project</h3>
+<div class="paragraph">
+<p>The first step is to create a project to contain your decisions. Let&#8217;s use Kogito and Quarkus so that we can use the capabilities of automatic code generation.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create a new Quarkus application using the <strong>Quarkus archetype</strong>. Make sure to add:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Kogito Decision</strong> extension for decision execution capabilities;</p>
+</li>
+<li>
+<p><strong>Quarkus Smallrye Openapi</strong> to allow using Swagger to facilitate REST interaction via UI;</p>
+</li>
+<li>
+<p><strong>Kogito Scenario Simulation</strong> to allow using test scenarios (scesim) capabilities in your service;</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ mvn io.quarkus:quarkus-maven-plugin:1.11.7.Final-redhat-00009:create \
+    -DplatformGroupId=com.redhat.quarkus \
+    -DplatformVersion=1.11.7.Final-redhat-00009 \
+    -DprojectGroupId=org.acme \
+    -DprojectArtifactId=practicing-dmn \
+    -Dextensions="kogito-quarkus-decisions,quarkus-smallrye-openapi" \
+    -DnoExamples</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_decision_diagram_basic_definition"><a class="anchor" href="#_decision_diagram_basic_definition"></a>Decision Diagram basic definition</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create a new decision <code>src/main/resources/DecisionWithJava.dmn</code></p>
+</li>
+<li>
+<p>In the <code>Data Types</code> of your decision, add a new List of strings with name <code>tNameList</code>.</p>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+When adding the new type, select Type <code>String</code> and make sure to click on the list selector to categorize it as a list type.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Back to the Editor, drag and drop an input node and name it  <code>Names</code>;</p>
+</li>
+<li>
+<p>Configure the input <code>Names</code> with Data Type <code>tNameList</code>.</p>
+</li>
+<li>
+<p>Add a <code>Decision Node</code> named <code>Final Name</code> with Data Type <code>string</code>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Now, before implementing the actual decision logic, let&#8217;s create a unit test to support us during the development process. We will use a test scenario to implement unit tests for this decision.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_start_through_the_tests"><a class="anchor" href="#_start_through_the_tests"></a>Start through the tests</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>When developing a decision, one way to check if it is working is start your quarkus service in dev mode (<code>mvn quarkus:dev</code>) and invoke the respective REST endpoint passing an input and output until you&#8217;re satisfied. Once you&#8217;re happy with the result, you can move ahead and start writing the unit test.</p>
+<div class="paragraph">
+<p>Another approach, is to start with the unit testing and validate as many valid and invalid inputs and resulting execution outputs. Once the test is finished, you code your decision, checking its validity through automated test. With this approach, once you can successfully run your tests, you&#8217;ll have completed both implementation and its respective unit test.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+To know more about Test Driven Development practices, check the <a href="https://tddmanifesto.com/">TDD Manifesto</a>.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Open the <code>pom.xml</code> and add the dependency to the test scenario library so we can use <code>Test Scenario</code> capabilities.</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;org.kie.kogito&lt;/groupId&gt;
+  &lt;artifactId&gt;kogito-scenario-simulation&lt;/artifactId&gt;
+  &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Add two new test directory structures:  <code>src/test/resources</code> and <code>src/test/java/testscenario</code>.</p>
+</li>
+<li>
+<p>Create a new Java class that will allow our test scenarios to be part of the maven test lifecycle within JUnit scope. In <code>src/main/resources/java/testscenario</code> add the new Java class  <code>KogitoScenarioJunitActivatorTest.java</code> with the following content:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package testscenario;
+
+/**
+ * KogitoJunitActivator is a custom JUnit runner that enables the execution of Test Scenario files (*.scesim).
+ * This activator class, when executed, will load all scesim files available in the project and run them.
+ * Each row of the scenario will generate a test JUnit result.
+ */
+@org.junit.runner.RunWith(org.kogito.scenariosimulation.runner.KogitoJunitActivator.class)
+public class KogitoScenarioJunitActivatorTest {
+}</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Now, in <code>src/test/resources/</code> add a new Test Scenario called <code>DecisionWithJavaTest.scesim</code>.</p>
+</li>
+<li>
+<p>decision needs to  will receive an Array of Strings and returns a String resulted from the concatenation of all the elements.</p>
+</li>
+<li>
+<p>Once you open your new test scenario file (if the <a href="https://marketplace.visualstudio.com/items?itemName=redhat.vscode-extension-red-hat-business-automation-bundle">Red Hat Business Automation Bundle VSCode extension</a> is installed), you should be able to choose <code>DMN</code>, and select your DMN file in the list of available decisions.</p>
+</li>
+<li>
+<p>Click <code>create</code> once you finish. The test scenario should be already configured using the Input and Outputs of the Decision file you selected.</p>
+</li>
+<li>
+<p>Now, add the following validation scenarios:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Should return an empty String for a list with zero elements. (e.g. "")</p>
+</li>
+<li>
+<p>Should return a String for a list with one element (string). (e.g. "Karina")</p>
+</li>
+<li>
+<p>Should return a String with words separated by comma for a list with two elements (e.g. "Karina,Varela")</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Check below some tips on the configuration of the list of given inputs and the final test implementation:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Configured list input with "Create List" guided form.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You can also use the option "Define List" with value like <code>["John Doe","Ash"]</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/dmn-ts-list-configuration.png" alt="Test input configuration" width="800">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Test Scenario example:</p>
+</li>
+</ul>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/decision-with-java-ts.png" alt="decision with java test scenario" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>If you open your project in a command line and execute the tests using maven, you should be able to see your broken tests. Something similar to:</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ mvn test
+(...)
+
+[INFO]
+[INFO] Results:
+[INFO]
+[ERROR] Errors:
+[ERROR]   #1 Should return an empty string for empty list: Failure reason: The decision Final Name has not been successfully evaluated: SKIPPED (DecisionWithJavaTest)
+[ERROR]   #2 Should return a string for one element list: Failure reason: The decision Final Name has not been successfully evaluated: SKIPPED (DecisionWithJavaTest)
+[ERROR]   #3 Should return string with the concatenated elements separated by comma: Failure reason: The decision Final Name has not been successfully evaluated: SKIPPED (DecisionWithJavaTest)
+[INFO]
+[ERROR] Tests run: 3, Failures: 0, Errors: 3, Skipped: 0
+[INFO]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_implementing_the_decision_logic"><a class="anchor" href="#_implementing_the_decision_logic"></a>Implementing the Decision Logic</h3>
+<div class="paragraph">
+<p>With the project, a basic DMN and some unit tests, we now have a good base structure to start coding our decision logic. The same result could be achieved in many different ways, but for the purpose of this exercise, you should create the actual logic by using the Java <code>String</code> class.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Goals</strong>: Fix the <code>DecisionWithJava.dmn</code> to concatenate the incoming list of strings and return a single String. The decision output should be a unique string containing every string from the list separated by a space (e.g. ["John","Doe","Ash"]) results in "John Doe Ash").</p>
+</li>
+<li>
+<p><strong>Try to accomplish these in your solution</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The decision node <code>Final Name</code> should rely on a <strong>BKM Node</strong>: this will decouple and externalize the technical implementation aspects of the decision logic.</p>
+</li>
+<li>
+<p>When invoking the solution provided by the BKM, the decision node <code>Final Name</code> should send the list <code>Names</code> and <code>","</code>, a space character to be used as the delimiter when concatenating the list of strings.</p>
+</li>
+<li>
+<p>Use the class <code>java.lang.String</code>. It has a static method <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#join-java.lang.CharSequence-java.lang.Iterable-">"join"</a> that may be useful. This method expects, in simple terms, two parameters: the delimiter used in between concatenated elements, and a list.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Before checking the following hints, try to implement this and adjust your decision until you get all the tests to pass. If you need, check the hints below.</p>
+</div>
+<div class="sect3">
+<h4 id="_solution_tips"><a class="anchor" href="#_solution_tips"></a>Solution Tips</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Use a <code>Business Knowledge Model</code> (BKM) node to create the reusable logic that will be invoked by the <code>Final Name</code> decision node.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>It should be a <code>Function</code>, and the function kind should be <code>Java</code> (J).</p>
+</li>
+<li>
+<p>Add two parameters, one named delimiter( with type <code>string</code>) and one names list (with type <code>tNamesList</code>). These will be sent by the node invoking this BKM, and will be sent as input to the Java method.</p>
+</li>
+<li>
+<p>The <code>class</code> can be configured as <code>java.lang.String</code>;</p>
+</li>
+<li>
+<p>The method signature can be configured with <code>"join(java.lang.CharSequence,java.lang.Iterable)"</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>The decision node <code>Final Name</code> can be implemented with a boxed expression of type <strong>Invocation</strong>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>On the second table cell (with default value <em>Enter function</em>) type the name of your BKM.</p>
+</li>
+<li>
+<p>Add two lines, one with parameter name <code>delimiter</code> and literal value <code>","</code> ; The other with name <code>list</code> and literal value <code>Names</code>. Here, you are configuring the values you want to send to the BKM, where you are referencing the input <code>Names</code> as the list.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="party-lab"><a class="anchor" href="#party-lab"></a>Party Challenge</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this challenge, you&#8217;re requested to create a decision service that helps a party owner to decide whether or not a guest can join the party.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+During this challenge development you will exercise FEEL, String manipulation, list manipulation, temporal operators, Data Types, different decision options and more.
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Goal</strong>: Return true or false, depending on the fact that a <code>Guest</code> can join a party on a specific <code>Planned Date</code>.</p>
+</li>
+<li>
+<p>Party rules:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>To make a decision on whether a specific <code>Guest</code> <code>Can Party</code>, the party owner will inform:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>A <code>Guest</code>, with <code>name</code> (text) and <code>birthdate</code> (<code>"YYYY-MM-DD"</code> format).</p>
+</li>
+<li>
+<p>A <code>Planned Date</code> for this party (<code>"YYYY-MM-DD"</code> format).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Only guests that are 18 years or more <strong>can</strong> party.</p>
+</li>
+<li>
+<p>There is a <code>Banned guests</code> list, that defines that <em>"Chucky"</em> and <em>"Carrie"</em> <strong>can&#8217;t</strong> party.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Input Example:</strong></p>
+</div>
+<div class="paragraph">
+<p>Example of input that can be sent to validate <strong>Karina V</strong>, born on <strong>Jan 1st 1980</strong>, can join a party that will happen on <strong>25th Oct 2021</strong>:</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+    "Guest": {
+        "birthdate": "1980-01-01",
+        "name": "Karina V"
+    },
+    "Planned date": "2021-10-25"
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Automate the validation with unit tests</strong></p>
+</div>
+<div class="paragraph">
+<p>The user party wants to be able to read and increment the automated tests once your solution is delivered to him. Initially you need to implement automated tests to validate that:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Guest "Chucky" <strong>can&#8217;t</strong> party.</p>
+</li>
+<li>
+<p>Guest "Karina" <strong>can</strong> party.</p>
+</li>
+<li>
+<p>Guest under 18y <strong>can&#8217;t</strong> party.</p>
+</li>
+<li>
+<p>Guests over 18y <strong>can</strong> party.</p>
+</li>
+<li>
+<p>Guest that is not yet 18, but will be on the party planned date, <strong>can</strong> party.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="06-build-process-service.html">6. Build a Process Service</a></span>
+</nav>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <a class="rhd-logo" href="https://developers.redhat.com" target="_blank"></div>
+</footer>
+<script src="../_/js/vendor/clipboard.js"></script>
+<script src="../_/js/site.js"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
