@@ -66,7 +66,7 @@ TIP: To know more about Test Driven Development practices, check the https://tdd
 ....
 +
 . Add two new test directory structures:  `src/test/resources` and `src/test/java/testscenario`. 
-. Create a new Java class that will allow our test scenarios to be part of the maven test lifecycle within JUnit scope. In `src/main/resources/java/testscenario` add the new Java class  `KogitoScenarioJunitActivatorTest.java` with the following content:
+. Create a new Java class that will allow our test scenarios to be part of the maven test lifecycle within JUnit scope. In `src/main/java/testscenario` add the new Java class  `KogitoScenarioJunitActivatorTest.java` with the following content:
 +
 [.console-input]
 [source,java]
