@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Getting started with Business Rules  (Drools Rule Language) :: Cloud Native Business Automation</title>
+    <link rel="canonical" href="https://redhat-scholars.github.io/course-template/cnba-tutorial/08-learn-drl.html">
+    <link rel="prev" href="06-build-process-service.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../_/css/site.css">
+<link rel="icon" href="../_/img/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://developers.redhat.com" target="_blank"><img
+          src="../_/img/header_logo.png" height="40px" alt="Red Hat Developer Program"></a>
+      <a class="navbar-item" href="https://redhat-scholars.github.io/course-template">Cloud Native Business Automation</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Books</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">CheatSheets</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">CheatSheet A</a>
+            <a class="navbar-item" href="#">CheatSheet B</a>
+            <a class="navbar-item" href="#">CheatSheet C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Upcoming Events</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Event A</a>
+            <a class="navbar-item" href="#">Event B</a>
+            <a class="navbar-item" href="#">Event C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">More Tutorials</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Tutorial A</a>
+            <a class="navbar-item" href="#">Tutorial B</a>
+            <a class="navbar-item" href="#">Tutorial C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="cnba-tutorial" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">Cloud Native Business Automation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="01-prepare-dev.html">1. Prepare your Development Environment</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01-prepare-dev.html#base-folder">Creating the base folder for the labs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01-prepare-dev.html#install-code">Installing Visual Studio Code IDE</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01-prepare-dev.html#mandrel">Install Mandrel VM</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Get started with decision services</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="02-build-decision-service.html">2. Build Decision Service</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="02-build-decision-service.html#new-project">Creating a new decision project based on Kogito and Quarkus</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="02-build-decision-service.html#examine">Examine the project and decision</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="02-build-decision-service.html#running">Running the project</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="02-build-decision-service.html#updating">Updating the Decision</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="02-build-decision-service.html#packaging">Packaging and running the application</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="03-run-decision-service.html">3. Run the Decision Service in Cloud</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="03-run-decision-service.html#deploy">Deploy the decision in OpenShift</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="03-run-decision-service.html#probe">Probe the decision</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="03-run-decision-service.html#clean">Clean up your environment</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="04-build-decision-service-logic.html">4. Build Decision Service Logic</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="04-build-decision-service-logic.html#challenge">Challenge description</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="04-build-decision-service-logic.html#hints">Hints</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="04-build-decision-service-logic.html#run-locally">Run locally the Decision Service</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="04-build-decision-service-logic.html#test">Create a Test Scenario</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="05-event-driven-decision-services.html">5. Event Driven Decision Services</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="05-event-driven-decision-services.html#prepare">Prepare the messaging backbone</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="05-event-driven-decision-services.html#project">Creating an event-driven decision project</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="05-event-driven-decision-services.html#config">Configuring the Decision service</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="05-event-driven-decision-services.html#testing">Testing the Decision Service</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="05-event-driven-decision-services.html#further">Going further</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="07-learn-dmn.html#learn-dmn">7. Deep Dive: Practicing DMN</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="07-learn-dmn.html#java-dmn">Use the power of Java in DMN</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="07-learn-dmn.html#party-lab">The Party Challenge</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Get started with Process Automation</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="06-build-process-service.html">6. Build a Process Service</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="06-build-process-service.html#project-process">Creating a new process project based on Kogito and Quarkus</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="06-build-process-service.html#design-process">Design the Order Approval process </a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Get started with business rules (DRL)</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#create-project">Creating a new rules project based on Kogito and Quarkus</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#running-project">Running the Application</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#create-model">Creating the Domain Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="#create-rules">Developing rules with Rule Units</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="#create-unit">Create a PersonUnit</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="#create-rules2">Enhancing the rules</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#running-project2">Running the application</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#variables-project">Using with variables in Rule Units</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#access-project">Final tests</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Cloud Native Business Automation</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Cloud Native Business Automation</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Cloud Native Business Automation</a></li>
+    <li>Get started with business rules (DRL)</li>
+    <li><a href="#create-project">Creating a new rules project based on Kogito and Quarkus</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/redhat-scholars/cloud-native-business-automation/edit/master/documentation/modules/ROOT/pages/08-learn-drl.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Getting started with Business Rules  (Drools Rule Language)</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this exercise you will build a decision microservice which determines whether a person is an adult. To implement this service you will use Kogito and Quarkus, and develop these rules using DRL (Drools Rule Language), the <em>rule unit</em> API and the <em>OOPath</em> rule syntax.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s get started.</p>
+</div>
+<div class="paragraph">
+<p><strong>Pre-requisites</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Visual Studio Code</p>
+</li>
+<li>
+<p>JDK 11+</p>
+</li>
+<li>
+<p>Maven 3.6.3+</p>
+</li>
+<li>
+<p>cURL (or another client/tool with which RESTful requests can be sent to the Kogito application)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="create-project"><a class="anchor" href="#create-project"></a>Create the service project</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this step, you will create a Kogito application skeleton with Quarkus as the execution runtime.</p>
+</div>
+<div class="paragraph">
+<p>The easiest way to create a new Kogito service is to use Maven archetype, as you can see in the command below:</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">mvn io.quarkus:quarkus-maven-plugin:1.11.7.Final-redhat-00009:create \
+    -DplatformGroupId=com.redhat.quarkus \
+    -DplatformVersion=1.11.7.Final-redhat-00009 \
+    -DprojectGroupId=org.acme \
+    -DprojectArtifactId=adult-service \
+    -Dextensions="kogito-quarkus-rules,quarkus-smallrye-openapi,quarkus-smallrye-health"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will use the Quarkus Maven Archetype and generate a basic Maven project for you in the <code>adult-service</code> subdirectory. The project consists of:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The Maven structure.</p>
+</li>
+<li>
+<p>An OpenAPI Swagger-UI at <code><a href="http://localhost:8080/q/swagger-ui" class="bare">http://localhost:8080/q/swagger-ui</a></code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Once the project is generated, open the project in Visual Studio Code:</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ cd adult-service
+$ code .</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="running-project"><a class="anchor" href="#running-project"></a>Running the Application</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We will now run the Kogito application in development mode. This allows us to keep the application running while implementing our application logic.
+Kogito and Quarkus will <em>hot reload</em> the application when it is accessed and changes have been detected.</p>
+</div>
+<div class="paragraph">
+<p>Go back to your terminal (or open the integrated terminal in Visual Studio Code).</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/drl/vscode-integrated-terminal.png" alt="VSCode POM" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>Make sure that you&#8217;re in the root directory of the <code>adult-service</code> project (the directory containing the <code>pom.xml</code> file).
+We are ready to run our application. Run the following command to start the application in Quarkus development mode:</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ mvn clean compile quarkus:dev</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When the application has started, you can access the <a href="http://localhost:8080/q/swagger-ui">Swagger UI</a></p>
+</div>
+<div class="paragraph">
+<p>You should be able to see the following page:</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/drl/new-kogito-quarkus-empty-swagger-ui.png" alt="Empty Swagger UI" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>It&#8217;s working!</p>
+</div>
+<div class="paragraph">
+<p>You can now stop the application with <code>CTRL-C</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Congratulations!</strong></p>
+</div>
+<div class="paragraph">
+<p>You&#8217;ve seen how to create the skeleton of basic Kogito app, and start the application in <em>Quarkus dev-mode</em>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="create-model"><a class="anchor" href="#create-model"></a>Creating the Domain Model</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In the previous step we&#8217;ve created a skeleton Kogito application with Quarkus and started the application in <em>Quarkus dev-mode</em>. In this step we create the domain model of our application.</p>
+</div>
+<div class="paragraph">
+<p><strong>Facts</strong></p>
+</div>
+<div class="paragraph">
+<p>A (business) rules and/or decision service operates on entities called <em>facts</em>. <em>Facts</em> is data over which a rules engine reasons and to which it applies its constraints. In Kogito, facts are implemented as POJOs (Plain Old Java Objects).</p>
+</div>
+<div class="paragraph">
+<p>Our <em>adult service</em> determines if a <em>person</em> is an adult based on his age.</p>
+</div>
+<div class="paragraph">
+<p>From this description of our application, we can infer the <em>fact</em>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Person: which has a name, an age, and a boolean that states whether he/she is an adult.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Person</strong></p>
+</div>
+<div class="paragraph">
+<p>We first implement the <code>Person</code> class. To do this, we first need to create a new package in our project.</p>
+</div>
+<div class="paragraph">
+<p>In your Visual Studio Code IDE, open the <code>src/main/java/org/acme</code> folder of the project, and create the folder <code>domain</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/drl/vscode-create-domain-package.png" alt="Create domain package">
+</div>
+</div>
+<div class="paragraph">
+<p>In the package <code>src/main/java/org/acme/domain</code> create a new <code>Person.java</code> file.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/drl/vscode-create-person-java.png" alt="Create Person.java">
+</div>
+</div>
+<div class="paragraph">
+<p>Implement this class as follows:</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package org.acme.domain;
+
+public class Person {
+
+    private String name;
+
+    private int age;
+
+    private boolean adult;
+
+    public Person() {
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public boolean isAdult() {
+        return adult;
+    }
+
+    public void setAdult(boolean adult) {
+        this.adult = adult;
+    }
+
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Congratulations!</strong></p>
+</div>
+<div class="paragraph">
+<p>You&#8217;ve implemented the domain model of your Kogito business rules project. In the next step, we will implement the <em>RuleUnit</em> of our application.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="create-rules"><a class="anchor" href="#create-rules"></a>Developing rules with Rule Units</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><em>Rule Units</em> are groups of data sources, global variables, and DRL rules that function together for a specific purpose.
+You can use rule units to partition a rule set into smaller units, bind different data sources to those units, and then execute the individual unit.</p>
+</div>
+<div class="sect2">
+<h3 id="create-unit"><a class="anchor" href="#create-unit"></a>Create a PersonUnit</h3>
+<div class="paragraph">
+<p>We first implement the skeleton of our <code>PersonUnit</code> class.
+To do this, we first create a new <code>PersonUnit.java</code> file in the <code>org.acme</code> package in <code>src/main/java</code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/drl/vscode-new-personunit-java.png" alt="PersonUnit Java">
+</div>
+</div>
+<div class="paragraph">
+<p>Implement this new <code>PersonUnit</code> class as follows:</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package org.acme;
+
+import org.acme.domain.Person;
+import org.kie.kogito.rules.DataSource;
+import org.kie.kogito.rules.DataStore;
+import org.kie.kogito.rules.RuleUnitData;
+
+public class PersonUnit implements RuleUnitData {
+
+//Add Person DataStore here
+
+//Add adultAge variable here
+
+    public PersonUnit() {
+
+    }
+
+//Add DataStore Getters and Setters here
+
+//Add adultAge Getters and Setters here
+
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Notice that the class is not fully implemented yet. We will add the additional logic now.</p>
+</div>
+<div class="paragraph">
+<p>We now need to create our <code>DataSource</code> for our <code>Person</code> facts. A <code>DataSource</code> provides us with a typed API to add <em>facts</em> to our unit.
+Kogito provides a number of different <code>DataSources</code> types, for example a <code>DataStore</code>, which allows users to insert, update and remove facts, and a <code>DataStream</code> that only allows to append facts to a stream.</p>
+</div>
+<div class="paragraph">
+<p>In this example we will be using the <code>DataStore</code> implementation for our <code>Person</code> facts.
+We therefore add a private <code>DataStore</code> variable to our rule unit. We use the <code>DataSource</code> factory class to create a new <code>DataStore</code> instance and assign it to the variable.
+Add the following code snippet to the <code>PersonUnit.java</code> class, at the place of the <code>//Add Person DataStore here</code> comment:</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">  private DataStore&lt;Person&gt; persons = DataSource.createStore();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We also create the <em>getters and setters</em> for our store.
+Add the following code snippet to the <code>PersonUnit.java</code> class, at the place of the <code>//Add DataStore Getters and Setters here</code> comment:</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">  public DataStore&lt;Person&gt; getPersons() {
+      return persons;
+  }
+
+  public void setPersons(DataStore&lt;Person&gt; persons) {
+      this.persons = persons;
+  }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>That&#8217;s it for now. We will implement some additional functionality to this unit later in this lab.</p>
+</div>
+<div class="paragraph">
+<p><strong>Congratulations!</strong></p>
+</div>
+<div class="paragraph">
+<p>In this step you&#8217;ve implemented your first <em>Rule Unit</em>. Well done! In the next step we will implement the rules and queries of our rule unit.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="create-rules2"><a class="anchor" href="#create-rules2"></a>Enhancing the rules</h3>
+<div class="paragraph">
+<p>The rules of our rule unit will be implemented in DRL, the Drools Rule Language.
+DRL is a declarative language in which advanced rules can be defined and implemented, using constructs like rules, functions and queries.</p>
+</div>
+<div class="paragraph">
+<p><strong>PersonUnit DRL</strong></p>
+</div>
+<div class="paragraph">
+<p>We first implement the skeleton of our <code>PersonUnit.drl</code> file in the <code>src/main/resources</code> directory of our project.</p>
+</div>
+<div class="paragraph">
+<p>First we create the proper package in our <code>src/main/resources</code> folder. In VSCode, add the directory <code>org/acme</code> to your <code>src/main/resources</code> folder.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/drl/vscode-new-resources-package.png" alt="New resources package">
+</div>
+</div>
+<div class="paragraph">
+<p>Next, we create the DRL file by clicking. Add a new file with the name <code>PersonUnit.drl</code> to the <code>org.acme</code> package in the <code>src/main/resources</code> folder of your project.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/drl/vscode-new-person-unit-drl.png" alt="New Person Unit">
+</div>
+</div>
+<div class="paragraph">
+<p>Implement this DRL file as follows:</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-drl hljs" data-lang="drl">package org.acme;
+//Unit definition
+
+import org.acme.domain.Person;
+
+rule "Is Adult"
+when
+//Person OOPath
+then
+//Set adult
+end
+
+query "adult"
+//Adult query
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We first need to define that this <code>PersonUnit.drl</code> is connected to our <code>PersonUnit</code>. We do this through <code>unit</code> definition under the <code>package</code> definition at the top of the DRL file:
+Add the following DRL snippet to the <code>PersonUnit.drl</code> file, at the place of the <code>//Unit definition</code> comment:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>unit PersonUnit;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Next, we implement the constraint, or left-hand-side of our rule. We will do this in the <em>OOPath</em> syntax. <em>OOPath</em> allows us to write constraints in an XPath-like syntax, allowing users to more easily navigate object hierarchies when writing rules.
+Also, it allows us to easily define constraints using the rule unit <code>DataSource</code> paradigm.</p>
+</div>
+<div class="paragraph">
+<p>The following constraint matches <code>Person</code> facts from the <code>persons</code> datastore of our unit, who&#8217;s age is equal to, or greater than 18.
+Add this snippet to the DRL file, at the place of the <code>//Person OOPath</code> comment.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>  $p: /persons[age &gt;= 18];</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We can now implement the consequence of our rule, or the right-hand-side (RHS).
+This the action that will be executed when the rule fires. In our case we want to set the person&#8217;s <code>adult</code> field to true when the rule fires.
+Add this snippet to the DRL file, at the place of the <code>//Set adult</code> comment.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>  $p.setAdult(true);</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The next thing we need to do for our Kogito application is a query. The query in a unit&#8217;s DRL, in combination with the rule unit definition, is used by the Kogito code generator to automatically generate the RESTful endpoint for our application.
+In this query, we simply want to return all the facts from our <code>persons</code> datastore.
+Add this snippet to the DRL file, at the place of the <code>//Adult query</code> comment.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>  $p: /persons;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This completes the initial implementation of our DRL.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="running-project2"><a class="anchor" href="#running-project2"></a>Running the application</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>With our domain model, rule unit and rules implemented, we can now start our application. In a terminal, execute the following Maven command.</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell script hljs" data-lang="shell script">$ mvn clean compile quarkus:dev</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We can inspect the generated RESTful endpoint in the <a href="http://localhost:8080/swagger-ui">Swagger-UI</a> of the application.</p>
+</div>
+<div class="paragraph">
+<p>We can now send a request to our generated RESTful endpoint using cURL:</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell script hljs" data-lang="shell script">$ curl -X POST "http://localhost:8080/adult" -H \
+"accept: application/json" -H "Content-Type: application/json" \
+-d "{\"persons\":[{\"age\":18,\"name\":\"Jason\"}]}"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You should see the following result, showing that Jason is an adult:</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[{"name":"Jason","age":18,"adult":true}]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Stop the application in the first terminal using <code>CTRL-C</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Congratulations</strong></p>
+</div>
+<div class="paragraph">
+<p>In this step you&#8217;ve implemented your first Kogito rules and queries. You&#8217;ve seen how Kogito automatically generates the RESTful microservice for you using your business assets, like your rule unit and rules definitions. Finally, we&#8217;ve started our application in Quarkus dev-mode, and fired a request.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="variables-project"><a class="anchor" href="#variables-project"></a>Working with variables in Rule Units</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Apart from using <code>DataSources</code> in our rule units to insert, update and delete facts, we can also define variables in our unit that can be used in our rules.
+In this use-case we will add an <code>adultAge</code> variable to our unit, which allows us to send the age at which a person is considered an adult in our request, and using that age in our rules.</p>
+</div>
+<div class="paragraph">
+<p><strong>PersonUnit DRL</strong></p>
+</div>
+<div class="paragraph">
+<p>First, we add a new <code>adultAge</code> variable to our <code>PersonUnit</code> class. Open the <code>PersonUnit.java</code> file and add the following code snippet at the <code>//Add adultAge variable here</code> comment.</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">  private int adultAge;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We also add the <em>getters and setters</em>. Add these at the <code>//Add adultAge Getters and Setters here</code> comment in the <code>PersonUnit.java</code> class.</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">  public int getAdultAge() {
+      return adultAge;
+  }
+
+  public void setAdultAge(int adultAge) {
+      this.adultAge = adultAge;
+  }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>With our variable implemented, we can now use this variable in our rules. Open the <code>PersonUnit.drl</code> file,
+and replace the constaint of the rule (<code>$p: /persons[age &gt;= 18];</code>) with the following constraint, which replaces the hardcoded age <code>18</code> with our variable:</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">  $p: /persons[age &gt;= adultAge];</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We&#8217;ve now added the functionality we want, so we can start our application again. Execute the following Maven command in a terminal:</p>
+</div>
+<div class="paragraph">
+<p><code>$ mvn clean compile quarkus:dev</code></p>
+</div>
+<div class="paragraph">
+<p>We can now hit the application with a request that contains our new <code>adultAge</code> variable:</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell script hljs" data-lang="shell script">$ curl -X POST "http://localhost:8080/adult" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"adultAge\": 21, \"persons\":[{\"age\":18,\"name\":\"Jason\"}]}"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will give you the following result:</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[{"name":"Jason","age":18,"adult":false}]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Notice that, because we have defined the <code>adultAge</code> to be 21, Jason is no longer considered an adult.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="access-project"><a class="anchor" href="#access-project"></a>OpenAPI Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A Kogito Quarkus application running in Quarkus dev-mode automatically exposes an OpenAPI specification of its RESTful resources through a Swagger-UI.
+You can open this Swagger-UI <a href="http://localhost:8080/q/swagger-ui">using this link</a>.</p>
+</div>
+<div class="paragraph">
+<p>Open the <strong>POST /adult</strong> RESTful endpoint. Note that a fully typed API is generated for you, based on your business assets like your rule units and rules.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/drl/kogito-adult-post-api.png" alt="Kogito Adult Service POST API">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Congratulations</strong></p>
+</div>
+<div class="paragraph">
+<p>You have added a variable to your rule unit and used it in your rules. You&#8217;ve also experienced the power of live/hot reload of Kogito, providing extremely fast roundtrip times.</p>
+</div>
+<div class="paragraph">
+<p>In this lab, you&#8217;ve learned how to implement business rules using <em>Rule Units</em> in Kogito.
+We&#8217;ve seen how Kogito generates a RESTful microservice from business assets, like your rule unit and rules.
+We&#8217;ve experienced the power of Kogito hot-reload when changing rules.</p>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="06-build-process-service.html">6. Build a Process Service</a></span>
+</nav>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <a class="rhd-logo" href="https://developers.redhat.com" target="_blank"></div>
+</footer>
+<script src="../_/js/vendor/clipboard.js"></script>
+<script src="../_/js/site.js"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
