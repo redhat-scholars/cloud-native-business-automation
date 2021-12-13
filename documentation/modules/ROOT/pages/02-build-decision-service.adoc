@@ -279,7 +279,7 @@ image on macOS, the target operating system is macOS. Hence, an
 executable built on macOS will not run on a Linux platform. If you need
 to build native Linux binaries when on other OS’s like Windows or macOS,
 you can use `-Dquarkus.native.container-runtime=[podman | docker]`.
-You’ll need either Docker or [Podman](https://podman.io) installed
+You’ll need either Docker or link:https://podman.io[Podman] installed
 depending on which container runtime you want to use!
 
 The native compilation will take a couple of minutes to finish. Wait for
