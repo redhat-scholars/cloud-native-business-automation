@@ -34,19 +34,6 @@ Here is an overview of the guided exercises:
 
 Let's get started by preparing your development environment.
 
-[.tiles.browse]
-== Browse modules
 
-[.tile]
-.xref:01-setup.adoc[Get Started]
-* xref:01-setup.adoc#minikube[Minikube]
-
-[.tile]
-.xref:02-deploy.adoc[Deploying]
-* xref:02-deploy.adoc#package[Package the Application]
-* xref:02-deploy.adoc#deploy[Deploy the Application]
-
-[.tile]
-.xref:09-build-process-service.adoc
 
 
