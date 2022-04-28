@@ -94,7 +94,9 @@ GraalVM is a Java VM and JDK based on HotSpot/OpenJDK, implemented in Java. It s
 
 Most of the exercises in this guide's lab can be done on OpenJDK or Oracle Hotspot. Although if you want to try compiling the application into a *native executable*,  you will need GraalVM or Mandrel.
 
-Download GraalVM Community 20.3.2 Java 11 (`graalvm-ce-java11`) from [the following website](https://www.graalvm.org/downloads/) for your operating system, and follow the [installation instructions](https://www.graalvm.org/docs/getting-started/#install-graalvm) for your operating system.
+Download GraalVM Community 22.0.0.2 Java *11* (`graalvm-ce-java11`) from [the following website](https://github.com/graalvm/graalvm-ce-builds/releases/tag/vm-22.0.0.2) for your operating system, and follow the [installation instructions](https://www.graalvm.org/docs/getting-started/#install-graalvm) for your operating system.
+
+You can look for the files graalvm-ce-java11-*-22.0.0.2.tar.gz matching your OS.
 
 You don’t need the `ruby`, `r`, `python` and `wasm` packages. You only need the `native-image` package.
 

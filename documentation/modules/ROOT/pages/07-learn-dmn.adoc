@@ -25,9 +25,9 @@ The first step is to create a project to contain your decisions. Let's use Kogit
 [.console-input]
 [source,shell]
 ----
-$ mvn io.quarkus:quarkus-maven-plugin:1.11.7.Final-redhat-00009:create \
-    -DplatformGroupId=com.redhat.quarkus \
-    -DplatformVersion=1.11.7.Final-redhat-00009 \
+$ mvn io.quarkus:quarkus-maven-plugin:2.2.5.Final-redhat-00010:create \
+    -DplatformGroupId=io.quarkus \
+    -DplatformVersion=2.2.5.Final-redhat-00010 \
     -DprojectGroupId=org.acme \
     -DprojectArtifactId=practicing-dmn \
     -Dextensions="kogito-quarkus-decisions,quarkus-smallrye-openapi" \

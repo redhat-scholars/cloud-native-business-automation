@@ -4,7 +4,7 @@ include::_attributes.adoc[]
 In this lab you are going to create a new decision logic from scratch.
 The main goal is to learn how to build a decision logic taking advantage of the powerful DMN notation.
 
-Before proceeding, you should review the following tutorials to get a first introduction to the DMN basis:
+Before proceeding, you can also review the following tutorials to get a first introduction to the DMN basis:
 
 https://learn-dmn-in-15-minutes.com/[Learn DMN in 15 minutes]
 

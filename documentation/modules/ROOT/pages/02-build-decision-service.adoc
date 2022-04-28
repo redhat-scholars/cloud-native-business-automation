@@ -23,12 +23,10 @@ command. Maven will create a new project with the name `decision-lab01`.
 [.console-input]
 [source,shell]
 ----
-$ mvn archetype:generate \
--DarchetypeGroupId=org.kie.kogito \
--DarchetypeArtifactId=kogito-quarkus-dm-archetype \
--DgroupId=org.acme -DartifactId=decision-lab01 \
--DarchetypeVersion=1.5.0.redhat-00004 \
--Dversion=1.0-SNAPSHOT
+$ mvn io.quarkus.platform:quarkus-maven-plugin:2.2.3.Final:create \
+-DprojectGroupId=org.acme \
+-DprojectArtifactId=adecision-lab01 \
+-Dextensions="kogito-quarkus-decisions,quarkus-smallrye-openapi,quarkus-resteasy-jackson" 
 ----
 
 [#examine]
@@ -49,10 +47,9 @@ image:vscode-project-decision-lab01.png[Project structure in VSCode,600,align=ce
 
 Notice that:
 
-* There is a DMN sample, `Traffic Violation.dmn`. This decision
-determines if a Driver should be suspended based on the violation and
-fine applied.
-* There is a jUnit test `TrafficViolationTest.java`. This jUnit tests
+* There is a DMN sample, `pricing.dmn`. This decision
+determines a base price quotation based on criterias like age and occurrence of previous incidents.
+* There is a jUnit test `PricingTest.java`. This jUnit tests
 the REST endpoint that is generated automatically by Kogito. Further on
 the lab, we will work with the Test Scenario, a graphical tool that
 allows users to unit test the decision model.
@@ -64,7 +61,7 @@ It’s time to try out this project. To make things easier, you can use
 the Integrated Terminal feature in VSCode.
 
 . Open the integrated terminal in VSCode by by pressing `__cmd+shift+p__` or `__ctrl+shift+p__`
-. Then, search for *Integrated Terminal* and select it. See below:
+. Then, search for *New Terminal* and select it. See below:
 
 image:integrated-terminal-vscode.png[600,align=center]
 
@@ -84,30 +81,18 @@ $ mvn quarkus:dev
 . Open your browser and access http://localhost:8080/q/swagger-ui/
 . You should see three REST endpoints that were automatically generated
 by Kogito.
-. Select the *POST* request for *Traffic Violation* and click on the
-``**Try it out**'' button.
+. Select the *POST* request for *pricing* and click on the
+**Try it out** button.
 . You can use the following JSON as the Request Input to validate the
 decision about if the driver should be suspended or not:
 +
 [.console-input]
 [source,json]
 ....
-{
-    "Driver": {
-      "Age": 25,
-      "Points": 13
-    },
-    "Violation": {
-      "Type": "speed",
-      "Actual Speed": 115,
-      "Speed Limit": 100
-    }
-}
+{ "Age": 47, "Previous incidents?": false }
 ....
 
-The output should show not only the final decision _``Should the driver
-be suspended?''_ but also the decision made for the _``Fine''_ decision
-node.
+The output should show the final decision _Base Price_ but also the values of the input nodes. If there were more decisions made in this processing, the outputs would also be outputed as a result.
 
 image:first-response-decision-service.png[800]
 
@@ -115,29 +100,30 @@ image:first-response-decision-service.png[800]
 == Updating the Decision
 
 When using the Kogito extension with Quarkus, you can also take
-advantadge of the hot reload features during the development of your
+advantage of the hot reload features during the development of your
 decision. Let’s give it a try.
+
 
 [arabic]
 . Still with the server running go back to the decision project in
 VSCode.
-. Open the `Traffic Violation.dmn` decision file, and select the
-_``Should the driver be suspended?''_ node. Click on the edit button.
+. Open the `pricing.dmn` decision file, and select the
+_``Base Price''_ node. Click on the edit button.
 +
-image:edit-traffic-violation-dmn.png[600]
-. Now, let’s make the threshold 16 instead of 20. On the result literal
-expression, change:
-* From: `If Total Points >= 20 then "Yes" else "No"`
-* ​ To: `If Total Points >= 16 then "Yes" else "No"`
+image:edit-pricing-dmn.png[600]
+
+Now, let’s change our business rule where the base price for people over 21 and without previous incidents should cost 400 instead of 500. 
+
+. On the literal expression, change the number to 400.
+image:edit-pricing-value-dmn.png[600]
+
 . Save the DMN file.
-. Go back to your browser, and click on ``Execute'' to execute the exact
+. Go back to your browser, and click on "Execute" to execute the exact
 same request.
 . Check the response and confirm that differently than the first
-decision, the decision is that the driver should be suspended.
-+
-image:second-response-traffic-violation.png[800]
+decision, the cost for the insurance is now 400.
 
-'''''
+**Before moving forward**, remember to also update the unit test `src/test/java/org/acme/*PricingTest.java*` to match the new value of 400, or to revert the value back to 500 so it matches the unit tests.
 
 Awesome! We’ve implemented our first DMN decision service in Kogito,
 used the hot/live reload capabilities of Quarkus, and we’ve seen how
@@ -164,12 +150,12 @@ application:
 $ mvn clean package
 ....
 
-It produces 2 jar files:
+It produces 2 jar files in the `target` directory:
 
 * `decision-lab01-1.0-SNAPSHOT.jar` - containing just the classes and
 resources of the projects, it’s the regular artifact produced by the
 Maven build.
-* `decision-lab01-1.0-SNAPSHOT-runner.jar` - being an executable jar. Be
+* `target/quarkus-app/quarkus-run.jar` - being an executable jar. Be
 aware that it’s not an über-jar as the dependencies are copied into the
 `target/lib` directory.
 
@@ -179,7 +165,7 @@ terminal:
 [.console-input]
 [source,shell]
 ....
-ls -l target/lib/*.jar
+ls -l target/quarkus-app/lib/main/*.jar
 ....
 
 === Running the executable JAR
@@ -190,29 +176,19 @@ in a terminal:
 [.console-input]
 [source,shell]
 ....
-$ java -jar target/decision-lab01-1.0-SNAPSHOT-runner.jar
+$ java -jar target/quarkus-app/quarkus-run.jar
 ....
 
 To test the application, you can use the Swagger UI we used previously
 by opening your browser, accessing http://localhost:8080/q/swagger-ui/.
-You can use the *POST* request for *Traffic Violation* and click on the
+You can use the *POST* request for *pricing* and click on the
 `__Try it out__` button. You can use the same JSON as the Request
 Input to validate the server response:
 
 [.console-input]
 [source,json]
 ....
-{
-    "Driver": {
-      "Age": 25,
-      "Points": 13
-    },
-    "Violation": {
-      "Type": "speed",
-      "Actual Speed": 115,
-      "Speed Limit": 100
-    }
-}
+{ "Age": 47, "Previous incidents?": false }
 ....
 
 TIP: When we’re not running in `mvn quarkus:dev` mode, the Swagger UI

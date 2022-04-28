@@ -1,15 +1,32 @@
-= Run the Decision Service in Cloud
+= Run the Decision Service in the Cloud
 
 [#deploy]
 == Deploy the decision in OpenShift
 
 [arabic]
-. *Login* in your OCP cluster and *create* a new project
+. Using your terminal, *login* in your OCP cluster. 
+. *Access your existing project*. _(replace "your-project-name" with the name of the existing project)_:
++
+[.console-input]
+[source,shell]
+....
+oc project your-project-name
+....
+
+.. Or if you don't have a project yet, *create* one:
 +
 [.console-input]
 [source,shell]
 ....
 oc new-project decision-lab01
+....
+
+. On the terminal, confirm that you are in the directory of the decision service you want to deploy. If you've done the previous lab you can access:
++
+[.console-input]
+[source,shell]
+....
+cd ~/enablement/decision-lab01
 ....
 . *Build* the _Quarkus Uberjar_
 +
@@ -23,33 +40,38 @@ mvn clean package -Dquarkus.package.type=uber-jar -DskipTests
 [.console-input]
 [source,shell]
 ....
-oc new-build registry.access.redhat.com/openjdk/openjdk-11-rhel7:latest --binary --name=discount -l app=discount
-oc start-build discount --from-file target/*-runner.jar --follow
+oc new-build registry.access.redhat.com/openjdk/openjdk-11-rhel7:latest --binary --name=base-price -l app=base-price
+oc start-build base-price --from-file target/*-runner.jar --follow
 ....
 +
 Optionally, check that the _ImageStreams_ are correctly created:
 +
+[.console-input]
+[source,shell]
+....
+oc get is
+....
++
 [.console-output]
 [source,shell]
 ....
-$ oc get is
-NAME               IMAGE REPOSITORY                                                                                                        TAGS     UPDATED
-discount           default-route-openshift-image-registry.apps.cluster-972c.972c.sandbox1438.opentlc.com/decision-lab01/discount           latest   13 seconds ago
-openjdk-11-rhel7   default-route-openshift-image-registry.apps.cluster-972c.972c.sandbox1438.opentlc.com/decision-lab01/openjdk-11-rhel7   latest   About a minute ago
+NAME               IMAGE REPOSITORY                                                                                                         TAGS     UPDATED
+base-price         default-route-openshift-image-registry.apps.cluster-tgxrd.tgxrd.sandbox813.opentlc.com/decision-lab01/base-price         latest   33 seconds ago
+openjdk-11-rhel7   default-route-openshift-image-registry.apps.cluster-tgxrd.tgxrd.sandbox813.opentlc.com/decision-lab01/openjdk-11-rhel7   latest   39 minutes ago
 ....
 . *Create* the application:
 +
 [.console-input]
 [source,shell]
 ....
-oc new-app --name discount discount
+oc new-app --name base-price base-price
 ....
 . *Expose* the application (create a route)
 +
 [.console-input]
 [source,shell]
 ....
-oc expose svc/discount
+oc expose svc/base-price
 ....
 
 [#probe]
@@ -61,10 +83,9 @@ oc expose svc/discount
 [.console-input]
 [source,shell]
 ....
-oc get route discount -o jsonpath='{.spec.host}'
+oc get route base-price -o jsonpath='{.spec.host}'
 ....
-. *Open* the file `dmn-test.http` and *update* the `URL` variable with
-the result of the previous command.
+. If you are using the VSCode REST Client extension, you can update the url in your `.http` file to send requests to the URL result of the previous command.
 . *Trigger* the REST call through *Send Request* link (right above the
 `POST` line)
 . *Check* that the service reply
@@ -75,12 +96,12 @@ TIP: *Alternatively,* through the `curl` command:
 [source,shell]
 ....
 export URL=<your url>
-curl --request POST \
-  --url $URL \
-  --header 'accept: application/json' \
-  --header 'content-type: application/json' \
-  --header 'user-agent: vscode-restclient' \
-  --data '{"Cart": [{"category": "electronics","price": 80},{"category": "food","price": 20}]}'
+curl --location --request POST $URL/pricing \
+--header 'Content-Type: application/json' \
+--data-raw '{ 
+    "Age": 47, 
+    "Previous incidents?": false    
+}'
 ....
 
 [#clean]
@@ -90,4 +111,4 @@ Optionally, if you want to remove everything:
 
 [.console-input]
 [source,shell]
-oc delete all -l app=discount
+oc delete all -l app=base-price 
