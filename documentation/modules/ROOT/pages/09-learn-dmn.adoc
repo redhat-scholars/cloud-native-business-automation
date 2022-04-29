@@ -5,5 +5,14 @@ This is a series of guided exercises that will allow you to experiment the autho
 This section contains exercises to help those who seek to improve their knowledge on decision modeling - from beginners to advanced developers. The exercises are of two types:
 
 * **Guided exercises**: step by step detailed exercises;  
-* **Challenges**: a problem to be solved. The reader is given hints, but he/she is the one in charge of thinking about how to implement the solution. 
+* **Challenges**: a problem to be solved. The reader is given hints, but he/she is the one in charge of thinking about how to implement the solution.
 
+In this section: 
+
+*** xref:10-guided-dmn.adoc[Guided exercises]
+**** xref:10-1-vacation-lab.adoc[Vacation Days]
+**** xref:10-2-call-center.adoc[Call Center]
+*** xref:04-build-decision-service-logic.adoc[Challenges]
+**** xref:04-build-decision-service-logic.adoc[Cart Discount]
+**** xref:07-learn-dmn.adoc#java-dmn[The power of Java in DMN]
+**** xref:07-learn-dmn.adoc#party-lab[The Party Challenge]

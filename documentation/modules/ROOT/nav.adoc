@@ -11,7 +11,7 @@
 *** xref:02-build-decision-service.adoc#updating[Updating the Decision]
 *** xref:02-build-decision-service.adoc#packaging[Packaging and running the application]
 
-** xref:03-run-decision-service.adoc[3. Running a Decision Service in the cloud Cloud]
+** xref:03-run-decision-service.adoc[3. Running a Decision Service in the Cloud]
 *** xref:03-run-decision-service.adoc#deploy[Deploy the decision in OpenShift]
 *** xref:03-run-decision-service.adoc#probe[Probe the decision]
 *** xref:03-run-decision-service.adoc#clean[Clean up your environment]
@@ -26,6 +26,7 @@
 ** xref:09-learn-dmn.adoc[5. Enhance your DMN skills]
 *** xref:10-guided-dmn.adoc[Guided exercises]
 **** xref:10-1-vacation-lab.adoc[Vacation Days]
+**** xref:10-2-call-center.adoc[Call Center]
 *** xref:04-build-decision-service-logic.adoc[Challenges]
 **** xref:04-build-decision-service-logic.adoc[Cart Discount]
 **** xref:07-learn-dmn.adoc#java-dmn[The power of Java in DMN]

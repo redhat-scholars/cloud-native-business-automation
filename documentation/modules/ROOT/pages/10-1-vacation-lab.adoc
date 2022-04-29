@@ -26,7 +26,7 @@ In this lab we will create a decision that determines the number of vacation day
 To work in the decision model, we'll use the KIE Sandbox DMN editor. 
 1. In your browser, navigate to http://dmn.new/
 
-1.  Click on the **Untitle** tile to define the DMN model name. Give it the name `vacation-days`. This will create the asset and open the DMN editor.
+1.  Click on the **Untitled** tile to define the DMN model name. Give it the name `vacation-days`. This will create the asset and open the DMN editor.
 
 image::dmn-guided-exercises/dmn-model-title.png[width="600px"]
 
@@ -137,7 +137,7 @@ image::dmn-guided-exercises/decision-table-case-2.png[width="600px"]
 * Case 3:
 +
 image::dmn-guided-exercises/decision-table-case-3.png[width="600px"]
-+
+
 
 ## 4.4. Total Vacation Days
 
@@ -163,7 +163,7 @@ image::dmn-guided-exercises/drd-complete.png[width="600px"]
 +
 image::dmn-guided-exercises/total-vacation-days-expression.png[width="600px"]
 
-## Deploy your decision
+## Deploy and test your decision
 
 You can test your decision using the KIE Extended services with KIE Sandbox "run" option or you can deploy it on OpenShift. You can also create a new kogito project with quarkus using maven locally and add your decision to it.
 
