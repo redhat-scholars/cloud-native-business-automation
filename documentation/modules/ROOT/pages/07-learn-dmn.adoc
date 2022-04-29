@@ -1,4 +1,4 @@
-= Practicing Decision Modeling with DMN
+## Decision Modeling with DMN
 
 This section brings labs to help you get familiar with decision automation using the DMN standard and FEEL expression language.
 
@@ -12,6 +12,12 @@ NOTE: Some exercises were inspired by examples in the book https://www.amazon.co
 DMN supports business-level users to author most of the decision diagram and its core logic. One of this specification strengths is that it is not restricted to a single persona, instead, since it supports the cooperation also with technical teams. An example of a common practice is the usage of decoupled logic and reusable functions where the analyst delegates, when necessary, partial logic implementation to a developer, by for example, leveraging BKM to do an operation.
 
 *FEEL* (Friendly enough expression language) brings several operations to support the logic implementation. On the other hand, we also have available the extensive options available in Java classes to support logic execution. In this lab, you will practice how to use the BKM node along with the power of Java classes and its methods to support DMN Decisions.
+
+You'll start by creating a basic DMN and some unit tests. The goal can be achieved achieved in different ways, but for the purpose of this exercise, you should create the actual logic by using a method in the Java String class.
+
+=== *Goals* 
+
+Your decision should be able to receive a list of strings and return a concatenated single String separated by comma ",".The decision output should be a unique string containing every string from the list separated by a comma (e.g. ["John Doe","Ash"]) results in "John Doe, Ash").
 
 === Creating the project
 

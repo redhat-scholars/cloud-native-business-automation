@@ -1,4 +1,4 @@
-# Enhance your DMN skills
+## Enhance your DMN skills
 
 This is a series of guided exercises that will allow you to experiment the authoring of decisions using Decision Model and Notation - DMN. 
 

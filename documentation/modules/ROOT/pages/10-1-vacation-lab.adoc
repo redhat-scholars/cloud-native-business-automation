@@ -1,4 +1,4 @@
-# 3. Vacation Days 
+## Vacation Days 
 
 In this lab you'll try out the combination of DMN decision tables with literal expressions. You will also explore a number of different FEEL constructs and expressions like, for example, ranges. Finally, you'll learn how to use the KIE Java Client to consume decisions.
 
