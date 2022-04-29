@@ -1,0 +1,9 @@
+# Enhance your DMN skills
+
+This is a series of guided exercises that will allow you to experiment the authoring of decisions using Decision Model and Notation - DMN. 
+
+This section contains exercises to help those who seek to improve their knowledge on decision modeling - from beginners to advanced developers. The exercises are of two types:
+
+* **Guided exercises**: step by step detailed exercises;  
+* **Challenges**: a problem to be solved. The reader is given hints, but he/she is the one in charge of thinking about how to implement the solution. 
+

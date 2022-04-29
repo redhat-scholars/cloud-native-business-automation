@@ -23,9 +23,9 @@ command. Maven will create a new project with the name `decision-lab01`.
 [.console-input]
 [source,shell]
 ----
-$ mvn io.quarkus.platform:quarkus-maven-plugin:2.2.3.Final:create \
+mvn io.quarkus.platform:quarkus-maven-plugin:2.8.2.Final:create \
 -DprojectGroupId=org.acme \
--DprojectArtifactId=adecision-lab01 \
+-DprojectArtifactId=decision-lab01 \
 -Dextensions="kogito-quarkus-decisions,quarkus-smallrye-openapi,quarkus-resteasy-jackson" 
 ----
 

@@ -21,18 +21,17 @@ It is designed from ground up to run at scale on cloud infrastructure. If you th
 
 In {v711}, Red Hat introduced a first subset of **Kogito capabilities** to enable the decision services: **DMN, Rules, Event Driven Decisions**.
 
-== Practising Kogito
+== Practicing Kogito
 
-This is **a series of guided exercises** that will allow you to experiment the authoring of decisions and business rules using Kogito. You will work with decision authoring with _Kogito tooling_, along with the packaging and consumption of the decisions in the _Kogito engine_ that is supported in Red Hat Process Automation 7.11.x.
+This is **a series of guided exercises** that will allow you to experiment the authoring of decisions and business rules using Kogito. You will work with decision authoring with _Kogito tooling_, along with the packaging and consumption of the decisions in the _Kogito engine_ that is supported in https://www.redhat.com/en/products/process-automation[Red Hat Process Automation].
 
 Here is an overview of the guided exercises:
 
 - **Local development environment set-up**: get your development environment ready to go with VSCode and GraalVM.
 - **Local environment set-up for Kafka**: use docker to quickly start a Kafka environment in your local environment. The Kafka broker will be used in the event-driven lab. 
-- **Getting start with Kogito applications**: create a decision application using the Kogito Maven archetype, try out the business modeling tools in VSCode, experience hot reload of business assets during development and test your application using JVM and native compilation.
-- **Event-driven decision applications**: create a project from scratch and understand all that is needed to have your decisions reacting to events and publishing the results back through events and using the CloudEvents specification.
-
-Let's get started by preparing your development environment.
+- **Getting start with decision services**: Create a decision application based on Quarkus, try out the business modeling tools in VSCode, experience hot reload of business assets during development and test your application using JVM and native compilation. Understand all that is needed to have your decisions reacting to events and publishing the results back through events and using the https://cloudevents.io/[CloudEvents specification].
+- *Enhance your DMN skills*: This section contains exercises to help those who seek to improve their knowledge on decision modeling - from beginners to advanced developers. The exercises are of two types: _guided exercises_: step by step detailed exercises; and _challenges_: the reader is given the goals and solution hints, but he/she is the one in charge of thinking about how to implement the solution.
+- **Getting start with rules services (drl-based)**: learn how you can create business rules that are drl based using the new rule unit concept with Kogito and Quarkus.
 
 
 

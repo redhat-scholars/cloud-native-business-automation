@@ -49,14 +49,14 @@ are not needed when TLS communication is not enabled.
 [.console-input]
 [source,shell]
 ....
-$ cd ~/enablement
+cd ~/enablement
 ....
 . Clone the repository containing the docker files we need:
 +
 [.console-input]
 [source,shell]
 ....
-$ git clone https://github.com/hguerrero/amq-examples
+git clone https://github.com/hguerrero/amq-examples
 ....
 +
 The docker-compose file available in this quickstart should bootstrap
@@ -67,7 +67,7 @@ Kafka server v2.5.0, Apicurio Registry and a Kafka Bridge.
 [.console-input]
 [source,shell]
 ....
-$ cd amq-examples/strimzi-all-in-one/
+cd amq-examples/strimzi-all-in-one/
 ....
 . Start the Kafka environment:
 +
@@ -101,32 +101,40 @@ command. Maven will create a new project with the name
 [.console-input]
 [source,shell]
 ....
-$ mvn archetype:generate \
--DarchetypeGroupId=org.kie.kogito \
--DarchetypeArtifactId=kogito-quarkus-dm-archetype \
--DgroupId=org.acme -DartifactId=event-driven-decision-lab \
--DarchetypeVersion=1.5.0.redhat-00004 \
--Dversion=1.0-SNAPSHOT
+mvn io.quarkus.platform:quarkus-maven-plugin:2.2.3.Final:create \
+-DprojectGroupId=org.acme \
+-DprojectArtifactId=event-driven-decision-lab02 \
+-Dextensions="kogito-quarkus-decisions,quarkus-smallrye-openapi,quarkus-resteasy-jackson" 
 ....
 . Open the project in VSCode so we can start adding the required
 configurations. Notice that this project already brings a sample DMN
-`Traffic Violation.dmn`.
+`pricing.dmn`.
 +
 [.console-input]
 [source,shell]
 ....
-$ code event-driven-decision-lab/
+code event-driven-decision-lab02/
 ....
 +
-image:event-driven-lab-dmn.png[800]
 . In order to natively work with Kafka topics without the need of adding
-extra code we can use one of the Kogito Add Ons, the *Kogito Event
-Driven Decisions Add-on*. This add on allows our decision service to
+extra code we can use one of the Kogito add-ons, the *Kogito Event
+Driven Decisions Add-on*. This add-on allows our decision service to
 subscribe to Kafka topics, and trigger specific decisions based on the
 event inputs. It also allows our service to publish the result of the
-executed decisions to a Kafka topic. So, to get started, let’s add this
-extension to the service we’ve just created by adding it to the
-`pom.xml` file. _TIP: Since we are using the `kogito-quarkus-bom` Maven
+executed decisions to a Kafka topic. 
++
+The Kogito event driven add-ons uses SmallRye under the covers. So we
+also need to add this dependency to the project. Let’s add both extensions to the service we’ve just created.  You can either: 
++
+.. Add it using a maven command:
++
+[.console-input]
+[source,xml]
+....
+mvn quarkus:add-extension -Dextensions="kogito-addons-quarkus-events-decisions,quarkus-smallrye-reactive-messaging-kafka"
+....
++
+.. Or add it directly in the `pom.xml` file. _TIP: Since we are using the `kogito-quarkus-bom` Maven
 can infer the right version to use from the parent bom._
 +
 [.console-input]
@@ -134,17 +142,8 @@ can infer the right version to use from the parent bom._
 ....
 <dependency>
   <groupId>org.kie.kogito</groupId>
-  <artifactId>kogito-event-driven-decisions-quarkus-addon</artifactId>
+  <artifactId>kogito-addons-quarkus-events-decisions</artifactId>
 </dependency>
-....
-+
-image:kogito-events-addon-extension.pom.png[800]
-. The Kogito event driven add-ons uses SmallRye under the covers. So we
-also need to add this dependency to the project:
-+
-[.console-input]
-[source,xml]
-....
 <dependency>
    <groupId>io.quarkus</groupId>
    <artifactId>quarkus-smallrye-reactive-messaging-kafka</artifactId>
@@ -157,7 +156,7 @@ dependencies.
 [#config]
 == Configuring the Decision service
 
-Instead of creating a middle layer (``glue code'') in our app to
+Instead of creating a middle layer ("glue code") in our app to
 integrate our decision with Kafka topics, all we need to do is add the
 respective configurations to the `application.properties` file. In this
 lab we are using Quarkus, and under the hoods, our decision service will
@@ -181,6 +180,8 @@ and add the following configuration:
 [.console-input]
 [source,props]
 ....
+kafka.bootstrap.servers=localhost:9092
+
 mp.messaging.incoming.kogito_incoming_stream.group.id=dmn-event-driven-example
 mp.messaging.incoming.kogito_incoming_stream.connector=smallrye-kafka
 mp.messaging.incoming.kogito_incoming_stream.topic=dmn-event-driven-requests
@@ -238,7 +239,7 @@ Now, let’s test the application.
 [.console-input]
 [source,shell]
 ....
-$ mvn quarkus:dev
+mvn quarkus:dev
 ....
 +
 image:event-driven-ds-config.png[800]
@@ -284,7 +285,7 @@ kafka console publisher:
 [.console-input]
 [source,shell]
 ....
-$ docker exec kafka bin/kafka-console-producer.sh --topic dmn-event-driven-requests --bootstrap-server localhost:9092
+$ docker exec -it kafka bin/kafka-console-producer.sh --topic dmn-event-driven-requests --bootstrap-server localhost:9092
 ....
 . Now, we will send an event with the inputs to make a decision about
 traffic violation (should the driver be suspended?). Copy the payload
@@ -293,10 +294,9 @@ below and send as an input to the producer:
 [.console-input]
 [source,json]
 ....
-{"specversion": "1.0", "id": "a89b61a2-5644-487a-8a86-144855c5dce8", "source": "SomeEventSource", "type": "DecisionRequest", "subject": "TheSubject", "kogitodmnmodelname": "Traffic Violation", "kogitodmnmodelnamespace": "https://github.com/kiegroup/drools/kie-dmn/_A4BCA8B8-CF08-433F-93B2-A2598F19ECFF", "data": {"Driver": {"Age": 25,"Points": 13},"Violation": {"Type": "speed","Actual Speed": 115,"Speed Limit":100}}}
+{"specversion": "1.0", "id": "a89b61a2-5644-487a-8a86-144855c5dce8", "source": "SomeEventSource", "type": "DecisionRequest", "subject": "TheSubject", "kogitodmnmodelname": "pricing", "kogitodmnmodelnamespace": "ns1", "data": { "Age": 47, "Previous incidents?": false }}
 ....
 +
-image:cli-producer01.png[800]
 . Switch to the terminal tab where you started the consumer CLI. Confirm
 you got the decision result:
 +
@@ -338,24 +338,17 @@ https://cloudevents.io/[CloudEvents] 1.0 specification.
 [source,json]
 ....
 {
-  "specversion": "1.0",
-  "id": "a89b61a2-5644-487a-8a86-144855c5dce8",
-  "source": "SomeEventSource",
-  "type": "DecisionRequest",
-  "subject": "TheSubject",
-  "kogitodmnmodelname": "Traffic Violation",
-  "kogitodmnmodelnamespace": "https://github.com/kiegroup/drools/kie-dmn/_A4BCA8B8-CF08-433F-93B2-A2598F19ECFF",
-  "data": {
-    "Driver": {
-      "Age": 25,
-      "Points": 13
-    },
-    "Violation": {
-      "Type": "speed",
-      "Actual Speed": 115,
-      "Speed Limit": 100
+    "specversion": "1.0", 
+    "id": "a89b61a2-5644-487a-8a86-144855c5dce8", 
+    "source": "SomeEventSource", 
+    "type": "DecisionRequest", 
+    "subject": "TheSubject", 
+    "kogitodmnmodelname": "pricing", 
+    "kogitodmnmodelnamespace": "ns1", 
+    "data": { 
+        "Age": 47, 
+        "Previous incidents?": false 
     }
-  }
 }
 ....
 
@@ -381,48 +374,26 @@ The image below shows the DMN model name, namespace and data inputs:
 image:dmn-model-json-map.png[800]
 
 On the output, we can see the CloudEvents pattern in the event payload,
-and in the `data` field we can find the result of the decision nodes
-`Fine` and `Should the driver be suspended?`, along with the input data
+and in the `data` field we can find the result of the decision node `Base price`, along with the input data
 that was used to get to this decision.
 
 [.console-input]
 [source,json]
 ....
 {
-  "specversion": "1.0",
-  "id": "8bc58660-ce25-40ee-86cf-ae6a163510fd",
-  "source": "http://localhost:8080/Traffic+Violation",
-  "type": "DecisionResponse",
-  "subject": "TheSubject",
-  "kogitodmnmodelnamespace": "https://github.com/kiegroup/drools/kie-dmn/_A4BCA8B8-CF08-433F-93B2-A2598F19ECFF",
-  "kogitodmnmodelname": "Traffic Violation",
-  "data": {
-    "Violation": {
-      "Type": "speed",
-      "Speed Limit": 100,
-      "Actual Speed": 115,
-      "Code": null,
-      "Date": null
-    },
-    "Driver": {
-      "Points": 13,
-      "State": null,
-      "City": null,
-      "Age": 25,
-      "Name": null
-    },
-    "Fine": {
-      "Points": 3,
-      "Amount": 500
-    },
-    "Should the driver be suspended?": "No"
-  }
+    "specversion":"1.0",
+    "id":"24661494-6bca-4763-bd88-e2ebd38a0c6d",
+    "source":"pricing",
+    "type":"DecisionResponse",
+    "subject":"TheSubject",
+    "kogitodmnmodelnamespace":"ns1",
+    "kogitodmnmodelname":"pricing",
+    "data":{
+        "Previous incidents?":false,
+        "Age":47,"Base price":500
+    }
 }
 ....
-
-See on the image below the two decision nodes:
-
-image:decision-results.png[800]
 
 [#further]
 == Going further
@@ -435,16 +406,19 @@ suggestions:
 decisions;
 * Package the application in JVM mode and check if works.
 * Notice that, if you stop the kafka broker, the unit tests of the
-application will fail.
+application may fail.
 * Use Red Hat OpenShift for Streams for Apache Kafka
 https://red.ht/TryKafka:
-** You will need to configure the authentication for your application in
+** order a new Kafka instance
+** take note of your secrets
+** In your application you will need to:
+*** Configure the authentication for your application in
 order to be authorized to connect to the managed Kafka broker. You can
 find a sample of an `application.properties` file
 https://github.com/kmacedovarela/event-driven-decision-service/blob/master/src/main/resources/application.properties[here].
-The variables `BOOTSTRAP_SERVER`, `CLIENT_ID`, `CLIENT_SECRET` and
-`OAUTH_TOKEN_ENDPOINT_URI` can all be obtained in the managed Kafka
-service.
++
+You should get the values of the variables `BOOTSTRAP_SERVER`, `CLIENT_ID`, `CLIENT_SECRET` and
+`OAUTH_TOKEN_ENDPOINT_URI` in your provisioned Kafka service.
 
 == Conclusion
 

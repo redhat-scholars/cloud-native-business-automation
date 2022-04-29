@@ -25,13 +25,11 @@ The first step is to create a project to contain your decisions. Let's use Kogit
 [.console-input]
 [source,shell]
 ----
-$ mvn io.quarkus:quarkus-maven-plugin:2.2.5.Final-redhat-00010:create \
-    -DplatformGroupId=io.quarkus \
-    -DplatformVersion=2.2.5.Final-redhat-00010 \
+mvn io.quarkus.platform:quarkus-maven-plugin:2.8.2.Final:create \
     -DprojectGroupId=org.acme \
-    -DprojectArtifactId=practicing-dmn \
-    -Dextensions="kogito-quarkus-decisions,quarkus-smallrye-openapi" \
-    -DnoExamples
+    -DprojectArtifactId=practicing-dmn-lab03 \
+    -Dextensions="kogito-quarkus-decisions,quarkus-smallrye-openapi,quarkus-resteasy-jackson" \
+    -DnoCode
 ----
 
 === Decision Diagram basic definition

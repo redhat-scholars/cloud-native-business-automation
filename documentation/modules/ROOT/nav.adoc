@@ -4,34 +4,32 @@
 ** xref:01-prepare-dev.adoc#mandrel[Install Mandrel VM]
 
 * Get started with decision services
-** xref:02-build-decision-service.adoc[2. Build Decision Service]
+** xref:02-build-decision-service.adoc[2. Your first Decision Service]
 *** xref:02-build-decision-service.adoc#new-project[Creating a new decision project based on Kogito and Quarkus]
 *** xref:02-build-decision-service.adoc#examine[Examine the project and decision]
 *** xref:02-build-decision-service.adoc#running[Running the project]
 *** xref:02-build-decision-service.adoc#updating[Updating the Decision]
 *** xref:02-build-decision-service.adoc#packaging[Packaging and running the application]
 
-** xref:03-run-decision-service.adoc[3. Run the Decision Service in Cloud]
+** xref:03-run-decision-service.adoc[3. Running a Decision Service in the cloud Cloud]
 *** xref:03-run-decision-service.adoc#deploy[Deploy the decision in OpenShift]
 *** xref:03-run-decision-service.adoc#probe[Probe the decision]
 *** xref:03-run-decision-service.adoc#clean[Clean up your environment]
 
-** xref:04-build-decision-service-logic.adoc[4. Build Decision Service Logic]
-*** xref:04-build-decision-service-logic.adoc#challenge[Challenge description]
-*** xref:04-build-decision-service-logic.adoc#hints[Hints]
-*** xref:04-build-decision-service-logic.adoc#run-locally[Run locally the Decision Service]
-*** xref:04-build-decision-service-logic.adoc#test[Create a Test Scenario]
-
-** xref:05-event-driven-decision-services.adoc[5. Event Driven Decision Services]
+** xref:05-event-driven-decision-services.adoc[4. Event Driven Decision Services]
 *** xref:05-event-driven-decision-services.adoc#prepare[Prepare the messaging backbone]
 *** xref:05-event-driven-decision-services.adoc#project[Creating an event-driven decision project]
 *** xref:05-event-driven-decision-services.adoc#config[Configuring the Decision service]
 *** xref:05-event-driven-decision-services.adoc#testing[Testing the Decision Service]
 *** xref:05-event-driven-decision-services.adoc#further[Going further]
 
-** xref:07-learn-dmn.adoc#learn-dmn[7. Deep Dive: Practicing DMN]
-*** xref:07-learn-dmn.adoc#java-dmn[Use the power of Java in DMN]
-*** xref:07-learn-dmn.adoc#party-lab[The Party Challenge]
+** xref:09-learn-dmn.adoc[5. Enhance your DMN skills]
+*** xref:10-guided-dmn.adoc[Guided exercises]
+**** xref:10-1-vacation-lab.adoc[Vacation Days]
+*** xref:04-build-decision-service-logic.adoc[Challenges]
+**** xref:04-build-decision-service-logic.adoc[Cart Discount]
+**** xref:07-learn-dmn.adoc#java-dmn[The power of Java in DMN]
+**** xref:07-learn-dmn.adoc#party-lab[The Party Challenge]
 
 * Get started with Process Automation
 ** xref:06-build-process-service.adoc[6. Build a Process Service]
