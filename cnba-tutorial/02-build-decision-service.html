@@ -7,7 +7,7 @@
     <link rel="canonical" href="https://redhat-scholars.github.io/course-template/cnba-tutorial/02-build-decision-service.html">
     <link rel="prev" href="01-prepare-dev.html">
     <link rel="next" href="03-run-decision-service.html">
-    <meta name="generator" content="Antora 2.3.4">
+    <meta name="generator" content="Antora 3.0.0">
     <link rel="stylesheet" href="../_/css/site.css">
 <link rel="icon" href="../_/img/favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -92,7 +92,7 @@
 <ul class="nav-list">
   <li class="nav-item is-current-page" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="02-build-decision-service.html">2. Build Decision Service</a>
+    <a class="nav-link" href="02-build-decision-service.html">2. Your first Decision Service</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="#new-project">Creating a new decision project based on Kogito and Quarkus</a>
@@ -113,7 +113,7 @@
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="03-run-decision-service.html">3. Run the Decision Service in Cloud</a>
+    <a class="nav-link" href="03-run-decision-service.html">3. Running a Decision Service in the Cloud</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="03-run-decision-service.html#deploy">Deploy the decision in OpenShift</a>
@@ -128,25 +128,7 @@
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="04-build-decision-service-logic.html">4. Build Decision Service Logic</a>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="04-build-decision-service-logic.html#challenge">Challenge description</a>
-  </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="04-build-decision-service-logic.html#hints">Hints</a>
-  </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="04-build-decision-service-logic.html#run-locally">Run locally the Decision Service</a>
-  </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="04-build-decision-service-logic.html#test">Create a Test Scenario</a>
-  </li>
-</ul>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="05-event-driven-decision-services.html">5. Event Driven Decision Services</a>
+    <a class="nav-link" href="05-event-driven-decision-services.html">4. Event Driven Decision Services</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="05-event-driven-decision-services.html#prepare">Prepare the messaging backbone</a>
@@ -167,13 +149,34 @@
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="07-learn-dmn.html#learn-dmn">7. Deep Dive: Practicing DMN</a>
+    <a class="nav-link" href="09-learn-dmn.html">5. Enhance your DMN skills</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="07-learn-dmn.html#java-dmn">Use the power of Java in DMN</a>
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="10-guided-dmn.html">Guided exercises</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="10-1-vacation-lab.html">Vacation Days</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="10-2-call-center.html">Call Center</a>
+  </li>
+</ul>
   </li>
   <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="04-build-decision-service-logic.html">Challenges</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="04-build-decision-service-logic.html">Cart Discount</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="07-learn-dmn.html#java-dmn">The power of Java in DMN</a>
+  </li>
+  <li class="nav-item" data-depth="4">
     <a class="nav-link" href="07-learn-dmn.html#party-lab">The Party Challenge</a>
+  </li>
+</ul>
   </li>
 </ul>
   </li>
@@ -247,7 +250,7 @@
     <li class="component is-current">
       <span class="title">Cloud Native Business Automation</span>
       <ul class="versions">
-        <li class="version is-current is-latest">
+        <li class="version is-current">
           <a href="index.html">master</a>
         </li>
       </ul>
@@ -265,7 +268,7 @@
   <ul>
     <li><a href="index.html">Cloud Native Business Automation</a></li>
     <li>Get started with decision services</li>
-    <li><a href="02-build-decision-service.html">2. Build Decision Service</a></li>
+    <li><a href="02-build-decision-service.html">2. Your first Decision Service</a></li>
   </ul>
 </nav>
   <div class="edit-this-page"><a href="https://github.com/redhat-scholars/cloud-native-business-automation/edit/master/documentation/modules/ROOT/pages/02-build-decision-service.adoc">Edit this Page</a></div>
@@ -313,12 +316,10 @@ dependencies for our decision application.</p>
 command. Maven will create a new project with the name <code>decision-lab01</code>.</p>
 <div class="listingblock console-input">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ mvn archetype:generate \
--DarchetypeGroupId=org.kie.kogito \
--DarchetypeArtifactId=kogito-quarkus-dm-archetype \
--DgroupId=org.acme -DartifactId=decision-lab01 \
--DarchetypeVersion=1.5.0.redhat-00004 \
--Dversion=1.0-SNAPSHOT</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">mvn io.quarkus.platform:quarkus-maven-plugin:2.8.2.Final:create \
+-DprojectGroupId=org.acme \
+-DprojectArtifactId=decision-lab01 \
+-Dextensions="kogito-quarkus-decisions,quarkus-smallrye-openapi,quarkus-resteasy-jackson"</code></pre>
 </div>
 </div>
 </li>
@@ -350,12 +351,11 @@ your terminal, you can open the project using the VScode command <code>code</cod
 <div class="ulist">
 <ul>
 <li>
-<p>There is a DMN sample, <code>Traffic Violation.dmn</code>. This decision
-determines if a Driver should be suspended based on the violation and
-fine applied.</p>
+<p>There is a DMN sample, <code>pricing.dmn</code>. This decision
+determines a base price quotation based on criterias like age and occurrence of previous incidents.</p>
 </li>
 <li>
-<p>There is a jUnit test <code>TrafficViolationTest.java</code>. This jUnit tests
+<p>There is a jUnit test <code>PricingTest.java</code>. This jUnit tests
 the REST endpoint that is generated automatically by Kogito. Further on
 the lab, we will work with the Test Scenario, a graphical tool that
 allows users to unit test the decision model.</p>
@@ -377,7 +377,7 @@ the Integrated Terminal feature in VSCode.</p>
 <p>Open the integrated terminal in VSCode by by pressing <code><em>cmd+shift+p</em></code> or <code><em>ctrl+shift+p</em></code></p>
 </li>
 <li>
-<p>Then, search for <strong>Integrated Terminal</strong> and select it. See below:</p>
+<p>Then, search for <strong>New Terminal</strong> and select it. See below:</p>
 </li>
 </ol>
 </div>
@@ -410,34 +410,22 @@ application.</p>
 by Kogito.</p>
 </li>
 <li>
-<p>Select the <strong>POST</strong> request for <strong>Traffic Violation</strong> and click on the
-``<strong>Try it out</strong>'' button.</p>
+<p>Select the <strong>POST</strong> request for <strong>pricing</strong> and click on the
+<strong>Try it out</strong> button.</p>
 </li>
 <li>
 <p>You can use the following JSON as the Request Input to validate the
 decision about if the driver should be suspended or not:</p>
 <div class="listingblock console-input">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
-    "Driver": {
-      "Age": 25,
-      "Points": 13
-    },
-    "Violation": {
-      "Type": "speed",
-      "Actual Speed": 115,
-      "Speed Limit": 100
-    }
-}</code></pre>
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{ "Age": 47, "Previous incidents?": false }</code></pre>
 </div>
 </div>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>The output should show not only the final decision <em><code>Should the driver
-be suspended?''</em> but also the decision made for the <em></code>Fine''</em> decision
-node.</p>
+<p>The output should show the final decision <em>Base Price</em> but also the values of the input nodes. If there were more decisions made in this processing, the outputs would also be outputed as a result.</p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="_images/first-response-decision-service.png" alt="800"></span></p>
@@ -449,7 +437,7 @@ node.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>When using the Kogito extension with Quarkus, you can also take
-advantadge of the hot reload features during the development of your
+advantage of the hot reload features during the development of your
 decision. Let’s give it a try.</p>
 </div>
 <div class="olist arabic">
@@ -459,43 +447,39 @@ decision. Let’s give it a try.</p>
 VSCode.</p>
 </li>
 <li>
-<p>Open the <code>Traffic Violation.dmn</code> decision file, and select the
-<em>``Should the driver be suspended?''</em> node. Click on the edit button.</p>
+<p>Open the <code>pricing.dmn</code> decision file, and select the
+<em>``Base Price''</em> node. Click on the edit button.</p>
 <div class="paragraph">
-<p><span class="image"><img src="_images/edit-traffic-violation-dmn.png" alt="600"></span></p>
+<p><span class="image"><img src="_images/edit-pricing-dmn.png" alt="600"></span></p>
 </div>
 </li>
-<li>
-<p>Now, let’s make the threshold 16 instead of 20. On the result literal
-expression, change:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>From: <code>If Total Points &gt;= 20 then "Yes" else "No"</code></p>
-</li>
-<li>
-<p>​ To: <code>If Total Points &gt;= 16 then "Yes" else "No"</code></p>
-</li>
-</ul>
+</ol>
 </div>
+<div class="paragraph">
+<p>Now, let’s change our business rule where the base price for people over 21 and without previous incidents should cost 400 instead of 500.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>On the literal expression, change the number to 400.
+<span class="image"><img src="_images/edit-pricing-value-dmn.png" alt="600"></span></p>
 </li>
 <li>
 <p>Save the DMN file.</p>
 </li>
 <li>
-<p>Go back to your browser, and click on ``Execute'' to execute the exact
+<p>Go back to your browser, and click on "Execute" to execute the exact
 same request.</p>
 </li>
 <li>
 <p>Check the response and confirm that differently than the first
-decision, the decision is that the driver should be suspended.</p>
-<div class="paragraph">
-<p><span class="image"><img src="_images/second-response-traffic-violation.png" alt="800"></span></p>
-</div>
+decision, the cost for the insurance is now 400.</p>
 </li>
 </ol>
 </div>
-<hr>
+<div class="paragraph">
+<p><strong>Before moving forward</strong>, remember to also update the unit test <code>src/test/java/org/acme/<strong>PricingTest.java</strong></code> to match the new value of 400, or to revert the value back to 500 so it matches the unit tests.</p>
+</div>
 <div class="paragraph">
 <p>Awesome! We’ve implemented our first DMN decision service in Kogito,
 used the hot/live reload capabilities of Quarkus, and we’ve seen how
@@ -526,7 +510,7 @@ application:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>It produces 2 jar files:</p>
+<p>It produces 2 jar files in the <code>target</code> directory:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -536,7 +520,7 @@ resources of the projects, it’s the regular artifact produced by the
 Maven build.</p>
 </li>
 <li>
-<p><code>decision-lab01-1.0-SNAPSHOT-runner.jar</code> - being an executable jar. Be
+<p><code>target/quarkus-app/quarkus-run.jar</code> - being an executable jar. Be
 aware that it’s not an über-jar as the dependencies are copied into the
 <code>target/lib</code> directory.</p>
 </li>
@@ -548,7 +532,7 @@ terminal:</p>
 </div>
 <div class="listingblock console-input">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">ls -l target/lib/*.jar</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">ls -l target/quarkus-app/lib/main/*.jar</code></pre>
 </div>
 </div>
 </div>
@@ -560,29 +544,19 @@ in a terminal:</p>
 </div>
 <div class="listingblock console-input">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ java -jar target/decision-lab01-1.0-SNAPSHOT-runner.jar</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ java -jar target/quarkus-app/quarkus-run.jar</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>To test the application, you can use the Swagger UI we used previously
 by opening your browser, accessing <a href="http://localhost:8080/q/swagger-ui/" class="bare">http://localhost:8080/q/swagger-ui/</a>.
-You can use the <strong>POST</strong> request for <strong>Traffic Violation</strong> and click on the
+You can use the <strong>POST</strong> request for <strong>pricing</strong> and click on the
 <code><em>Try it out</em></code> button. You can use the same JSON as the Request
 Input to validate the server response:</p>
 </div>
 <div class="listingblock console-input">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
-    "Driver": {
-      "Age": 25,
-      "Points": 13
-    },
-    "Violation": {
-      "Type": "speed",
-      "Actual Speed": 115,
-      "Speed Limit": 100
-    }
-}</code></pre>
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{ "Age": 47, "Previous incidents?": false }</code></pre>
 </div>
 </div>
 <div class="admonitionblock tip">
@@ -781,7 +755,7 @@ creating an event-driven decision application.</p>
 </div>
 <nav class="pagination">
   <span class="prev"><a href="01-prepare-dev.html">1. Prepare your Development Environment</a></span>
-  <span class="next"><a href="03-run-decision-service.html">3. Run the Decision Service in Cloud</a></span>
+  <span class="next"><a href="03-run-decision-service.html">3. Running a Decision Service in the Cloud</a></span>
 </nav>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">

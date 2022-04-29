@@ -3,9 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Introduction :: Cloud Native Business Automation</title>
-    <link rel="canonical" href="https://redhat-scholars.github.io/course-template/cnba-tutorial/index.html">
-    <link rel="next" href="01-prepare-dev.html">
+    <title>Untitled :: Cloud Native Business Automation</title>
+    <link rel="canonical" href="https://redhat-scholars.github.io/course-template/cnba-tutorial/09-learn-dmn.html">
+    <link rel="prev" href="05-event-driven-decision-services.html">
+    <link rel="next" href="10-guided-dmn.html">
     <meta name="generator" content="Antora 3.0.0">
     <link rel="stylesheet" href="../_/css/site.css">
 <link rel="icon" href="../_/img/favicon.ico" type="image/x-icon">
@@ -146,7 +147,7 @@
   </li>
 </ul>
   </li>
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item is-current-page" data-depth="2">
     <button class="nav-item-toggle"></button>
     <a class="nav-link" href="09-learn-dmn.html">5. Enhance your DMN skills</a>
 <ul class="nav-list">
@@ -262,75 +263,78 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="index.html" class="home-link is-current"></a>
+  <a href="index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">Cloud Native Business Automation</a></li>
-    <li><a href="index.html">Introduction</a></li>
+    <li>Get started with decision services</li>
+    <li><a href="09-learn-dmn.html">5. Enhance your DMN skills</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/redhat-scholars/cloud-native-business-automation/edit/master/documentation/modules/ROOT/pages/index.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/redhat-scholars/cloud-native-business-automation/edit/master/documentation/modules/ROOT/pages/09-learn-dmn.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">Introduction</h1>
 <div class="sect1">
-<h2>Background</h2>
+<h2 id="_enhance_your_dmn_skills"><a class="anchor" href="#_enhance_your_dmn_skills"></a>Enhance your DMN skills</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <a href="https://kie.org/">KIE Community</a> is a home for leading Open Source projects that play a role in delivering solutions around Process Automation, Decision Management and Artificial Intelligence (KIE stands for Knowledge Is Everything).</p>
-</div>
-<div class="imageblock text-center">
-<div class="content">
-<img src="_images/logo.png" alt="Kogito" width="400">
-</div>
+<p>This is a series of guided exercises that will allow you to experiment the authoring of decisions using Decision Model and Notation - DMN.</p>
 </div>
 <div class="paragraph">
-<p><a href="https://kogito.kie.org/">Kogito</a> is a recent initiative under the KIE umbrella to leverage the battle-tested project <strong>Drools, jBPM, and OptaPlanner</strong> into a <strong>Cloud Native Environment</strong>.</p>
-</div>
-<div class="paragraph">
-<p>It is designed from ground up to run at scale on cloud infrastructure. If you think about business automation think about the cloud as this is where your business logic lives these days. By taking advantage of the latest technologies (<a href="https://quarkus.io/">Quarkus</a>, <a href="https://knative.dev/">KNative</a>, etc.), you get amazingly fast boot times and instant scaling on orchestration platforms like <a href="https://www.redhat.com/en/technologies/cloud-computing/openshift">OpenShift</a>.</p>
-</div>
-<div class="paragraph">
-<p><a href="https://www.redhat.com/en/technologies/jboss-middleware/process-automation-manager">Red Hat Process Automation Manager</a> and <a href="https://www.redhat.com/en/technologies/jboss-middleware/decision-manager">Red Hat Decision Manager</a> are the products built on top of KIE projects and offers the enterprise grade support.</p>
-</div>
-<div class="paragraph">
-<p>In <a href="https://www.redhat.com/en/about/press-releases/red-hat-rewrites-business-automation-playbook-end-end-kubernetes-native-decision-management-capabilities">version 7.11</a>, Red Hat introduced a first subset of <strong>Kogito capabilities</strong> to enable the decision services: <strong>DMN, Rules, Event Driven Decisions</strong>.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2>Practicing Kogito</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>This is <strong>a series of guided exercises</strong> that will allow you to experiment the authoring of decisions and business rules using Kogito. You will work with decision authoring with <em>Kogito tooling</em>, along with the packaging and consumption of the decisions in the <em>Kogito engine</em> that is supported in <a href="https://www.redhat.com/en/products/process-automation">Red Hat Process Automation</a>.</p>
-</div>
-<div class="paragraph">
-<p>Here is an overview of the guided exercises:</p>
+<p>This section contains exercises to help those who seek to improve their knowledge on decision modeling - from beginners to advanced developers. The exercises are of two types:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Local development environment set-up</strong>: get your development environment ready to go with VSCode and GraalVM.</p>
+<p><strong>Guided exercises</strong>: step by step detailed exercises;</p>
 </li>
 <li>
-<p><strong>Local environment set-up for Kafka</strong>: use docker to quickly start a Kafka environment in your local environment. The Kafka broker will be used in the event-driven lab.</p>
+<p><strong>Challenges</strong>: a problem to be solved. The reader is given hints, but he/she is the one in charge of thinking about how to implement the solution.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In this section:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="10-guided-dmn.html" class="xref page">Guided exercises</a></p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="10-1-vacation-lab.html" class="xref page">Vacation Days</a></p>
 </li>
 <li>
-<p><strong>Getting start with decision services</strong>: Create a decision application based on Quarkus, try out the business modeling tools in VSCode, experience hot reload of business assets during development and test your application using JVM and native compilation. Understand all that is needed to have your decisions reacting to events and publishing the results back through events and using the <a href="https://cloudevents.io/">CloudEvents specification</a>.</p>
+<p><a href="10-2-call-center.html" class="xref page">Call Center</a></p>
+</li>
+</ul>
+</div>
 </li>
 <li>
-<p><strong>Enhance your DMN skills</strong>: This section contains exercises to help those who seek to improve their knowledge on decision modeling - from beginners to advanced developers. The exercises are of two types: <em>guided exercises</em>: step by step detailed exercises; and <em>challenges</em>: the reader is given the goals and solution hints, but he/she is the one in charge of thinking about how to implement the solution.</p>
+<p><a href="04-build-decision-service-logic.html" class="xref page">Challenges</a></p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="04-build-decision-service-logic.html" class="xref page">Cart Discount</a></p>
 </li>
 <li>
-<p><strong>Getting start with rules services (drl-based)</strong>: learn how you can create business rules that are drl based using the new rule unit concept with Kogito and Quarkus.</p>
+<p><a href="07-learn-dmn.html#java-dmn" class="xref page">The power of Java in DMN</a></p>
+</li>
+<li>
+<p><a href="07-learn-dmn.html#party-lab" class="xref page">The Party Challenge</a></p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <nav class="pagination">
-  <span class="next"><a href="01-prepare-dev.html">1. Prepare your Development Environment</a></span>
+  <span class="prev"><a href="05-event-driven-decision-services.html">4. Event Driven Decision Services</a></span>
+  <span class="next"><a href="10-guided-dmn.html">Guided exercises</a></span>
 </nav>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">

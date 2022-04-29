@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Untitled :: Cloud Native Business Automation</title>
+    <link rel="canonical" href="https://redhat-scholars.github.io/course-template/cnba-tutorial/10-2-call-center.html">
+    <link rel="prev" href="10-1-vacation-lab.html">
+    <link rel="next" href="04-build-decision-service-logic.html">
+    <meta name="generator" content="Antora 3.0.0">
+    <link rel="stylesheet" href="../_/css/site.css">
+<link rel="icon" href="../_/img/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://developers.redhat.com" target="_blank"><img
+          src="../_/img/header_logo.png" height="40px" alt="Red Hat Developer Program"></a>
+      <a class="navbar-item" href="https://redhat-scholars.github.io/course-template">Cloud Native Business Automation</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Books</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">CheatSheets</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">CheatSheet A</a>
+            <a class="navbar-item" href="#">CheatSheet B</a>
+            <a class="navbar-item" href="#">CheatSheet C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Upcoming Events</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Event A</a>
+            <a class="navbar-item" href="#">Event B</a>
+            <a class="navbar-item" href="#">Event C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">More Tutorials</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Tutorial A</a>
+            <a class="navbar-item" href="#">Tutorial B</a>
+            <a class="navbar-item" href="#">Tutorial C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="cnba-tutorial" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">Cloud Native Business Automation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="01-prepare-dev.html">1. Prepare your Development Environment</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01-prepare-dev.html#base-folder">Creating the base folder for the labs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01-prepare-dev.html#install-code">Installing Visual Studio Code IDE</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01-prepare-dev.html#mandrel">Install Mandrel VM</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Get started with decision services</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="02-build-decision-service.html">2. Your first Decision Service</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="02-build-decision-service.html#new-project">Creating a new decision project based on Kogito and Quarkus</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="02-build-decision-service.html#examine">Examine the project and decision</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="02-build-decision-service.html#running">Running the project</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="02-build-decision-service.html#updating">Updating the Decision</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="02-build-decision-service.html#packaging">Packaging and running the application</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="03-run-decision-service.html">3. Running a Decision Service in the Cloud</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="03-run-decision-service.html#deploy">Deploy the decision in OpenShift</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="03-run-decision-service.html#probe">Probe the decision</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="03-run-decision-service.html#clean">Clean up your environment</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="05-event-driven-decision-services.html">4. Event Driven Decision Services</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="05-event-driven-decision-services.html#prepare">Prepare the messaging backbone</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="05-event-driven-decision-services.html#project">Creating an event-driven decision project</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="05-event-driven-decision-services.html#config">Configuring the Decision service</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="05-event-driven-decision-services.html#testing">Testing the Decision Service</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="05-event-driven-decision-services.html#further">Going further</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="09-learn-dmn.html">5. Enhance your DMN skills</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="10-guided-dmn.html">Guided exercises</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="10-1-vacation-lab.html">Vacation Days</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="4">
+    <a class="nav-link" href="10-2-call-center.html">Call Center</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="04-build-decision-service-logic.html">Challenges</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="04-build-decision-service-logic.html">Cart Discount</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="07-learn-dmn.html#java-dmn">The power of Java in DMN</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="07-learn-dmn.html#party-lab">The Party Challenge</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Get started with Process Automation</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="06-build-process-service.html">6. Build a Process Service</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="06-build-process-service.html#project-process">Creating a new process project based on Kogito and Quarkus</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="06-build-process-service.html#design-process">Design the Order Approval process </a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Get started with business rules (DRL)</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="08-learn-drl.html#create-project">Creating a new rules project based on Kogito and Quarkus</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="08-learn-drl.html#running-project">Running the Application</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="08-learn-drl.html#create-model">Creating the Domain Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="08-learn-drl.html#create-rules">Developing rules with Rule Units</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="08-learn-drl.html#create-unit">Create a PersonUnit</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="08-learn-drl.html#create-rules2">Enhancing the rules</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="08-learn-drl.html#running-project2">Running the application</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="08-learn-drl.html#variables-project">Using with variables in Rule Units</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="08-learn-drl.html#access-project">Final tests</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Cloud Native Business Automation</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Cloud Native Business Automation</span>
+      <ul class="versions">
+        <li class="version is-current">
+          <a href="index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Cloud Native Business Automation</a></li>
+    <li>Get started with decision services</li>
+    <li><a href="09-learn-dmn.html">5. Enhance your DMN skills</a></li>
+    <li><a href="10-guided-dmn.html">Guided exercises</a></li>
+    <li><a href="10-2-call-center.html">Call Center</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/redhat-scholars/cloud-native-business-automation/edit/master/documentation/modules/ROOT/pages/10-2-call-center.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<article class="doc">
+<div class="sect1">
+<h2 id="_call_center_intro_and_use_case"><a class="anchor" href="#_call_center_intro_and_use_case"></a>Call Center - Intro and Use Case</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This is an advanced Decision Model &amp; Notation lab that introduces DMN Decision Services, Relations, nested boxed expressions, etc. It also explores a number of different FEEL constructs and expressions like, for example, <code>list contains</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_goals"><a class="anchor" href="#_goals"></a>Goals</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Implement a DMN model</p>
+</li>
+<li>
+<p>Run and test the model</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_problem_statement"><a class="anchor" href="#_problem_statement"></a>Problem Statement</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this lab we will create a decision that determines if a call-centre can take an incoming call. Whether a call will be accepted by a certain office depends on:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The office accepts the call.</p>
+</li>
+<li>
+<p>There are employees currently available at the office.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Whether the office can accepts a call depends on: <strong>whether the phone number has been banned.</strong> the purpose of the phone call ("help" or "objection").</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_create_a_new_decision"><a class="anchor" href="#_create_a_new_decision"></a>Create a new decision</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To work in the decision model, we&#8217;ll use the KIE Sandbox DMN editor.
+1. In your browser, navigate to <a href="http://dmn.new/" class="bare">http://dmn.new/</a></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Click on the <strong>Untitled</strong> tile to define the DMN model name. Give it the name <code>call-centre</code>. This will create the asset and open the DMN editor.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/dmn-guided-exercises/dmn-model-title.png" alt="dmn model title" width="600px">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_next_steps"><a class="anchor" href="#_next_steps"></a>Next Steps</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can do this lab in 2 ways:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>If you already have (some) DMN knowledge, we would like to challenge you to build the solution by yourself. After you’ve built solution, you can verify your answer by going to the next module in which we will explain the solution and will deploy it onto the runtime.</p>
+</li>
+<li>
+<p>Follow the step-by-step below which will guide you through the implementation.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_authoring_the_decisioning_for_the_call_center"><a class="anchor" href="#_authoring_the_decisioning_for_the_call_center"></a>Authoring the decisioning for the Call Center</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The problem statement describes a number of different inputs to our decision:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Call</strong>: the incoming call into the call-centre</p>
+</li>
+<li>
+<p><strong>Employees</strong>: the employees of certain office.</p>
+</li>
+<li>
+<p><strong>Office</strong>: an office to which the call could potentially be routed.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Furthermore, the problem statement describes that phone numbers could be banned. So, also <strong>banned numbers</strong> can be regarded as an input to our model (although we will not implement it as an input in this lab).</p>
+</div>
+<div class="paragraph">
+<p>With the given input, we need to make the following decisions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Accept Call</strong>: the final decision we need to make is whether the given office will accept the call.</p>
+</li>
+<li>
+<p><strong>Can Handle Call</strong>: whether the office can actually accept the call. As defined in the problem statement, this depends on:</p>
+</li>
+<li>
+<p>whether the phone number has been banned;</p>
+</li>
+<li>
+<p>the purpose of the phone call (“help” or “objection”).</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_accept_call_decision_structure"><a class="anchor" href="#_accept_call_decision_structure"></a>Accept Call Decision Structure</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Accept Call</strong>: the final decision we need to make is whether the given office will accept the call.</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Add a <strong>Decision</strong> node to the diagram by clicking on the <strong>Decision</strong> node icon and placing it in the DRD.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/dmn-guided-exercises/add-drd-decision-node.png" alt="add drd decision node" width="600px">
+</div>
+</div>
+</li>
+<li>
+<p>Double-click on the node to set the name. We will name this node <code>Accept Call</code>.</p>
+</li>
+<li>
+<p>With the <code>Accept Call</code> node selected, open the property panel. Set the <strong>Output data type</strong> to <code>boolean</code>.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/dmn-guided-exercises/drd-input-node-propery-output-data-type.png" alt="drd input node propery output data type" width="600px">
+</div>
+</div>
+</li>
+<li>
+<p>The input of this decision is the <strong>incoming call</strong>, <strong>office</strong> and <strong>employee</strong>. Create these 3 input nodes and connect them to the <strong>Accept Call</strong> decision.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/dmn-guided-exercises/drd-first-decision-and-inputs.png" alt="drd first decision and inputs" width="600px">
+</div>
+</div>
+</li>
+<li>
+<p>We can now set data types of our input nodes.</p>
+</li>
+<li>
+<p>Click on the <code>incoming call</code> node, open the property panel and in the <strong>Output data type</strong> section and click on the <strong>Manage</strong> button. This will open the <strong>Custom Data Types</strong> window.</p>
+</li>
+<li>
+<p>In the <strong>Custom Data Types</strong> window, click on the <strong>+ Add</strong> button.</p>
+</li>
+<li>
+<p>Define the data type <code>tPhoneNumber</code> as follows:</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/dmn-guided-exercises/data-type-tphonenumber.png" alt="data type tphonenumber" width="600px">
+</div>
+</div>
+</li>
+<li>
+<p>Define another data type <code>tCall</code> as follows. Note that this datatype has a field that is of type <code>tPhoneNumber</code>, the type we defined earlier:</p>
+<div class="imageblock unresolved">
+<div class="content">
+<img src="dmn-guided-exercises/data-type-tcall.png" alt="data type tcall" width="600px">
+</div>
+</div>
+</li>
+<li>
+<p>When you’ve created the <code>tCall</code> type, go back to the DRD by clicking on the <strong>Model</strong> tab.</p>
+</li>
+<li>
+<p>Select the <code>incoming call</code> node, and in the property panel, set the node’s <strong>Output data type</strong> to <code>tCall</code></p>
+<div class="imageblock unresolved">
+<div class="content">
+<img src="dmn-guided-exercises/incoming-call-data-type.png" alt="incoming call data type" width="600px">
+</div>
+</div>
+</li>
+<li>
+<p>Next, define the following data type and set it as the <strong>Output data type</strong> of the <code>office</code> input as such:</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/dmn-guided-exercises/data-type-office.png" alt="data type office" width="600px">
+</div>
+</div>
+</li>
+<li>
+<p>Define the data type for <code>employees</code> as follows. Note that we’ve first defined the type <code>tEmployee</code>, and afterwards we’ve defined <code>tEmployees</code> as a <code>List</code> of <code>tEmployee</code>.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/dmn-guided-exercises/employee-type.png" alt="employee type" width="600px">
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_decision_service"><a class="anchor" href="#_decision_service"></a>Decision Service</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>With the main structure defined, we can now look at the requirements of the decision whether the office can actually accept the call. As defined in the problem statement, this depends on:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>whether the phone number has been banned.</p>
+</li>
+<li>
+<p>the purpose of the phone call ("help" or "objection").</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We will model this decision as a DMN <strong>Decision Service</strong> that can be called by our main decision <code>Accept Call</code>.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>First, model the <strong>Decision Service</strong> in the DRD and give it the name <code>Can Handle Call</code>. Set it’s <strong>Output data type</strong> to <code>boolean</code>.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/dmn-guided-exercises/decision-service-can-handle-call.png" alt="decision service can handle call" width="600px">
+</div>
+</div>
+</li>
+<li>
+<p>Add a <strong>Decision Node</strong> to the <strong>Decision Service</strong>. Name it <code>Call Can Be Handled</code> and set it’s <strong>Output data type</strong> to <code>boolean</code>.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/dmn-guided-exercises/decision-service-with-decision-node.png" alt="decision service with decision node" width="600px">
+</div>
+</div>
+</li>
+<li>
+<p>Add 2 additional <strong>Decision Nodes</strong> and name them <code>Is Banned</code> and <code>Call Purpose Accepted</code>. Both should have an <strong>Output data type</strong> of type <code>boolean</code>.</p>
+</li>
+<li>
+<p>Connect the 2 <strong>Decision Nodes</strong> to the <code>Call Can Be Handled</code> node.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/dmn-guided-exercises/decision-service-step-3.png" alt="decision service step 3" width="600px">
+</div>
+</div>
+</li>
+<li>
+<p>The input to both the <code>Is Banned</code> and <code>Call Purpose Accepted</code> decisions is a <code>call</code>. Connect the existing node "incoming call" to the 2 decision nodes.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/dmn-guided-exercises/decision-service-call-input.png" alt="decision service call input" width="600px">
+</div>
+</div>
+</li>
+<li>
+<p>The <code>Is Banned</code> decision also needs a collection of banned phone numbers. Instead of implementing this as an <strong>Input</strong> node, we will implement this as a DMN <strong>Relation Decision</strong>.</p>
+</li>
+<li>
+<p>Create a new <strong>Decision Node</strong> and name it <code>Banned Phone Numbers</code>. Connect it to the <code>Is Banned</code> decision node.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/dmn-guided-exercises/decision-service-banned-phone-number.png" alt="decision service banned phone number" width="600px">
+</div>
+</div>
+</li>
+<li>
+<p>The <strong>Ouput data type</strong> of this nodes is a new custom data type, which is a list of <code>tPhoneNumber</code>. We’ll name this type <code>tPhoneNumbers</code>:</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/dmn-guided-exercises/data-type-tphonenumbers.png" alt="data type tphonenumbers" width="600px">
+</div>
+</div>
+</li>
+<li>
+<p>Click on the <strong>Edit</strong> button of the <code>Banned Phone Numbers</code> node. Set the <strong>logic type</strong> of the decision to <code>Relation</code>. Create the following table:</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/dmn-guided-exercises/banned-phone-number-relation.png" alt="banned phone number relation" width="600px">
+</div>
+</div>
+</li>
+<li>
+<p>We can now implement the logic of the <code>Is Banned</code> decision. Click on the <strong>Edit</strong> button of the decision node. We will implement the logic as a <strong>Literal Expression</strong>. Define the following FEEL expression:</p>
+<div class="literalblock">
+<div class="content">
+<pre>~~~
+  list contains(Banned Phone Numbers, call.phone)
+~~~</pre>
+</div>
+</div>
+</li>
+<li>
+<p>The next node for which we want to implement the decision logic is <code>Call Purpose Accepted</code>. Click on the node, and click on the <strong>Edit</strong> button. Implement the following logic as a <strong>Decision Table</strong>:</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/dmn-guided-exercises/CallPurposeAccepted-decision.png" alt="CallPurposeAccepted decision" width="600px">
+</div>
+</div>
+</li>
+<li>
+<p>We can now implement the decision of <code>Call Can Be Handled</code>. Click on the node and click on the node’s <strong>Edit</strong> button. In the decision editor, set the <strong>logic type</strong> to <strong>Decision Table</strong> and implement the following table:</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/dmn-guided-exercises/CanHandleCall-decision.png" alt="CanHandleCall decision" width="600px">
+</div>
+</div>
+</li>
+<li>
+<p>Create a DMN <strong>Knowledge Requirement</strong> from the <code>Can Handle Call</code> decision service to the <code>Accept Call</code> decision.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/dmn-guided-exercises/decision-service-knowledge-requirement.png" alt="decision service knowledge requirement" width="600px">
+</div>
+</div>
+<div class="paragraph">
+<p>## 7.3. "Accept Call" Decision Logic</p>
+</div>
+</li>
+<li>
+<p>Implement the <code>Accept Call</code> decision logic as follows.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/dmn-guided-exercises/Accept-Call-decision.png" alt="Accept Call decision" width="600px">
+</div>
+</div>
+<div class="paragraph">
+<p>Notice that the line 1 is the invocation of the decision service "Can Handle Call". This is an <strong>Invocation</strong> of the <code>Can Handle Call</code> service, passing the <code>incoming call</code> input as the variable <code>call</code>. The output of this invocation will be the <code>boolean</code> variable <code>Call can be handled</code>.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The <code>Call can be handled</code> variable as then used to validate the decision result in the last line.</p>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="10-1-vacation-lab.html">Vacation Days</a></span>
+  <span class="next"><a href="04-build-decision-service-logic.html">Challenges</a></span>
+</nav>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <a class="rhd-logo" href="https://developers.redhat.com" target="_blank"></div>
+</footer>
+<script src="../_/js/vendor/clipboard.js"></script>
+<script src="../_/js/site.js"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

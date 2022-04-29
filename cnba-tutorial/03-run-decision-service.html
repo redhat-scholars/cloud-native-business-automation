@@ -3,11 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Run the Decision Service in Cloud :: Cloud Native Business Automation</title>
+    <title>Run the Decision Service in the Cloud :: Cloud Native Business Automation</title>
     <link rel="canonical" href="https://redhat-scholars.github.io/course-template/cnba-tutorial/03-run-decision-service.html">
     <link rel="prev" href="02-build-decision-service.html">
-    <link rel="next" href="04-build-decision-service-logic.html">
-    <meta name="generator" content="Antora 2.3.4">
+    <link rel="next" href="05-event-driven-decision-services.html">
+    <meta name="generator" content="Antora 3.0.0">
     <link rel="stylesheet" href="../_/css/site.css">
 <link rel="icon" href="../_/img/favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -92,7 +92,7 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="02-build-decision-service.html">2. Build Decision Service</a>
+    <a class="nav-link" href="02-build-decision-service.html">2. Your first Decision Service</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="02-build-decision-service.html#new-project">Creating a new decision project based on Kogito and Quarkus</a>
@@ -113,7 +113,7 @@
   </li>
   <li class="nav-item is-current-page" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="03-run-decision-service.html">3. Run the Decision Service in Cloud</a>
+    <a class="nav-link" href="03-run-decision-service.html">3. Running a Decision Service in the Cloud</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="#deploy">Deploy the decision in OpenShift</a>
@@ -128,25 +128,7 @@
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="04-build-decision-service-logic.html">4. Build Decision Service Logic</a>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="04-build-decision-service-logic.html#challenge">Challenge description</a>
-  </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="04-build-decision-service-logic.html#hints">Hints</a>
-  </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="04-build-decision-service-logic.html#run-locally">Run locally the Decision Service</a>
-  </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="04-build-decision-service-logic.html#test">Create a Test Scenario</a>
-  </li>
-</ul>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="05-event-driven-decision-services.html">5. Event Driven Decision Services</a>
+    <a class="nav-link" href="05-event-driven-decision-services.html">4. Event Driven Decision Services</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="05-event-driven-decision-services.html#prepare">Prepare the messaging backbone</a>
@@ -167,13 +149,34 @@
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="07-learn-dmn.html#learn-dmn">7. Deep Dive: Practicing DMN</a>
+    <a class="nav-link" href="09-learn-dmn.html">5. Enhance your DMN skills</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="07-learn-dmn.html#java-dmn">Use the power of Java in DMN</a>
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="10-guided-dmn.html">Guided exercises</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="10-1-vacation-lab.html">Vacation Days</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="10-2-call-center.html">Call Center</a>
+  </li>
+</ul>
   </li>
   <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="04-build-decision-service-logic.html">Challenges</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="04-build-decision-service-logic.html">Cart Discount</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="07-learn-dmn.html#java-dmn">The power of Java in DMN</a>
+  </li>
+  <li class="nav-item" data-depth="4">
     <a class="nav-link" href="07-learn-dmn.html#party-lab">The Party Challenge</a>
+  </li>
+</ul>
   </li>
 </ul>
   </li>
@@ -247,7 +250,7 @@
     <li class="component is-current">
       <span class="title">Cloud Native Business Automation</span>
       <ul class="versions">
-        <li class="version is-current is-latest">
+        <li class="version is-current">
           <a href="index.html">master</a>
         </li>
       </ul>
@@ -265,24 +268,47 @@
   <ul>
     <li><a href="index.html">Cloud Native Business Automation</a></li>
     <li>Get started with decision services</li>
-    <li><a href="03-run-decision-service.html">3. Run the Decision Service in Cloud</a></li>
+    <li><a href="03-run-decision-service.html">3. Running a Decision Service in the Cloud</a></li>
   </ul>
 </nav>
   <div class="edit-this-page"><a href="https://github.com/redhat-scholars/cloud-native-business-automation/edit/master/documentation/modules/ROOT/pages/03-run-decision-service.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">Run the Decision Service in Cloud</h1>
+<h1 class="page">Run the Decision Service in the Cloud</h1>
 <div class="sect1">
 <h2 id="deploy"><a class="anchor" href="#deploy"></a>Deploy the decision in OpenShift</h2>
 <div class="sectionbody">
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><strong>Login</strong> in your OCP cluster and <strong>create</strong> a new project</p>
+<p>Using your terminal, <strong>login</strong> in your OCP cluster.</p>
+</li>
+<li>
+<p><strong>Access your existing project</strong>. <em>(replace "your-project-name" with the name of the existing project)</em>:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">oc project your-project-name</code></pre>
+</div>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Or if you don&#8217;t have a project yet, <strong>create</strong> one:</p>
 <div class="listingblock console-input">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">oc new-project decision-lab01</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>On the terminal, confirm that you are in the directory of the decision service you want to deploy. If you&#8217;ve done the previous lab you can access:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">cd ~/enablement/decision-lab01</code></pre>
 </div>
 </div>
 </li>
@@ -298,19 +324,23 @@
 <p><strong>Create</strong> a new image from binaries:</p>
 <div class="listingblock console-input">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">oc new-build registry.access.redhat.com/openjdk/openjdk-11-rhel7:latest --binary --name=discount -l app=discount
-oc start-build discount --from-file target/*-runner.jar --follow</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">oc new-build registry.access.redhat.com/openjdk/openjdk-11-rhel7:latest --binary --name=base-price -l app=base-price
+oc start-build base-price --from-file target/*-runner.jar --follow</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Optionally, check that the <em>ImageStreams</em> are correctly created:</p>
 </div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">oc get is</code></pre>
+</div>
+</div>
 <div class="listingblock console-output">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ oc get is
-NAME               IMAGE REPOSITORY                                                                                                        TAGS     UPDATED
-discount           default-route-openshift-image-registry.apps.cluster-972c.972c.sandbox1438.opentlc.com/decision-lab01/discount           latest   13 seconds ago
-openjdk-11-rhel7   default-route-openshift-image-registry.apps.cluster-972c.972c.sandbox1438.opentlc.com/decision-lab01/openjdk-11-rhel7   latest   About a minute ago</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">NAME               IMAGE REPOSITORY                                                                                                         TAGS     UPDATED
+base-price         default-route-openshift-image-registry.apps.cluster-tgxrd.tgxrd.sandbox813.opentlc.com/decision-lab01/base-price         latest   33 seconds ago
+openjdk-11-rhel7   default-route-openshift-image-registry.apps.cluster-tgxrd.tgxrd.sandbox813.opentlc.com/decision-lab01/openjdk-11-rhel7   latest   39 minutes ago</code></pre>
 </div>
 </div>
 </li>
@@ -318,7 +348,7 @@ openjdk-11-rhel7   default-route-openshift-image-registry.apps.cluster-972c.972c
 <p><strong>Create</strong> the application:</p>
 <div class="listingblock console-input">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">oc new-app --name discount discount</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">oc new-app --name base-price base-price</code></pre>
 </div>
 </div>
 </li>
@@ -326,7 +356,7 @@ openjdk-11-rhel7   default-route-openshift-image-registry.apps.cluster-972c.972c
 <p><strong>Expose</strong> the application (create a route)</p>
 <div class="listingblock console-input">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">oc expose svc/discount</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">oc expose svc/base-price</code></pre>
 </div>
 </div>
 </li>
@@ -343,13 +373,12 @@ openjdk-11-rhel7   default-route-openshift-image-registry.apps.cluster-972c.972c
 <p><strong>Retrieve</strong> the service URL:</p>
 <div class="listingblock console-input">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">oc get route discount -o jsonpath='{.spec.host}'</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">oc get route base-price -o jsonpath='{.spec.host}'</code></pre>
 </div>
 </div>
 </li>
 <li>
-<p><strong>Open</strong> the file <code>dmn-test.http</code> and <strong>update</strong> the <code>URL</code> variable with
-the result of the previous command.</p>
+<p>If you are using the VSCode REST Client extension, you can update the url in your <code>.http</code> file to send requests to the URL result of the previous command.</p>
 </li>
 <li>
 <p><strong>Trigger</strong> the REST call through <strong>Send Request</strong> link (right above the
@@ -375,12 +404,12 @@ the result of the previous command.</p>
 <div class="listingblock console-input">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">export URL=&lt;your url&gt;
-curl --request POST \
-  --url $URL \
-  --header 'accept: application/json' \
-  --header 'content-type: application/json' \
-  --header 'user-agent: vscode-restclient' \
-  --data '{"Cart": [{"category": "electronics","price": 80},{"category": "food","price": 20}]}'</code></pre>
+curl --location --request POST $URL/pricing \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "Age": 47,
+    "Previous incidents?": false
+}'</code></pre>
 </div>
 </div>
 </div>
@@ -393,14 +422,14 @@ curl --request POST \
 </div>
 <div class="listingblock console-input">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">oc delete all -l app=discount</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">oc delete all -l app=base-price</code></pre>
 </div>
 </div>
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="02-build-decision-service.html">2. Build Decision Service</a></span>
-  <span class="next"><a href="04-build-decision-service-logic.html">4. Build Decision Service Logic</a></span>
+  <span class="prev"><a href="02-build-decision-service.html">2. Your first Decision Service</a></span>
+  <span class="next"><a href="05-event-driven-decision-services.html">4. Event Driven Decision Services</a></span>
 </nav>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">

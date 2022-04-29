@@ -7,7 +7,7 @@
     <link rel="canonical" href="https://redhat-scholars.github.io/course-template/cnba-tutorial/01-prepare-dev.html">
     <link rel="prev" href="index.html">
     <link rel="next" href="02-build-decision-service.html">
-    <meta name="generator" content="Antora 2.3.4">
+    <meta name="generator" content="Antora 3.0.0">
     <link rel="stylesheet" href="../_/css/site.css">
 <link rel="icon" href="../_/img/favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -92,7 +92,7 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="02-build-decision-service.html">2. Build Decision Service</a>
+    <a class="nav-link" href="02-build-decision-service.html">2. Your first Decision Service</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="02-build-decision-service.html#new-project">Creating a new decision project based on Kogito and Quarkus</a>
@@ -113,7 +113,7 @@
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="03-run-decision-service.html">3. Run the Decision Service in Cloud</a>
+    <a class="nav-link" href="03-run-decision-service.html">3. Running a Decision Service in the Cloud</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="03-run-decision-service.html#deploy">Deploy the decision in OpenShift</a>
@@ -128,25 +128,7 @@
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="04-build-decision-service-logic.html">4. Build Decision Service Logic</a>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="04-build-decision-service-logic.html#challenge">Challenge description</a>
-  </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="04-build-decision-service-logic.html#hints">Hints</a>
-  </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="04-build-decision-service-logic.html#run-locally">Run locally the Decision Service</a>
-  </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="04-build-decision-service-logic.html#test">Create a Test Scenario</a>
-  </li>
-</ul>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="05-event-driven-decision-services.html">5. Event Driven Decision Services</a>
+    <a class="nav-link" href="05-event-driven-decision-services.html">4. Event Driven Decision Services</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="05-event-driven-decision-services.html#prepare">Prepare the messaging backbone</a>
@@ -167,13 +149,34 @@
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="07-learn-dmn.html#learn-dmn">7. Deep Dive: Practicing DMN</a>
+    <a class="nav-link" href="09-learn-dmn.html">5. Enhance your DMN skills</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="07-learn-dmn.html#java-dmn">Use the power of Java in DMN</a>
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="10-guided-dmn.html">Guided exercises</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="10-1-vacation-lab.html">Vacation Days</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="10-2-call-center.html">Call Center</a>
+  </li>
+</ul>
   </li>
   <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="04-build-decision-service-logic.html">Challenges</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="04-build-decision-service-logic.html">Cart Discount</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="07-learn-dmn.html#java-dmn">The power of Java in DMN</a>
+  </li>
+  <li class="nav-item" data-depth="4">
     <a class="nav-link" href="07-learn-dmn.html#party-lab">The Party Challenge</a>
+  </li>
+</ul>
   </li>
 </ul>
   </li>
@@ -247,7 +250,7 @@
     <li class="component is-current">
       <span class="title">Cloud Native Business Automation</span>
       <ul class="versions">
-        <li class="version is-current is-latest">
+        <li class="version is-current">
           <a href="index.html">master</a>
         </li>
       </ul>
@@ -384,10 +387,10 @@ If you do not want to get automatic updates, you can set the Update: Mode settin
 <div class="ulist">
 <ul>
 <li>
-<p>by searching in the VSCode Marketplace website and installing it from there, or</p>
+<p><a href="#_option_1_installing_via_vscode_marketplace">by searching in the VSCode Marketplace website and installing it from there</a>, or</p>
 </li>
 <li>
-<p>by opening the extensions in the VSCode IDE, searching and installing it.</p>
+<p><a href="#_option_2_installing_directly_through_vscode">by opening the extensions in the VSCode IDE, searching and installing it</a>.</p>
 </li>
 </ul>
 </div>
@@ -395,7 +398,7 @@ If you do not want to get automatic updates, you can set the Update: Mode settin
 <p>We need to install two extensions to work the labs: <strong>Language Support for Java by Red Hat</strong> and <strong>Red Hat Business Automation Bundle</strong>.</p>
 </div>
 <div class="paragraph">
-<p>Choose one of the two alternatives below and install both extensions.</p>
+<p>Choose one of the two alternatives below and install the extensions:</p>
 </div>
 <div class="sect3">
 <h4 id="_option_1_installing_via_vscode_marketplace"><a class="anchor" href="#_option_1_installing_via_vscode_marketplace"></a>Option 1: Installing via VSCode Marketplace</h4>
@@ -405,13 +408,13 @@ If you do not want to get automatic updates, you can set the Update: Mode settin
 <div class="ulist">
 <ul>
 <li>
-<p>[Java Support by Red Hat](<a href="https://marketplace.visualstudio.com/items?itemName=redhat.java" class="bare">https://marketplace.visualstudio.com/items?itemName=redhat.java</a>)</p>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=redhat.java">Java Support by Red Hat</a></p>
 </li>
 <li>
-<p>[Red Hat Business Automation Bundle](<a href="https://marketplace.visualstudio.com/items?itemName=redhat.vscode-extension-red-hat-business-automation-bundle" class="bare">https://marketplace.visualstudio.com/items?itemName=redhat.vscode-extension-red-hat-business-automation-bundle</a>)</p>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=redhat.vscode-extension-red-hat-business-automation-bundle">Red Hat Business Automation Bundle</a></p>
 </li>
 <li>
-<p>[REST Client](<a href="https://marketplace.visualstudio.com/items?itemName=humao.rest-client" class="bare">https://marketplace.visualstudio.com/items?itemName=humao.rest-client</a>)</p>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=humao.rest-client">REST Client</a></p>
 </li>
 </ul>
 </div>
@@ -456,16 +459,19 @@ If you do not want to get automatic updates, you can set the Update: Mode settin
 </div>
 </div>
 <div class="sect1">
-<h2 id="graalvm"><a class="anchor" href="#graalvm"></a>Install Mandrel VM ( <strong>Optional</strong> )</h2>
+<h2 id="graalvm"><a class="anchor" href="#graalvm"></a>Install Graal VM ( <strong>Optional</strong> )</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>GraalVM is a Java VM and JDK based on HotSpot/OpenJDK, implemented in Java. It supports additional programming languages and execution modes, like ahead-of-time compilation of Java applications for fast startup and low memory footprint.</p>
 </div>
 <div class="paragraph">
-<p>Most of the exercises in our Kogito lab can be done on OpenJDK or Oracle Hotspot. Although if you want to try compiling the application into a <strong>native executable</strong>,  you will need GraalVM.</p>
+<p>Most of the exercises in this guide&#8217;s lab can be done on OpenJDK or Oracle Hotspot. Although if you want to try compiling the application into a <strong>native executable</strong>,  you will need GraalVM or Mandrel.</p>
 </div>
 <div class="paragraph">
-<p>Download GraalVM Community 20.1.0 Java 11 (<code>graalvm-ce-java11</code>) from [the following website](<a href="https://www.graalvm.org/downloads/" class="bare">https://www.graalvm.org/downloads/</a>) for your operating system, and follow the [installation instructions](<a href="https://www.graalvm.org/docs/getting-started/#install-graalvm" class="bare">https://www.graalvm.org/docs/getting-started/#install-graalvm</a>) for your operating system.</p>
+<p>Download GraalVM Community 22.0.0.2 Java <strong>11</strong> (<code>graalvm-ce-java11</code>) from [the following website](<a href="https://github.com/graalvm/graalvm-ce-builds/releases/tag/vm-22.0.0.2" class="bare">https://github.com/graalvm/graalvm-ce-builds/releases/tag/vm-22.0.0.2</a>) for your operating system, and follow the [installation instructions](<a href="https://www.graalvm.org/docs/getting-started/#install-graalvm" class="bare">https://www.graalvm.org/docs/getting-started/#install-graalvm</a>) for your operating system.</p>
+</div>
+<div class="paragraph">
+<p>You can look for the files graalvm-ce-java11-*-22.0.0.2.tar.gz matching your OS.</p>
 </div>
 <div class="paragraph">
 <p>You don’t need the <code>ruby</code>, <code>r</code>, <code>python</code> and <code>wasm</code> packages. You only need the <code>native-image</code> package.</p>
@@ -492,19 +498,50 @@ If you do not want to get automatic updates, you can set the Update: Mode settin
 <div class="paragraph">
 <p>If running on Windows, make sure GraalVM is the last Java configured on your PATH environment variable</p>
 </div>
+<div class="sect3">
+<h4 id="_which_jvm_am_i_using"><a class="anchor" href="#_which_jvm_am_i_using"></a>Which JVM am I using?</h4>
+<div class="paragraph">
+<p>To confirm which JVM you are using, you can run the command <code>java -version</code>. See examples below:</p>
+</div>
+<div class="paragraph">
+<p>Here you can see GraalVM 22.0.0.2 is installed for Java 11:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ java -version
+openjdk version "11.0.14" 2022-01-18
+OpenJDK Runtime Environment GraalVM CE 22.0.0.2 (build 11.0.14+9-jvmci-22.0-b05)
+OpenJDK 64-Bit Server VM GraalVM CE 22.0.0.2 (build 11.0.14+9-jvmci-22.0-b05, mixed mode, sharing)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now here, we have Java HotSpot VM for Java 11:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ java -version
+java version "11.0.12" 2021-07-20 LTS
+Java(TM) SE Runtime Environment 18.9 (build 11.0.12+8-LTS-237)
+Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.12+8-LTS-237, mixed mode)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can easily change the JVM by pointing your PATH environment variable to the JVM you want to use.</p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_congratulations"><a class="anchor" href="#_congratulations"></a>Congratulations!</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>We’ve setup the environment to run our Kogito Labs.</p>
+<p>We’ve finished the setup of the environment we need to start working on our hands on labs.</p>
 </div>
 </div>
 </div>
 <nav class="pagination">
   <span class="prev"><a href="index.html">Cloud Native Business Automation</a></span>
-  <span class="next"><a href="02-build-decision-service.html">2. Build Decision Service</a></span>
+  <span class="next"><a href="02-build-decision-service.html">2. Your first Decision Service</a></span>
 </nav>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">

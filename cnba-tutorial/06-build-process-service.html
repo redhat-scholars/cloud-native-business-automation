@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Build a Process Service :: Cloud Native Business Automation</title>
     <link rel="canonical" href="https://redhat-scholars.github.io/course-template/cnba-tutorial/06-build-process-service.html">
-    <link rel="prev" href="07-learn-dmn.html#learn-dmn">
+    <link rel="prev" href="07-learn-dmn.html#java-dmn">
     <link rel="next" href="08-learn-drl.html#create-project">
-    <meta name="generator" content="Antora 2.3.4">
+    <meta name="generator" content="Antora 3.0.0">
     <link rel="stylesheet" href="../_/css/site.css">
 <link rel="icon" href="../_/img/favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -92,7 +92,7 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="02-build-decision-service.html">2. Build Decision Service</a>
+    <a class="nav-link" href="02-build-decision-service.html">2. Your first Decision Service</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="02-build-decision-service.html#new-project">Creating a new decision project based on Kogito and Quarkus</a>
@@ -113,7 +113,7 @@
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="03-run-decision-service.html">3. Run the Decision Service in Cloud</a>
+    <a class="nav-link" href="03-run-decision-service.html">3. Running a Decision Service in the Cloud</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="03-run-decision-service.html#deploy">Deploy the decision in OpenShift</a>
@@ -128,25 +128,7 @@
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="04-build-decision-service-logic.html">4. Build Decision Service Logic</a>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="04-build-decision-service-logic.html#challenge">Challenge description</a>
-  </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="04-build-decision-service-logic.html#hints">Hints</a>
-  </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="04-build-decision-service-logic.html#run-locally">Run locally the Decision Service</a>
-  </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="04-build-decision-service-logic.html#test">Create a Test Scenario</a>
-  </li>
-</ul>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="05-event-driven-decision-services.html">5. Event Driven Decision Services</a>
+    <a class="nav-link" href="05-event-driven-decision-services.html">4. Event Driven Decision Services</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="05-event-driven-decision-services.html#prepare">Prepare the messaging backbone</a>
@@ -167,13 +149,34 @@
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="07-learn-dmn.html#learn-dmn">7. Deep Dive: Practicing DMN</a>
+    <a class="nav-link" href="09-learn-dmn.html">5. Enhance your DMN skills</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="07-learn-dmn.html#java-dmn">Use the power of Java in DMN</a>
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="10-guided-dmn.html">Guided exercises</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="10-1-vacation-lab.html">Vacation Days</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="10-2-call-center.html">Call Center</a>
+  </li>
+</ul>
   </li>
   <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="04-build-decision-service-logic.html">Challenges</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="04-build-decision-service-logic.html">Cart Discount</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="07-learn-dmn.html#java-dmn">The power of Java in DMN</a>
+  </li>
+  <li class="nav-item" data-depth="4">
     <a class="nav-link" href="07-learn-dmn.html#party-lab">The Party Challenge</a>
+  </li>
+</ul>
   </li>
 </ul>
   </li>
@@ -247,7 +250,7 @@
     <li class="component is-current">
       <span class="title">Cloud Native Business Automation</span>
       <ul class="versions">
-        <li class="version is-current is-latest">
+        <li class="version is-current">
           <a href="index.html">master</a>
         </li>
       </ul>
@@ -513,7 +516,7 @@ Content-Type: application/json
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="07-learn-dmn.html#learn-dmn">7. Deep Dive: Practicing DMN</a></span>
+  <span class="prev"><a href="07-learn-dmn.html#java-dmn">The power of Java in DMN</a></span>
   <span class="next"><a href="08-learn-drl.html#create-project">Creating a new rules project based on Kogito and Quarkus</a></span>
 </nav>
 </article>

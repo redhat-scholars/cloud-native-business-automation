@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Event Driven Decision Services :: Cloud Native Business Automation</title>
     <link rel="canonical" href="https://redhat-scholars.github.io/course-template/cnba-tutorial/05-event-driven-decision-services.html">
-    <link rel="prev" href="04-build-decision-service-logic.html">
-    <link rel="next" href="07-learn-dmn.html#learn-dmn">
-    <meta name="generator" content="Antora 2.3.4">
+    <link rel="prev" href="03-run-decision-service.html">
+    <link rel="next" href="09-learn-dmn.html">
+    <meta name="generator" content="Antora 3.0.0">
     <link rel="stylesheet" href="../_/css/site.css">
 <link rel="icon" href="../_/img/favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -92,7 +92,7 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="02-build-decision-service.html">2. Build Decision Service</a>
+    <a class="nav-link" href="02-build-decision-service.html">2. Your first Decision Service</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="02-build-decision-service.html#new-project">Creating a new decision project based on Kogito and Quarkus</a>
@@ -113,7 +113,7 @@
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="03-run-decision-service.html">3. Run the Decision Service in Cloud</a>
+    <a class="nav-link" href="03-run-decision-service.html">3. Running a Decision Service in the Cloud</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="03-run-decision-service.html#deploy">Deploy the decision in OpenShift</a>
@@ -126,27 +126,9 @@
   </li>
 </ul>
   </li>
-  <li class="nav-item" data-depth="2">
-    <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="04-build-decision-service-logic.html">4. Build Decision Service Logic</a>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="04-build-decision-service-logic.html#challenge">Challenge description</a>
-  </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="04-build-decision-service-logic.html#hints">Hints</a>
-  </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="04-build-decision-service-logic.html#run-locally">Run locally the Decision Service</a>
-  </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="04-build-decision-service-logic.html#test">Create a Test Scenario</a>
-  </li>
-</ul>
-  </li>
   <li class="nav-item is-current-page" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="05-event-driven-decision-services.html">5. Event Driven Decision Services</a>
+    <a class="nav-link" href="05-event-driven-decision-services.html">4. Event Driven Decision Services</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="#prepare">Prepare the messaging backbone</a>
@@ -167,13 +149,34 @@
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="07-learn-dmn.html#learn-dmn">7. Deep Dive: Practicing DMN</a>
+    <a class="nav-link" href="09-learn-dmn.html">5. Enhance your DMN skills</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="07-learn-dmn.html#java-dmn">Use the power of Java in DMN</a>
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="10-guided-dmn.html">Guided exercises</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="10-1-vacation-lab.html">Vacation Days</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="10-2-call-center.html">Call Center</a>
+  </li>
+</ul>
   </li>
   <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="04-build-decision-service-logic.html">Challenges</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="04-build-decision-service-logic.html">Cart Discount</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="07-learn-dmn.html#java-dmn">The power of Java in DMN</a>
+  </li>
+  <li class="nav-item" data-depth="4">
     <a class="nav-link" href="07-learn-dmn.html#party-lab">The Party Challenge</a>
+  </li>
+</ul>
   </li>
 </ul>
   </li>
@@ -247,7 +250,7 @@
     <li class="component is-current">
       <span class="title">Cloud Native Business Automation</span>
       <ul class="versions">
-        <li class="version is-current is-latest">
+        <li class="version is-current">
           <a href="index.html">master</a>
         </li>
       </ul>
@@ -265,7 +268,7 @@
   <ul>
     <li><a href="index.html">Cloud Native Business Automation</a></li>
     <li>Get started with decision services</li>
-    <li><a href="05-event-driven-decision-services.html">5. Event Driven Decision Services</a></li>
+    <li><a href="05-event-driven-decision-services.html">4. Event Driven Decision Services</a></li>
   </ul>
 </nav>
   <div class="edit-this-page"><a href="https://github.com/redhat-scholars/cloud-native-business-automation/edit/master/documentation/modules/ROOT/pages/05-event-driven-decision-services.adoc">Edit this Page</a></div>
@@ -336,7 +339,7 @@ are not needed when TLS communication is not enabled.</p>
 <p>In your local machine, access the enablement’s base folder:</p>
 <div class="listingblock console-input">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ cd ~/enablement</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">cd ~/enablement</code></pre>
 </div>
 </div>
 </li>
@@ -344,7 +347,7 @@ are not needed when TLS communication is not enabled.</p>
 <p>Clone the repository containing the docker files we need:</p>
 <div class="listingblock console-input">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ git clone https://github.com/hguerrero/amq-examples</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git clone https://github.com/hguerrero/amq-examples</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -357,7 +360,7 @@ Kafka server v2.5.0, Apicurio Registry and a Kafka Bridge.</p>
 <p>Access the <code>amq-examples/strimzi-all-in-one/</code> folder:</p>
 <div class="listingblock console-input">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ cd amq-examples/strimzi-all-in-one/</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">cd amq-examples/strimzi-all-in-one/</code></pre>
 </div>
 </div>
 </li>
@@ -400,60 +403,61 @@ command. Maven will create a new project with the name
 <code>event-driven-decision-lab</code>.</p>
 <div class="listingblock console-input">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ mvn archetype:generate \
--DarchetypeGroupId=org.kie.kogito \
--DarchetypeArtifactId=kogito-quarkus-dm-archetype \
--DgroupId=org.acme -DartifactId=event-driven-decision-lab \
--DarchetypeVersion=1.5.0.redhat-00004 \
--Dversion=1.0-SNAPSHOT</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">mvn io.quarkus.platform:quarkus-maven-plugin:2.2.3.Final:create \
+-DprojectGroupId=org.acme \
+-DprojectArtifactId=event-driven-decision-lab02 \
+-Dextensions="kogito-quarkus-decisions,quarkus-smallrye-openapi,quarkus-resteasy-jackson"</code></pre>
 </div>
 </div>
 </li>
 <li>
 <p>Open the project in VSCode so we can start adding the required
 configurations. Notice that this project already brings a sample DMN
-<code>Traffic Violation.dmn</code>.</p>
+<code>pricing.dmn</code>.</p>
 <div class="listingblock console-input">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ code event-driven-decision-lab/</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">code event-driven-decision-lab02/</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p><span class="image"><img src="_images/event-driven-lab-dmn.png" alt="800"></span></p>
 </div>
 </li>
 <li>
 <p>In order to natively work with Kafka topics without the need of adding
-extra code we can use one of the Kogito Add Ons, the <strong>Kogito Event
-Driven Decisions Add-on</strong>. This add on allows our decision service to
+extra code we can use one of the Kogito add-ons, the <strong>Kogito Event
+Driven Decisions Add-on</strong>. This add-on allows our decision service to
 subscribe to Kafka topics, and trigger specific decisions based on the
 event inputs. It also allows our service to publish the result of the
-executed decisions to a Kafka topic. So, to get started, let’s add this
-extension to the service we’ve just created by adding it to the
-<code>pom.xml</code> file. <em>TIP: Since we are using the <code>kogito-quarkus-bom</code> Maven
+executed decisions to a Kafka topic.</p>
+<div class="paragraph">
+<p>The Kogito event driven add-ons uses SmallRye under the covers. So we
+also need to add this dependency to the project. Let’s add both extensions to the service we’ve just created.  You can either:</p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Add it using a maven command:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">mvn quarkus:add-extension -Dextensions="kogito-addons-quarkus-events-decisions,quarkus-smallrye-reactive-messaging-kafka"</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Or add it directly in the <code>pom.xml</code> file. <em>TIP: Since we are using the <code>kogito-quarkus-bom</code> Maven
 can infer the right version to use from the parent bom.</em></p>
 <div class="listingblock console-input">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
   &lt;groupId&gt;org.kie.kogito&lt;/groupId&gt;
-  &lt;artifactId&gt;kogito-event-driven-decisions-quarkus-addon&lt;/artifactId&gt;
-&lt;/dependency&gt;</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p><span class="image"><img src="_images/kogito-events-addon-extension.pom.png" alt="800"></span></p>
-</div>
-</li>
-<li>
-<p>The Kogito event driven add-ons uses SmallRye under the covers. So we
-also need to add this dependency to the project:</p>
-<div class="listingblock console-input">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;artifactId&gt;kogito-addons-quarkus-events-decisions&lt;/artifactId&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
    &lt;groupId&gt;io.quarkus&lt;/groupId&gt;
    &lt;artifactId&gt;quarkus-smallrye-reactive-messaging-kafka&lt;/artifactId&gt;
 &lt;/dependency&gt;</code></pre>
 </div>
+</div>
+</li>
+</ol>
 </div>
 </li>
 </ol>
@@ -468,9 +472,9 @@ dependencies.</p>
 <h2 id="config"><a class="anchor" href="#config"></a>Configuring the Decision service</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Instead of creating a middle layer (<code>`glue code'') in our app to
+<p>Instead of creating a middle layer ("glue code") in our app to
 integrate our decision with Kafka topics, all we need to do is add the
-respective configurations to the `application.properties</code> file. In this
+respective configurations to the <code>application.properties</code> file. In this
 lab we are using Quarkus, and under the hoods, our decision service will
 make use of the its Microprofile Reactive Messaging add-on, SmallRye.</p>
 </div>
@@ -494,7 +498,9 @@ Eclipse MicroProfile Reactive Messaging specification 1.0.</p>
 and add the following configuration:</p>
 <div class="listingblock console-input">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-props hljs" data-lang="props">mp.messaging.incoming.kogito_incoming_stream.group.id=dmn-event-driven-example
+<pre class="highlightjs highlight"><code class="language-props hljs" data-lang="props">kafka.bootstrap.servers=localhost:9092
+
+mp.messaging.incoming.kogito_incoming_stream.group.id=dmn-event-driven-example
 mp.messaging.incoming.kogito_incoming_stream.connector=smallrye-kafka
 mp.messaging.incoming.kogito_incoming_stream.topic=dmn-event-driven-requests
 mp.messaging.incoming.kogito_incoming_stream.value.deserializer=org.apache.kafka.common.serialization.StringDeserializer
@@ -595,7 +601,7 @@ SmallRye dependencies;</p>
 <p>Start the decision service in dev mode:</p>
 <div class="listingblock console-input">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ mvn quarkus:dev</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">mvn quarkus:dev</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -664,7 +670,7 @@ automatically create the topics when needed.</p>
 kafka console publisher:</p>
 <div class="listingblock console-input">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ docker exec kafka bin/kafka-console-producer.sh --topic dmn-event-driven-requests --bootstrap-server localhost:9092</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ docker exec -it kafka bin/kafka-console-producer.sh --topic dmn-event-driven-requests --bootstrap-server localhost:9092</code></pre>
 </div>
 </div>
 </li>
@@ -674,11 +680,8 @@ traffic violation (should the driver be suspended?). Copy the payload
 below and send as an input to the producer:</p>
 <div class="listingblock console-input">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{"specversion": "1.0", "id": "a89b61a2-5644-487a-8a86-144855c5dce8", "source": "SomeEventSource", "type": "DecisionRequest", "subject": "TheSubject", "kogitodmnmodelname": "Traffic Violation", "kogitodmnmodelnamespace": "https://github.com/kiegroup/drools/kie-dmn/_A4BCA8B8-CF08-433F-93B2-A2598F19ECFF", "data": {"Driver": {"Age": 25,"Points": 13},"Violation": {"Type": "speed","Actual Speed": 115,"Speed Limit":100}}}</code></pre>
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{"specversion": "1.0", "id": "a89b61a2-5644-487a-8a86-144855c5dce8", "source": "SomeEventSource", "type": "DecisionRequest", "subject": "TheSubject", "kogitodmnmodelname": "pricing", "kogitodmnmodelnamespace": "ns1", "data": { "Age": 47, "Previous incidents?": false }}</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p><span class="image"><img src="_images/cli-producer01.png" alt="800"></span></p>
 </div>
 </li>
 <li>
@@ -746,24 +749,17 @@ resulting payload.</p>
 <div class="listingblock console-input">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
-  "specversion": "1.0",
-  "id": "a89b61a2-5644-487a-8a86-144855c5dce8",
-  "source": "SomeEventSource",
-  "type": "DecisionRequest",
-  "subject": "TheSubject",
-  "kogitodmnmodelname": "Traffic Violation",
-  "kogitodmnmodelnamespace": "https://github.com/kiegroup/drools/kie-dmn/_A4BCA8B8-CF08-433F-93B2-A2598F19ECFF",
-  "data": {
-    "Driver": {
-      "Age": 25,
-      "Points": 13
-    },
-    "Violation": {
-      "Type": "speed",
-      "Actual Speed": 115,
-      "Speed Limit": 100
+    "specversion": "1.0",
+    "id": "a89b61a2-5644-487a-8a86-144855c5dce8",
+    "source": "SomeEventSource",
+    "type": "DecisionRequest",
+    "subject": "TheSubject",
+    "kogitodmnmodelname": "pricing",
+    "kogitodmnmodelnamespace": "ns1",
+    "data": {
+        "Age": 47,
+        "Previous incidents?": false
     }
-  }
 }</code></pre>
 </div>
 </div>
@@ -823,49 +819,25 @@ decisions evaluation.</p>
 </div>
 <div class="paragraph">
 <p>On the output, we can see the CloudEvents pattern in the event payload,
-and in the <code>data</code> field we can find the result of the decision nodes
-<code>Fine</code> and <code>Should the driver be suspended?</code>, along with the input data
+and in the <code>data</code> field we can find the result of the decision node <code>Base price</code>, along with the input data
 that was used to get to this decision.</p>
 </div>
 <div class="listingblock console-input">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
-  "specversion": "1.0",
-  "id": "8bc58660-ce25-40ee-86cf-ae6a163510fd",
-  "source": "http://localhost:8080/Traffic+Violation",
-  "type": "DecisionResponse",
-  "subject": "TheSubject",
-  "kogitodmnmodelnamespace": "https://github.com/kiegroup/drools/kie-dmn/_A4BCA8B8-CF08-433F-93B2-A2598F19ECFF",
-  "kogitodmnmodelname": "Traffic Violation",
-  "data": {
-    "Violation": {
-      "Type": "speed",
-      "Speed Limit": 100,
-      "Actual Speed": 115,
-      "Code": null,
-      "Date": null
-    },
-    "Driver": {
-      "Points": 13,
-      "State": null,
-      "City": null,
-      "Age": 25,
-      "Name": null
-    },
-    "Fine": {
-      "Points": 3,
-      "Amount": 500
-    },
-    "Should the driver be suspended?": "No"
-  }
+    "specversion":"1.0",
+    "id":"24661494-6bca-4763-bd88-e2ebd38a0c6d",
+    "source":"pricing",
+    "type":"DecisionResponse",
+    "subject":"TheSubject",
+    "kogitodmnmodelnamespace":"ns1",
+    "kogitodmnmodelname":"pricing",
+    "data":{
+        "Previous incidents?":false,
+        "Age":47,"Base price":500
+    }
 }</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>See on the image below the two decision nodes:</p>
-</div>
-<div class="paragraph">
-<p><span class="image"><img src="_images/decision-results.png" alt="800"></span></p>
 </div>
 </div>
 </div>
@@ -889,7 +861,7 @@ decisions;</p>
 </li>
 <li>
 <p>Notice that, if you stop the kafka broker, the unit tests of the
-application will fail.</p>
+application may fail.</p>
 </li>
 <li>
 <p>Use Red Hat OpenShift for Streams for Apache Kafka
@@ -897,13 +869,27 @@ application will fail.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>You will need to configure the authentication for your application in
+<p>order a new Kafka instance</p>
+</li>
+<li>
+<p>take note of your secrets</p>
+</li>
+<li>
+<p>In your application you will need to:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Configure the authentication for your application in
 order to be authorized to connect to the managed Kafka broker. You can
 find a sample of an <code>application.properties</code> file
-<a href="https://github.com/kmacedovarela/event-driven-decision-service/blob/master/src/main/resources/application.properties">here</a>.
-The variables <code>BOOTSTRAP_SERVER</code>, <code>CLIENT_ID</code>, <code>CLIENT_SECRET</code> and
-<code>OAUTH_TOKEN_ENDPOINT_URI</code> can all be obtained in the managed Kafka
-service.</p>
+<a href="https://github.com/kmacedovarela/event-driven-decision-service/blob/master/src/main/resources/application.properties">here</a>.</p>
+<div class="paragraph">
+<p>You should get the values of the variables <code>BOOTSTRAP_SERVER</code>, <code>CLIENT_ID</code>, <code>CLIENT_SECRET</code> and
+<code>OAUTH_TOKEN_ENDPOINT_URI</code> in your provisioned Kafka service.</p>
+</div>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -926,8 +912,8 @@ and scale them independently.</p>
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="04-build-decision-service-logic.html">4. Build Decision Service Logic</a></span>
-  <span class="next"><a href="07-learn-dmn.html#learn-dmn">7. Deep Dive: Practicing DMN</a></span>
+  <span class="prev"><a href="03-run-decision-service.html">3. Running a Decision Service in the Cloud</a></span>
+  <span class="next"><a href="09-learn-dmn.html">5. Enhance your DMN skills</a></span>
 </nav>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">

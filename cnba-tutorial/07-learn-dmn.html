@@ -3,11 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Practicing Decision Modeling with DMN :: Cloud Native Business Automation</title>
+    <title>Untitled :: Cloud Native Business Automation</title>
     <link rel="canonical" href="https://redhat-scholars.github.io/course-template/cnba-tutorial/07-learn-dmn.html">
-    <link rel="prev" href="05-event-driven-decision-services.html">
+    <link rel="prev" href="04-build-decision-service-logic.html">
     <link rel="next" href="06-build-process-service.html">
-    <meta name="generator" content="Antora 2.3.4">
+    <meta name="generator" content="Antora 3.0.0">
     <link rel="stylesheet" href="../_/css/site.css">
 <link rel="icon" href="../_/img/favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -92,7 +92,7 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="02-build-decision-service.html">2. Build Decision Service</a>
+    <a class="nav-link" href="02-build-decision-service.html">2. Your first Decision Service</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="02-build-decision-service.html#new-project">Creating a new decision project based on Kogito and Quarkus</a>
@@ -113,7 +113,7 @@
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="03-run-decision-service.html">3. Run the Decision Service in Cloud</a>
+    <a class="nav-link" href="03-run-decision-service.html">3. Running a Decision Service in the Cloud</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="03-run-decision-service.html#deploy">Deploy the decision in OpenShift</a>
@@ -128,25 +128,7 @@
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="04-build-decision-service-logic.html">4. Build Decision Service Logic</a>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="04-build-decision-service-logic.html#challenge">Challenge description</a>
-  </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="04-build-decision-service-logic.html#hints">Hints</a>
-  </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="04-build-decision-service-logic.html#run-locally">Run locally the Decision Service</a>
-  </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="04-build-decision-service-logic.html#test">Create a Test Scenario</a>
-  </li>
-</ul>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="05-event-driven-decision-services.html">5. Event Driven Decision Services</a>
+    <a class="nav-link" href="05-event-driven-decision-services.html">4. Event Driven Decision Services</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="05-event-driven-decision-services.html#prepare">Prepare the messaging backbone</a>
@@ -167,13 +149,34 @@
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="#learn-dmn">7. Deep Dive: Practicing DMN</a>
+    <a class="nav-link" href="09-learn-dmn.html">5. Enhance your DMN skills</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="#java-dmn">Use the power of Java in DMN</a>
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="10-guided-dmn.html">Guided exercises</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="10-1-vacation-lab.html">Vacation Days</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="10-2-call-center.html">Call Center</a>
+  </li>
+</ul>
   </li>
   <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="04-build-decision-service-logic.html">Challenges</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="04-build-decision-service-logic.html">Cart Discount</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="#java-dmn">The power of Java in DMN</a>
+  </li>
+  <li class="nav-item" data-depth="4">
     <a class="nav-link" href="#party-lab">The Party Challenge</a>
+  </li>
+</ul>
   </li>
 </ul>
   </li>
@@ -247,7 +250,7 @@
     <li class="component is-current">
       <span class="title">Cloud Native Business Automation</span>
       <ul class="versions">
-        <li class="version is-current is-latest">
+        <li class="version is-current">
           <a href="index.html">master</a>
         </li>
       </ul>
@@ -265,15 +268,17 @@
   <ul>
     <li><a href="index.html">Cloud Native Business Automation</a></li>
     <li>Get started with decision services</li>
-    <li><a href="#learn-dmn">7. Deep Dive: Practicing DMN</a></li>
+    <li><a href="09-learn-dmn.html">5. Enhance your DMN skills</a></li>
+    <li><a href="04-build-decision-service-logic.html">Challenges</a></li>
+    <li><a href="#java-dmn">The power of Java in DMN</a></li>
   </ul>
 </nav>
   <div class="edit-this-page"><a href="https://github.com/redhat-scholars/cloud-native-business-automation/edit/master/documentation/modules/ROOT/pages/07-learn-dmn.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">Practicing Decision Modeling with DMN</h1>
-<div id="preamble">
+<div class="sect1">
+<h2 id="_decision_modeling_with_dmn"><a class="anchor" href="#_decision_modeling_with_dmn"></a>Decision Modeling with DMN</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This section brings labs to help you get familiar with decision automation using the DMN standard and FEEL expression language.</p>
@@ -304,6 +309,15 @@ Some exercises were inspired by examples in the book <a href="https://www.amazon
 <div class="paragraph">
 <p><strong>FEEL</strong> (Friendly enough expression language) brings several operations to support the logic implementation. On the other hand, we also have available the extensive options available in Java classes to support logic execution. In this lab, you will practice how to use the BKM node along with the power of Java classes and its methods to support DMN Decisions.</p>
 </div>
+<div class="paragraph">
+<p>You&#8217;ll start by creating a basic DMN and some unit tests. The goal can be achieved achieved in different ways, but for the purpose of this exercise, you should create the actual logic by using a method in the Java String class.</p>
+</div>
+<div class="sect2">
+<h3 id="_goals"><a class="anchor" href="#_goals"></a><strong>Goals</strong></h3>
+<div class="paragraph">
+<p>Your decision should be able to receive a list of strings and return a concatenated single String separated by comma ",".The decision output should be a unique string containing every string from the list separated by a comma (e.g. ["John Doe","Ash"]) results in "John Doe, Ash").</p>
+</div>
+</div>
 <div class="sect2">
 <h3 id="_creating_the_project"><a class="anchor" href="#_creating_the_project"></a>Creating the project</h3>
 <div class="paragraph">
@@ -325,13 +339,11 @@ Some exercises were inspired by examples in the book <a href="https://www.amazon
 <p><strong>Kogito Scenario Simulation</strong> to allow using test scenarios (scesim) capabilities in your service;</p>
 <div class="listingblock console-input">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ mvn io.quarkus:quarkus-maven-plugin:1.11.7.Final-redhat-00009:create \
-    -DplatformGroupId=com.redhat.quarkus \
-    -DplatformVersion=1.11.7.Final-redhat-00009 \
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">mvn io.quarkus.platform:quarkus-maven-plugin:2.8.2.Final:create \
     -DprojectGroupId=org.acme \
-    -DprojectArtifactId=practicing-dmn \
-    -Dextensions="kogito-quarkus-decisions,quarkus-smallrye-openapi" \
-    -DnoExamples</code></pre>
+    -DprojectArtifactId=practicing-dmn-lab03 \
+    -Dextensions="kogito-quarkus-decisions,quarkus-smallrye-openapi,quarkus-resteasy-jackson" \
+    -DnoCode</code></pre>
 </div>
 </div>
 </li>
@@ -694,7 +706,7 @@ During this challenge development you will exercise FEEL, String manipulation, l
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="05-event-driven-decision-services.html">5. Event Driven Decision Services</a></span>
+  <span class="prev"><a href="04-build-decision-service-logic.html">Challenges</a></span>
   <span class="next"><a href="06-build-process-service.html">6. Build a Process Service</a></span>
 </nav>
 </article>
