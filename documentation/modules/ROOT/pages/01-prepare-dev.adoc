@@ -1,4 +1,4 @@
-= Prepare your Development Environment
+= Preparing the development environment
 include::_attributes.adoc[]
 
 In this step you will prepare the environment that you will use throughout the rest of the modules. You will:
