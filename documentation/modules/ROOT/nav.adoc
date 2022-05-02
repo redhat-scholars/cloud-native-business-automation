@@ -3,8 +3,6 @@
 ** xref:01-prepare-dev.adoc#base-folder[{module}.{counter:submodule1} Creating the base folder for the labs]
 ** xref:01-prepare-dev.adoc#install-code[{module}.{counter:submodule1} Installing Visual Studio Code IDE]
 ** xref:01-prepare-dev.adoc#graalvm[{module}.{counter:submodule1} Install GraalVM]
-** xref:01-prepare-dev.adoc#content_overview[{module}.{counter:submodule1} ]
-** xref:01-prepare-dev.adoc#_explore_more_solution_patterns[{module}.{counter:submodule1} ]
 
 * xref:02-build-decision-service.adoc[{counter:module}. Getting started with Decision Automation]
 
