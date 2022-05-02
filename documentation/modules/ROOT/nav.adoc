@@ -28,7 +28,7 @@
       **** xref:07-learn-dmn.adoc#java-dmn[{module}.{submodule2}.{submodulecat4}.{counter:submodulecat6}. The power of Java in DMN]
       **** xref:07-learn-dmn.adoc#party-lab[{module}.{submodule2}.{submodulecat4}.{counter:submodulecat5}. The Party Challenge]
 
-* xref:09-learn-dmn.adoc[{counter:module}. Getting started with business rules automation (DRL)]
+* xref:08-learn-drl.adoc[{counter:module}. Getting started with business rules automation (DRL)]
   ** xref:08-learn-drl.adoc#create-project[{module}.{counter:submodule3}. Creating a new rules project based on Kogito and Quarkus]
   ** xref:08-learn-drl.adoc#running-project[{module}.{counter:submodule3}. Running the Application]
   ** xref:08-learn-drl.adoc#create-model[{module}.{counter:submodule3}. Creating the Domain Model]
