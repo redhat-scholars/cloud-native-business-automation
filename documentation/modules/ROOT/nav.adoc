@@ -34,8 +34,6 @@
 ** xref:08-learn-drl.adoc#running-project[{module}.{counter:submodule3}. Running the Application]
 ** xref:08-learn-drl.adoc#create-model[{module}.{counter:submodule3}. Creating the Domain Model]
 ** xref:08-learn-drl.adoc#create-rules[{module}.{counter:submodule3}. Developing rules with Rule Units]
-*** xref:08-learn-drl.adoc#create-unit[{module}.{counter:submodule3}. Create a PersonUnit]
-*** xref:08-learn-drl.adoc#create-rules2[{module}.{counter:submodule3}. Enhancing the rules]
 ** xref:08-learn-drl.adoc#running-project2[{module}.{counter:submodule3}. Running the application]
 ** xref:08-learn-drl.adoc#variables-project[{module}.{counter:submodule3}. Using with variables in Rule Units]
 ** xref:08-learn-drl.adoc#access-project[{module}.{counter:submodule3}. Final tests]
