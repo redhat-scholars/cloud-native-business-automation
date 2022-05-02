@@ -16,20 +16,19 @@ Let's get started.
 
 In this step, you will create a Kogito application skeleton with Quarkus as the execution runtime.
 
-The easiest way to create a new Kogito service is to use Maven archetype, as you can see in the command below:
+The easiest way to create a new Kogito service is to use Quarkus maven plugin, as you can see in the command below:
 
 [.console-input]
 [source,shell]
 ----
-mvn io.quarkus:quarkus-maven-plugin:1.11.7.Final-redhat-00009:create \
-    -DplatformGroupId=com.redhat.quarkus \
-    -DplatformVersion=1.11.7.Final-redhat-00009 \
-    -DprojectGroupId=org.acme \
-    -DprojectArtifactId=adult-service \
-    -Dextensions="kogito-quarkus-rules,quarkus-smallrye-openapi,quarkus-smallrye-health" 
+mvn io.quarkus.platform:quarkus-maven-plugin:2.8.2.Final:create \
+  -DprojectGroupId=org.acme \
+  -DprojectArtifactId=rules-lab01 \
+  -Dextensions="kogito-quarkus-rules,quarkus-smallrye-openapi,quarkus-smallrye-health,quarkus-resteasy-jackson" \
+  -DnoCode
 ----
 
-This will use the Quarkus Maven Archetype and generate a basic Maven project for you in the `adult-service` subdirectory. The project consists of:
+This command should generate a basic Maven project for you in the `rules-lab01` subdirectory. The project consists of:
 
 * The Maven structure.
 * An OpenAPI Swagger-UI at `http://localhost:8080/q/swagger-ui`.
@@ -39,14 +38,14 @@ Once the project is generated, open the project in Visual Studio Code:
 [.console-input]
 [source,shell]
 ----
-$ cd adult-service
+$ cd rules-lab01
 $ code .
 ----
 
 [#running-project]
 == Running the Application
 
-We will now run the Kogito application in development mode. This allows us to keep the application running while implementing our application logic.
+We will now run the rules service using Quarkus development mode. This allows us to keep the application running while implementing our application logic.
 Kogito and Quarkus will _hot reload_ the application when it is accessed and changes have been detected.
 
 Go back to your terminal (or open the integrated terminal in Visual Studio Code).
@@ -58,10 +57,10 @@ We are ready to run our application. Run the following command to start the appl
 [.console-input]
 [source,shell]
 ----
-$ mvn clean compile quarkus:dev
+mvn clean compile quarkus:dev
 ----
 
-When the application has started, you can access the http://localhost:8080/q/swagger-ui[Swagger UI]
+Once the application is up, you can access the http://localhost:8080/q/swagger-ui[Swagger UI]
 
 You should be able to see the following page:
 
@@ -69,11 +68,11 @@ image::drl/new-kogito-quarkus-empty-swagger-ui.png[Empty Swagger UI,800,align="c
 
 It's working!
 
-You can now stop the application with `CTRL-C`.
+You can now stop the application with `CTRL-C`. 
 
 *Congratulations!*
 
-You've seen how to create the skeleton of basic Kogito app, and start the application in _Quarkus dev-mode_.
+You've seen how to create the skeleton of basic rules service using Kogito and Quarkus, and how to start the application in _Quarkus dev-mode_.
 
 [#create-model]
 == Creating the Domain Model
@@ -94,13 +93,11 @@ From this description of our application, we can infer the _fact_:
 
 We first implement the `Person` class. To do this, we first need to create a new package in our project.
 
-In your Visual Studio Code IDE, open the `src/main/java/org/acme` folder of the project, and create the folder `domain`.
+In your Visual Studio Code IDE, create the package `src/main/java/org/acme/domain`
 
 image::drl/vscode-create-domain-package.png[Create domain package]
 
 In the package `src/main/java/org/acme/domain` create a new `Person.java` file.
-
-image::drl/vscode-create-person-java.png[Create Person.java]
 
 Implement this class as follows:
 
@@ -145,11 +142,14 @@ public class Person {
     }
 
 }
+
+image::drl/vscode-create-person-java.png[Create Person.java]
+
 ----
 
 *Congratulations!*
 
-You've implemented the domain model of your Kogito business rules project. In the next step, we will implement the _RuleUnit_ of our application.
+You've implemented the domain model of your Kogito business rules project. In the next step, we will implement the _Rule Unit_ of our application.
 
 [#create-rules]
 == Developing rules with Rule Units
@@ -238,15 +238,9 @@ DRL is a declarative language in which advanced rules can be defined and impleme
 
 *PersonUnit DRL*
 
-We first implement the skeleton of our `PersonUnit.drl` file in the `src/main/resources` directory of our project.
-
-First we create the proper package in our `src/main/resources` folder. In VSCode, add the directory `org/acme` to your `src/main/resources` folder.
+We first implement the skeleton of our `PersonUnit.drl` file in the `src/main/resources/org/acme` directory of our project.
 
 image::drl/vscode-new-resources-package.png[New resources package]
-
-Next, we create the DRL file by clicking. Add a new file with the name `PersonUnit.drl` to the `org.acme` package in the `src/main/resources` folder of your project.
-
-image::drl/vscode-new-person-unit-drl.png[New Person Unit]
 
 Implement this DRL file as follows:
 
@@ -273,6 +267,8 @@ end
 We first need to define that this `PersonUnit.drl` is connected to our `PersonUnit`. We do this through `unit` definition under the `package` definition at the top of the DRL file:
 Add the following DRL snippet to the `PersonUnit.drl` file, at the place of the `//Unit definition` comment:
 
+[.console-input]
+[source,drl]
 ----
 unit PersonUnit;
 ----
@@ -283,6 +279,8 @@ Also, it allows us to easily define constraints using the rule unit `DataSource`
 The following constraint matches `Person` facts from the `persons` datastore of our unit, who's age is equal to, or greater than 18.
 Add this snippet to the DRL file, at the place of the `//Person OOPath` comment.
 
+[.console-input]
+[source,drl]
 ----
   $p: /persons[age >= 18];
 ----
@@ -291,6 +289,8 @@ We can now implement the consequence of our rule, or the right-hand-side (RHS).
 This the action that will be executed when the rule fires. In our case we want to set the person's `adult` field to true when the rule fires.
 Add this snippet to the DRL file, at the place of the `//Set adult` comment.
 
+[.console-input]
+[source,drl]
 ----
   $p.setAdult(true);
 ----
@@ -299,6 +299,8 @@ The next thing we need to do for our Kogito application is a query. The query in
 In this query, we simply want to return all the facts from our `persons` datastore.
 Add this snippet to the DRL file, at the place of the `//Adult query` comment.
 
+[.console-input]
+[source,drl]
 ----
   $p: /persons;
 ----
@@ -318,12 +320,14 @@ $ mvn clean compile quarkus:dev
 
 We can inspect the generated RESTful endpoint in the http://localhost:8080/swagger-ui[Swagger-UI] of the application.
 
+image::drl/rule-unit-generated-swagger-ui.png[Empty Swagger UI,800,align="center"]
+
 We can now send a request to our generated RESTful endpoint using cURL:
 
 [.console-input]
 [source,shell script]
 ----
-$ curl -X POST "http://localhost:8080/adult" -H \
+curl -X POST "http://localhost:8080/adult" -H \
 "accept: application/json" -H "Content-Type: application/json" \
 -d "{\"persons\":[{\"age\":18,\"name\":\"Jason\"}]}"
 ----
@@ -383,7 +387,11 @@ and replace the constaint of the rule (`$p: /persons[age >= 18];`) with the foll
 
 We've now added the functionality we want, so we can start our application again. Execute the following Maven command in a terminal:
 
-`$ mvn clean compile quarkus:dev`
+[.console-input]
+[source,shell script]
+----
+mvn clean compile quarkus:dev
+----
 
 We can now hit the application with a request that contains our new `adultAge` variable:
 
